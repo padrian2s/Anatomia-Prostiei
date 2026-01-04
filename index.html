@@ -190,6 +190,384 @@
         .scenario-4 .scenario-number { background: rgba(255, 255, 255, 0.2); }
         .scenario-4 .example-box { border-color: #ab47bc; }
 
+        /* Knowledge Levels Section */
+        .knowledge-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .knowledge-section > h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #00bcd4, #4dd0e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .knowledge-section > .section-subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .levels-pyramid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .level-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+
+        .level-bar:hover {
+            transform: scale(1.02);
+        }
+
+        .level-bar.active {
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .level-1 { background: linear-gradient(135deg, #78909c, #607d8b); width: 95%; }
+        .level-2 { background: linear-gradient(135deg, #7986cb, #5c6bc0); width: 80%; }
+        .level-3 { background: linear-gradient(135deg, #4fc3f7, #29b6f6); width: 65%; }
+        .level-4 { background: linear-gradient(135deg, #4db6ac, #26a69a); width: 50%; }
+        .level-5 { background: linear-gradient(135deg, #81c784, #66bb6a); width: 35%; }
+
+        .level-bar .level-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .level-bar .level-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-left: 1rem;
+        }
+
+        .level-detail {
+            display: none;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .level-detail.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .confusion-section {
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 193, 7, 0.05) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(255, 152, 0, 0.3);
+        }
+
+        .confusion-section h3 {
+            color: #ffb74d;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .confusion-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .confusion-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border-left: 4px solid #ffb74d;
+        }
+
+        .confusion-card h4 {
+            color: #ffd54f;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .confusion-card p {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .passive-active-section {
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.1) 0%, rgba(186, 104, 200, 0.05) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(156, 39, 176, 0.3);
+        }
+
+        .passive-active-section h3 {
+            color: #ce93d8;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pa-comparison {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+
+        .pa-box {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .pa-box.passive { border: 2px solid #ef5350; }
+        .pa-box.active { border: 2px solid #66bb6a; }
+
+        .pa-box h4 {
+            margin-bottom: 1rem;
+        }
+
+        .pa-box.passive h4 { color: #ef5350; }
+        .pa-box.active h4 { color: #66bb6a; }
+
+        .pa-vs {
+            font-size: 2rem;
+            color: #666;
+        }
+
+        .google-effect {
+            background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(100, 181, 246, 0.05) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(66, 165, 245, 0.3);
+        }
+
+        .google-effect h3 {
+            color: #64b5f6;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .google-effect .warning-text {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #ef9a9a;
+        }
+
+        .read-somewhere {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+
+        .read-somewhere h3 {
+            color: #e94560;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .telephone-list {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .telephone-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .telephone-item::before {
+            content: "📖";
+        }
+
+        .telephone-item:nth-child(8)::before {
+            content: "🗣️";
+        }
+
+        .practice-examples {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .practice-examples h4 {
+            color: #ff8a80;
+            margin-bottom: 1rem;
+        }
+
+        .practice-example {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .practice-example:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .practice-example .claim {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .practice-example .reality {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+
+        .honest-test {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.15) 0%, rgba(129, 199, 132, 0.08) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 2px solid rgba(76, 175, 80, 0.4);
+        }
+
+        .honest-test h3 {
+            color: #81c784;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .test-questions {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .test-question {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .test-question:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .test-question.checked {
+            border-color: #81c784;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .test-question .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #666;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .test-question.checked .checkbox {
+            background: #81c784;
+            border-color: #81c784;
+        }
+
+        .test-question.checked .checkbox::after {
+            content: "✓";
+            color: #1a1a2e;
+            font-weight: bold;
+        }
+
+        .test-result {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        .test-result.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .test-result.positive {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #81c784;
+        }
+
+        .test-result.negative {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid #ef5350;
+        }
+
+        .test-result.partial {
+            background: rgba(255, 152, 0, 0.2);
+            border: 1px solid #ffb74d;
+        }
+
+        .danger-note {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px dashed rgba(244, 67, 54, 0.5);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .danger-note p {
+            color: #ef9a9a;
+        }
+
+        .danger-note strong {
+            color: #ef5350;
+        }
+
         .comparison-section {
             background: linear-gradient(135deg, rgba(233, 69, 96, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
             border-radius: 20px;
@@ -520,6 +898,183 @@
             </div>
         </div>
 
+        <!-- Knowledge Levels Section -->
+        <div class="knowledge-section">
+            <h2>📊 Niveluri de Cunoaștere</h2>
+            <p class="section-subtitle">Pe care le confundăm constant</p>
+
+            <div class="levels-pyramid">
+                <div class="level-bar level-1" onclick="toggleLevel(this, 1)">
+                    <span class="level-name">Am auzit/citit</span>
+                    <span class="level-desc">— informația a trecut prin fața ochilor mei</span>
+                </div>
+                <div class="level-detail" id="level-detail-1">
+                    <p>Cel mai superficial nivel. Ai scanat un titlu, ai auzit un termen într-o conversație, ai văzut un meme despre o tehnologie. Informația a <em>existat</em> în proximitatea ta, dar nu a intrat cu adevărat.</p>
+                </div>
+
+                <div class="level-bar level-2" onclick="toggleLevel(this, 2)">
+                    <span class="level-name">Îmi amintesc</span>
+                    <span class="level-desc">— pot reproduce informația (poate corect, poate nu)</span>
+                </div>
+                <div class="level-detail" id="level-detail-2">
+                    <p>Poți repeta ce ai citit, dar fără garanție de acuratețe. Memoria e reconstructivă, nu reproductivă. Ce "îți amintești" e adesea o versiune distorsionată de propriile tale filtre și asocieri.</p>
+                </div>
+
+                <div class="level-bar level-3" onclick="toggleLevel(this, 3)">
+                    <span class="level-name">Înțeleg</span>
+                    <span class="level-desc">— pot explica de ce, pot conecta cu alte concepte</span>
+                </div>
+                <div class="level-detail" id="level-detail-3">
+                    <p>Aici începe cunoașterea reală. Poți răspunde la "de ce?", poți prezice consecințe, poți vedea conexiuni cu alte concepte. <strong>Examenul clasic:</strong> poți explica cuiva care nu știe nimic? Dacă nu poți, nu înțelegi de fapt.</p>
+                </div>
+
+                <div class="level-bar level-4" onclick="toggleLevel(this, 4)">
+                    <span class="level-name">Știu</span>
+                    <span class="level-desc">— am integrat în modelul meu, pot aplica în contexte noi</span>
+                </div>
+                <div class="level-detail" id="level-detail-4">
+                    <p>Cunoașterea a devenit parte din modul în care vezi lumea. Poți aplica în situații pe care nu le-ai întâlnit explicit. Poți recunoaște când <em>nu</em> se aplică. Știi limitele și excepțiile.</p>
+                </div>
+
+                <div class="level-bar level-5" onclick="toggleLevel(this, 5)">
+                    <span class="level-name">Am competență</span>
+                    <span class="level-desc">— pot face ceva practic cu cunoașterea</span>
+                </div>
+                <div class="level-detail" id="level-detail-5">
+                    <p>Nivelul suprem: poți produce, nu doar consuma. Poți construi, implementa, crea. Diferența între a ști despre pictură și a putea picta. Între a înțelege recursivitatea și a scrie cod recursiv eficient.</p>
+                </div>
+            </div>
+
+            <!-- Why Confusion Section -->
+            <div class="confusion-section">
+                <h3>🧠 De ce confuzia e atât de răspândită?</h3>
+                <div class="confusion-cards">
+                    <div class="confusion-card">
+                        <h4>💫 Fluența Cognitivă</h4>
+                        <p>Dacă ceva <strong>sună familiar</strong>, creierul interpretează asta ca "știu".</p>
+                        <p>Ai citit un articol despre blockchain acum 2 ani. Acum cineva menționează blockchain și simți un "ah, da, știu despre asta".</p>
+                        <p><em>Dar ce știi de fapt? Aproape nimic. Știi că există și cam despre ce e vorba. Atât.</em></p>
+                    </div>
+                    <div class="confusion-card">
+                        <h4>🪞 Iluzia Înțelegerii</h4>
+                        <p>Poți citi o explicație și să ți se pară clară. Dar când încerci să o reproduci sau să o aplici, realizezi că nu ai înțeles de fapt.</p>
+                        <p><strong>Claritatea a fost a autorului, nu a ta.</strong></p>
+                        <p>Tu ai urmărit pasiv, nu ai construit activ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passive vs Active -->
+            <div class="passive-active-section">
+                <h3>⚖️ Cunoaștere Pasivă vs. Activă</h3>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 1rem;">
+                    <strong>Recunoașterea e ușoară, producția e grea.</strong>
+                </p>
+
+                <div class="pa-comparison">
+                    <div class="pa-box passive">
+                        <h4>Pasivă (Recunoaștere)</h4>
+                        <p>"Da, știu piesa asta"</p>
+                        <p>"Am auzit de dependency injection"</p>
+                        <p>"Îmi sună familiar conceptul"</p>
+                    </div>
+                    <div class="pa-vs">≠</div>
+                    <div class="pa-box active">
+                        <h4>Activă (Producție)</h4>
+                        <p>Poți cânta melodia?</p>
+                        <p>Poți implementa DI?</p>
+                        <p>Poți explica când NU e potrivit?</p>
+                    </div>
+                </div>
+
+                <div class="example-box" style="border-color: #ce93d8;">
+                    <p><strong>În IT:</strong> recunoști termenul "dependency injection", poate poți da o definiție vagă.</p>
+                    <p>Dar poți implementa? Poți explica de ce ai folosi-o? Poți recunoaște situațiile unde <em>nu</em> e potrivită?</p>
+                </div>
+            </div>
+
+            <!-- Google Effect -->
+            <div class="google-effect">
+                <h3>🔍 Efectul Google/Wikipedia</h3>
+                <p>Avem acces instant la orice informație. Asta creează <strong>iluzia că avem informația</strong>.</p>
+                <p>Dar informația care stă pe server nu e în capul tău. Nu o poți folosi, conecta, aplica.</p>
+
+                <div class="warning-text">
+                    <p><strong>Și mai rău:</strong> știind că poți căuta oricând, creierul nu se mai obosește să rețină sau să proceseze profund.</p>
+                    <p>"De ce să înveți când poți googli?"</p>
+                    <p style="margin-top: 1rem;"><strong>Rezultatul:</strong> oameni care "știu" enorm de multe la nivel superficial și aproape nimic la nivel profund.</p>
+                </div>
+            </div>
+
+            <!-- "Am citit undeva" -->
+            <div class="read-somewhere">
+                <h3>📖 "Am citit undeva" e de fapt...</h3>
+                <div class="telephone-list">
+                    <div class="telephone-item">Am citit un titlu</div>
+                    <div class="telephone-item">Am citit un rezumat</div>
+                    <div class="telephone-item">Am citit dar nu am verificat sursa</div>
+                    <div class="telephone-item">Am citit dar nu am înțeles</div>
+                    <div class="telephone-item">Am citit dar am reținut greșit</div>
+                    <div class="telephone-item">Am citit ceva ce cita altceva și lanțul de telefon fără fir a distorsionat complet</div>
+                    <div class="telephone-item">Am citit și am interpretat prin filtrele mele preexistente</div>
+                    <div class="telephone-item">Cineva mi-a zis că a citit</div>
+                </div>
+
+                <div class="practice-examples">
+                    <h4>Cum arată în practică:</h4>
+                    <div class="practice-example">
+                        <p class="claim">"Am citit că X e cancerigen"</p>
+                        <p class="reality">Unde? Studiu pe șoareci cu doze de 1000x normale? Un blog random? O interpretare greșită a unui studiu?</p>
+                    </div>
+                    <div class="practice-example">
+                        <p class="claim">"Am citit că compania Y face Z"</p>
+                        <p class="reality">Un articol de opinie? Un comunicat de presă? O investigație serioasă?</p>
+                    </div>
+                    <div class="practice-example">
+                        <p class="claim">"Am citit că tehnologia X e viitorul"</p>
+                        <p class="reality">Marketingul vânzătorului? Un analist independent? Un hype cycle Gartner?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Honest Test -->
+            <div class="honest-test">
+                <h3>✅ Testul Onest</h3>
+                <p style="text-align: center; margin-bottom: 1.5rem;">Când zici "știu X", întreabă-te:</p>
+
+                <div class="test-questions">
+                    <div class="test-question" onclick="toggleTest(this)">
+                        <div class="checkbox"></div>
+                        <span>Pot explica fără să caut?</span>
+                    </div>
+                    <div class="test-question" onclick="toggleTest(this)">
+                        <div class="checkbox"></div>
+                        <span>Pot răspunde la întrebări follow-up?</span>
+                    </div>
+                    <div class="test-question" onclick="toggleTest(this)">
+                        <div class="checkbox"></div>
+                        <span>Știu limitele și excepțiile?</span>
+                    </div>
+                    <div class="test-question" onclick="toggleTest(this)">
+                        <div class="checkbox"></div>
+                        <span>Știu de unde știu și cât de fiabilă e sursa?</span>
+                    </div>
+                    <div class="test-question" onclick="toggleTest(this)">
+                        <div class="checkbox"></div>
+                        <span>Pot aplica în contexte diferite de cel în care am învățat?</span>
+                    </div>
+                </div>
+
+                <div class="test-result" id="test-result"></div>
+
+                <div class="danger-note">
+                    <p>Dacă nu poți bifa toate, <strong>nu știi</strong>.</p>
+                    <p style="margin-top: 0.5rem;">Ai o impresie, o familiaritate, un sentiment de cunoaștere.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Ceea ce poate fi mai periculos decât ignoranța totală,</strong><br>pentru că nu cauți ce crezi că ai deja.</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Comparison Section -->
         <div class="comparison-section">
             <h2>🔍 Diferența cheie față de Bonhoeffer</h2>
@@ -616,6 +1171,51 @@
             });
             // Toggle current
             element.classList.toggle('active');
+        }
+
+        function toggleLevel(element, levelNum) {
+            // Remove active from all level bars
+            document.querySelectorAll('.level-bar').forEach(bar => {
+                bar.classList.remove('active');
+            });
+            // Hide all details
+            document.querySelectorAll('.level-detail').forEach(detail => {
+                detail.classList.remove('visible');
+            });
+
+            // Activate clicked level
+            element.classList.add('active');
+            document.getElementById('level-detail-' + levelNum).classList.add('visible');
+        }
+
+        function toggleTest(element) {
+            element.classList.toggle('checked');
+            updateTestResult();
+        }
+
+        function updateTestResult() {
+            const questions = document.querySelectorAll('.test-question');
+            const checked = document.querySelectorAll('.test-question.checked');
+            const result = document.getElementById('test-result');
+
+            if (checked.length === 0) {
+                result.classList.remove('show');
+                return;
+            }
+
+            result.classList.add('show');
+            result.classList.remove('positive', 'negative', 'partial');
+
+            if (checked.length === questions.length) {
+                result.classList.add('positive');
+                result.innerHTML = '<strong>Felicitări!</strong> Probabil chiar știi. Sau ești foarte bun la auto-evaluare. Sau amândouă.';
+            } else if (checked.length >= 3) {
+                result.classList.add('partial');
+                result.innerHTML = '<strong>Aproape.</strong> Ai cunoștințe solide, dar sunt goluri. Înțelegerea parțială e mai periculoasă decât pare.';
+            } else {
+                result.classList.add('negative');
+                result.innerHTML = '<strong>Sincer:</strong> ai o familiaritate cu subiectul, nu cunoaștere. E OK să recunoști asta - e primul pas spre a învăța cu adevărat.';
+            }
         }
 
         // Auto-open first scenario after a short delay
