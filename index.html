@@ -3,704 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anatomia Prostiei | Explorare Interactivă</title>
-    <style>
-        :root {
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
-            --bg-hover: #1a1a25;
-            --accent-red: #e94560;
-            --accent-orange: #ffa726;
-            --accent-blue: #42a5f5;
-            --accent-purple: #ab47bc;
-            --accent-green: #66bb6a;
-            --accent-cyan: #4dd0e1;
-            --accent-yellow: #ffd54f;
-            --text-primary: #e4e4e4;
-            --text-secondary: #888;
-            --text-muted: #555;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        /* ===== LAYOUT ===== */
-        .app-container {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* ===== SIDEBAR ===== */
-        .sidebar {
-            width: 280px;
-            background: var(--bg-card);
-            border-right: 1px solid rgba(255,255,255,0.05);
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-            z-index: 100;
-            transition: transform 0.3s ease;
-        }
-
-        .sidebar-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .sidebar-header h1 {
-            font-size: 1.3rem;
-            background: linear-gradient(90deg, var(--accent-red), var(--accent-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .sidebar-header p {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 0.3rem;
-        }
-
-        .nav-section {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .nav-section-title {
-            padding: 0.5rem 1.5rem;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 0.8rem 1.5rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border-left: 3px solid transparent;
-        }
-
-        .nav-item:hover {
-            background: var(--bg-hover);
-        }
-
-        .nav-item.active {
-            background: rgba(233, 69, 96, 0.1);
-            border-left-color: var(--accent-red);
-        }
-
-        .nav-item .icon {
-            font-size: 1.2rem;
-            width: 24px;
-            text-align: center;
-        }
-
-        .nav-item .label {
-            font-size: 0.9rem;
-        }
-
-        .nav-item .badge {
-            margin-left: auto;
-            background: var(--accent-red);
-            color: white;
-            font-size: 0.7rem;
-            padding: 0.1rem 0.5rem;
-            border-radius: 10px;
-        }
-
-        /* ===== MAIN CONTENT ===== */
-        .main-content {
-            flex: 1;
-            margin-left: 280px;
-            padding: 2rem 3rem;
-            max-width: 1200px;
-        }
-
-        .section {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== SECTION HEADERS ===== */
-        .section-header {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-header p {
-            color: var(--text-secondary);
-        }
-
-        /* ===== CARDS ===== */
-        .card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .card-subtitle {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* ===== EXPANDABLE CARDS ===== */
-        .expandable-card {
-            cursor: pointer;
-        }
-
-        .expandable-card .card-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-
-        .expandable-card.expanded .card-content {
-            max-height: 2000px;
-        }
-
-        .expandable-card .expand-icon {
-            margin-left: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .expandable-card.expanded .expand-icon {
-            transform: rotate(180deg);
-        }
-
-        /* ===== GRID LAYOUTS ===== */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-
-        @media (max-width: 1000px) {
-            .grid-2, .grid-3 { grid-template-columns: 1fr; }
-        }
-
-        /* ===== HIGHLIGHT BOX ===== */
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(233, 69, 96, 0.1), rgba(255, 107, 107, 0.05));
-            border: 1px solid rgba(233, 69, 96, 0.3);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        .highlight-box.blue {
-            background: linear-gradient(135deg, rgba(66, 165, 245, 0.1), rgba(100, 181, 246, 0.05));
-            border-color: rgba(66, 165, 245, 0.3);
-        }
-
-        .highlight-box.green {
-            background: linear-gradient(135deg, rgba(102, 187, 106, 0.1), rgba(129, 199, 132, 0.05));
-            border-color: rgba(102, 187, 106, 0.3);
-        }
-
-        .highlight-box.orange {
-            background: linear-gradient(135deg, rgba(255, 167, 38, 0.1), rgba(255, 183, 77, 0.05));
-            border-color: rgba(255, 167, 38, 0.3);
-        }
-
-        .highlight-box.purple {
-            background: linear-gradient(135deg, rgba(171, 71, 188, 0.1), rgba(186, 104, 200, 0.05));
-            border-color: rgba(171, 71, 188, 0.3);
-        }
-
-        /* ===== TAGS ===== */
-        .tag {
-            display: inline-block;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 0.3rem;
-        }
-
-        .tag.red { background: rgba(233, 69, 96, 0.2); color: var(--accent-red); }
-        .tag.blue { background: rgba(66, 165, 245, 0.2); color: var(--accent-blue); }
-        .tag.green { background: rgba(102, 187, 106, 0.2); color: var(--accent-green); }
-        .tag.orange { background: rgba(255, 167, 38, 0.2); color: var(--accent-orange); }
-        .tag.purple { background: rgba(171, 71, 188, 0.2); color: var(--accent-purple); }
-
-        /* ===== PROGRESS BARS ===== */
-        .progress-bar {
-            height: 8px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 0.5rem 0;
-        }
-
-        .progress-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 1s ease;
-        }
-
-        /* ===== SIMULATORS ===== */
-        .simulator {
-            background: rgba(0,0,0,0.3);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        .simulator-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .simulator-title {
-            font-size: 1.1rem;
-            color: var(--accent-cyan);
-        }
-
-        .simulator-controls {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .sim-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.2s ease;
-        }
-
-        .sim-btn.primary {
-            background: var(--accent-cyan);
-            color: var(--bg-dark);
-        }
-
-        .sim-btn.secondary {
-            background: rgba(255,255,255,0.1);
-            color: var(--text-primary);
-        }
-
-        .sim-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .simulator-canvas {
-            background: rgba(0,0,0,0.3);
-            border-radius: 12px;
-            min-height: 200px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* ===== ECHO CHAMBER SIMULATOR ===== */
-        .echo-feed {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            max-height: 350px;
-            overflow-y: auto;
-            padding: 1rem;
-        }
-
-        .echo-post {
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            padding: 0.8rem;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .echo-post.agree {
-            border-left: 3px solid var(--accent-green);
-        }
-
-        .echo-post.disagree {
-            border-left: 3px solid var(--accent-red);
-            opacity: 0.4;
-        }
-
-        .echo-stats {
-            display: flex;
-            gap: 2rem;
-            padding: 1rem;
-            background: rgba(0,0,0,0.2);
-            border-radius: 8px;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .echo-stat {
-            text-align: center;
-        }
-
-        .echo-stat .value {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .echo-stat .label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        /* ===== VIRAL SPREAD SIMULATOR ===== */
-        .viral-grid {
-            display: grid;
-            grid-template-columns: repeat(20, 1fr);
-            gap: 2px;
-            padding: 1rem;
-        }
-
-        .viral-cell {
-            aspect-ratio: 1;
-            background: rgba(255,255,255,0.1);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .viral-cell.infected {
-            background: var(--accent-red);
-            box-shadow: 0 0 10px var(--accent-red);
-        }
-
-        .viral-cell.immune {
-            background: var(--accent-green);
-        }
-
-        /* ===== DUNNING-KRUGER GRAPH ===== */
-        .dk-slider-container {
-            margin-top: 1rem;
-        }
-
-        .dk-slider {
-            width: 100%;
-            height: 8px;
-            border-radius: 4px;
-            background: linear-gradient(90deg, var(--accent-red), var(--accent-orange), var(--accent-blue), var(--accent-green));
-            -webkit-appearance: none;
-            cursor: pointer;
-        }
-
-        .dk-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            cursor: pointer;
-        }
-
-        .dk-info-panel {
-            background: rgba(0,0,0,0.3);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .dk-phase-name {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        /* ===== KNOWLEDGE PYRAMID ===== */
-        .pyramid-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.3rem;
-            margin: 2rem 0;
-        }
-
-        .pyramid-level {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .pyramid-level:hover {
-            transform: scale(1.02);
-        }
-
-        .pyramid-level.active {
-            box-shadow: 0 0 30px rgba(255,255,255,0.2);
-        }
-
-        .pyramid-level-1 { width: 100%; background: linear-gradient(135deg, #78909c, #607d8b); }
-        .pyramid-level-2 { width: 85%; background: linear-gradient(135deg, #7986cb, #5c6bc0); }
-        .pyramid-level-3 { width: 70%; background: linear-gradient(135deg, #4fc3f7, #29b6f6); }
-        .pyramid-level-4 { width: 55%; background: linear-gradient(135deg, #4db6ac, #26a69a); }
-        .pyramid-level-5 { width: 40%; background: linear-gradient(135deg, #81c784, #66bb6a); }
-
-        .pyramid-detail {
-            display: none;
-            background: rgba(0,0,0,0.3);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 1rem;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .pyramid-detail.visible {
-            display: block;
-        }
-
-        /* ===== QUIZ ===== */
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .quiz-option {
-            padding: 1rem 1.5rem;
-            background: rgba(255,255,255,0.05);
-            border: 2px solid transparent;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .quiz-option:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        .quiz-option.selected {
-            border-color: var(--accent-cyan);
-            background: rgba(77, 208, 225, 0.1);
-        }
-
-        .quiz-result {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            border-radius: 10px;
-            display: none;
-        }
-
-        .quiz-result.show {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        /* ===== TIMELINE ===== */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0.5rem;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--accent-red), var(--accent-orange), var(--accent-green), var(--accent-blue));
-        }
-
-        .timeline-item {
-            position: relative;
-            padding: 1rem 0 1rem 1.5rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -1.25rem;
-            top: 1.3rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--accent-red);
-        }
-
-        .timeline-item:nth-child(2)::before { background: var(--accent-orange); }
-        .timeline-item:nth-child(3)::before { background: var(--accent-green); }
-        .timeline-item:nth-child(4)::before { background: var(--accent-blue); }
-
-        /* ===== COMPARISON TABLE ===== */
-        .comparison-table {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .comparison-col {
-            background: rgba(0,0,0,0.2);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        .comparison-col.good {
-            border-top: 3px solid var(--accent-green);
-        }
-
-        .comparison-col.bad {
-            border-top: 3px solid var(--accent-red);
-        }
-
-        .comparison-col h4 {
-            margin-bottom: 1rem;
-        }
-
-        .comparison-col.good h4 { color: var(--accent-green); }
-        .comparison-col.bad h4 { color: var(--accent-red); }
-
-        /* ===== FORMULA BOX ===== */
-        .formula-box {
-            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2), rgba(255, 107, 107, 0.1));
-            border: 2px solid rgba(233, 69, 96, 0.5);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            margin: 1.5rem 0;
-        }
-
-        .formula {
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .formula .equals {
-            color: var(--accent-orange);
-            margin: 0 0.5rem;
-        }
-
-        /* ===== MOBILE ===== */
-        .mobile-menu-btn {
-            display: none;
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            z-index: 200;
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 0.8rem;
-            cursor: pointer;
-            color: var(--text-primary);
-            font-size: 1.2rem;
-        }
-
-        @media (max-width: 900px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .sidebar.open {
-                transform: translateX(0);
-            }
-
-            .main-content {
-                margin-left: 0;
-                padding: 1rem;
-                padding-top: 4rem;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .comparison-table {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.2);
-            border-radius: 4px;
-        }
-    </style>
+    <title>Anatomia Prostiei | Explorare Interactiva a Diluarii IQ</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
@@ -710,62 +14,154 @@
         <nav class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h1>Anatomia Prostiei</h1>
-                <p>Explorare interactivă</p>
+                <p>Explorare interactiva</p>
             </div>
 
+            <!-- 1. INTRODUCERE - Punct de intrare -->
             <div class="nav-section">
                 <div class="nav-section-title">Introducere</div>
-                <div class="nav-item active" onclick="showSection('intro')">
+                <a class="nav-item active" href="#" onclick="showSection('intro'); return false;">
                     <span class="icon">🎯</span>
-                    <span class="label">Prezentare generală</span>
-                </div>
+                    <span class="label">Prezentare generala</span>
+                </a>
+                <a class="nav-item" href="#" onclick="showSection('mechanisms'); return false;">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Mecanisme de grup</span>
+                </a>
             </div>
 
+            <!-- 2. FUNDAMENTE - Ce este prostia? -->
             <div class="nav-section">
-                <div class="nav-section-title">Blocaje Cognitive</div>
-                <div class="nav-item" onclick="showSection('scenarios')">
-                    <span class="icon">🧱</span>
-                    <span class="label">Cele 4 Scenarii</span>
-                </div>
-                <div class="nav-item" onclick="showSection('dunning-kruger')">
+                <div class="nav-section-title">Fundamente Teoretice</div>
+                <a class="nav-item" href="pages/fundamentals/dunning-kruger.html">
                     <span class="icon">📈</span>
-                    <span class="label">Efectul Dunning-Kruger</span>
-                    <span class="badge">Interactiv</span>
-                </div>
-                <div class="nav-item" onclick="showSection('knowledge-levels')">
-                    <span class="icon">🎓</span>
-                    <span class="label">Niveluri de Cunoaștere</span>
-                </div>
-            </div>
-
-            <div class="nav-section">
-                <div class="nav-section-title">Prostia Colectivă</div>
-                <div class="nav-item" onclick="showSection('group-stupidity')">
-                    <span class="icon">👥</span>
-                    <span class="label">Prostia de Grup</span>
-                    <span class="badge">Nou</span>
-                </div>
-                <div class="nav-item" onclick="showSection('social-media')">
-                    <span class="icon">📱</span>
-                    <span class="label">Fabrici de Prostie</span>
-                    <span class="badge">Simulator</span>
-                </div>
-                <div class="nav-item" onclick="showSection('bonhoeffer')">
+                    <span class="label">Dunning-Kruger</span>
+                </a>
+                <a class="nav-item" href="pages/fundamentals/knowledge-levels.html">
+                    <span class="icon">📚</span>
+                    <span class="label">Niveluri de cunoastere</span>
+                </a>
+                <a class="nav-item" href="pages/fundamentals/bonhoeffer.html">
                     <span class="icon">📜</span>
                     <span class="label">Bonhoeffer 2.0</span>
-                </div>
+                </a>
             </div>
 
+            <!-- 3. IQ PARADOX - De ce inteligenta nu protejeaza -->
             <div class="nav-section">
-                <div class="nav-section-title">Instrumente</div>
-                <div class="nav-item" onclick="showSection('self-test')">
+                <div class="nav-section-title">IQ ≠ Intelepciune</div>
+                <a class="nav-item" href="pages/iq-paradox/high-iq-stupidity.html">
+                    <span class="icon">🏆</span>
+                    <span class="label">Paradoxul IQ-ului Inalt</span>
+                </a>
+                <a class="nav-item" href="pages/iq-paradox/multiple-intelligences.html">
+                    <span class="icon">🧩</span>
+                    <span class="label">Inteligente Multiple</span>
+                </a>
+                <a class="nav-item" href="pages/iq-paradox/rationality.html">
+                    <span class="icon">🎯</span>
+                    <span class="label">Rationality Quotient</span>
+                    <span class="badge sim">Sim</span>
+                </a>
+            </div>
+
+            <!-- 4. TRIGGERI - Cand se activeaza prostia -->
+            <div class="nav-section">
+                <div class="nav-section-title">Cand Devenim Prosti</div>
+                <a class="nav-item" href="pages/triggers/physiological.html">
+                    <span class="icon">🧬</span>
+                    <span class="label">Factori Fiziologici</span>
+                    <span class="badge sim">Sim</span>
+                </a>
+                <a class="nav-item" href="pages/triggers/emotional.html">
+                    <span class="icon">💔</span>
+                    <span class="label">Factori Emotionali</span>
+                    <span class="badge sim">Sim</span>
+                </a>
+                <a class="nav-item" href="pages/triggers/contextual.html">
+                    <span class="icon">🌐</span>
+                    <span class="label">Factori Contextuali</span>
+                    <span class="badge sim">Sim</span>
+                </a>
+            </div>
+
+            <!-- 5. ISTORIE - Exemple din trecut -->
+            <div class="nav-section">
+                <div class="nav-section-title">Istoria Prostiei</div>
+                <a class="nav-item" href="pages/history/ancient.html">
+                    <span class="icon">🏛️</span>
+                    <span class="label">Antichitate</span>
+                </a>
+                <a class="nav-item" href="pages/history/medieval.html">
+                    <span class="icon">🏰</span>
+                    <span class="label">Evul Mediu</span>
+                </a>
+                <a class="nav-item" href="pages/history/modern.html">
+                    <span class="icon">🏭</span>
+                    <span class="label">Era Moderna</span>
+                </a>
+                <a class="nav-item" href="pages/history/digital.html">
+                    <span class="icon">💻</span>
+                    <span class="label">Era Digitala</span>
+                    <span class="badge sim">Sim</span>
+                </a>
+            </div>
+
+            <!-- 6. SCENARII - Unde vedem azi -->
+            <div class="nav-section">
+                <div class="nav-section-title">Scenarii Moderne</div>
+                <a class="nav-item" href="pages/scenarios/workplace.html">
+                    <span class="icon">💼</span>
+                    <span class="label">La munca</span>
+                    <span class="badge sim">Sim</span>
+                </a>
+                <a class="nav-item" href="pages/scenarios/school.html">
+                    <span class="icon">🎓</span>
+                    <span class="label">La scoala</span>
+                    <span class="badge sim">Sim</span>
+                </a>
+                <a class="nav-item" href="pages/scenarios/family.html">
+                    <span class="icon">👨‍👩‍👧‍👦</span>
+                    <span class="label">In familie</span>
+                    <span class="badge sim">Sim</span>
+                </a>
+                <a class="nav-item" href="pages/scenarios/friends.html">
+                    <span class="icon">👥</span>
+                    <span class="label">Intre prieteni</span>
+                    <span class="badge sim">Sim</span>
+                </a>
+                <a class="nav-item" href="pages/scenarios/neighbors.html">
+                    <span class="icon">🏘️</span>
+                    <span class="label">Intre vecini</span>
+                    <span class="badge sim">Sim</span>
+                </a>
+                <a class="nav-item" href="pages/scenarios/social-media.html">
+                    <span class="icon">📱</span>
+                    <span class="label">Social Media</span>
+                    <span class="badge sim">Sim</span>
+                </a>
+                <a class="nav-item" href="pages/scenarios/politics.html">
+                    <span class="icon">🗳️</span>
+                    <span class="label">In politica</span>
+                    <span class="badge sim">Sim</span>
+                </a>
+                <a class="nav-item" href="pages/scenarios/cultural.html">
+                    <span class="icon">🌍</span>
+                    <span class="label">Cultural</span>
+                </a>
+            </div>
+
+            <!-- 7. INSTRUMENTE - Ce poti face -->
+            <div class="nav-section">
+                <div class="nav-section-title">Instrumente Practice</div>
+                <a class="nav-item" href="pages/tools/self-test.html">
                     <span class="icon">✅</span>
                     <span class="label">Auto-evaluare</span>
-                </div>
-                <div class="nav-item" onclick="showSection('diagnostic')">
+                </a>
+                <a class="nav-item" href="pages/tools/diagnostic.html">
                     <span class="icon">🔍</span>
                     <span class="label">Diagnostic rapid</span>
-                </div>
+                </a>
             </div>
         </nav>
 
@@ -774,813 +170,275 @@
             <!-- ==================== INTRO ==================== -->
             <section class="section active" id="intro">
                 <div class="section-header">
-                    <h2>🎯 Anatomia Prostiei</h2>
-                    <p>O explorare interactivă a blocajelor cognitive în comunicare</p>
+                    <h2>🎯 Diluarea IQ in Grupuri</h2>
+                    <p>De ce devenim mai prosti impreuna decat suntem singuri</p>
                 </div>
 
-                <div class="highlight-box">
-                    <p style="font-size: 1.2rem; text-align: center;">
-                        Când cineva <strong>"nu poate procesa"</strong> un argument,<br>
-                        cauza nu e întotdeauna aceeași.<br>
-                        <span style="color: var(--accent-red);">Depinde de ce anume blochează procesarea.</span>
+                <div class="formula-box">
+                    <div class="formula">
+                        100 oameni × IQ 100 <span class="equals">≠</span> Grup cu IQ 100
+                    </div>
+                    <p style="color: var(--accent-orange); font-size: 1.2rem;">
+                        De multe ori, obtii un grup care se comporta cu IQ 70
                     </p>
                 </div>
 
-                <div class="grid-3" style="margin-top: 2rem;">
-                    <div class="card" onclick="showSection('scenarios')" style="cursor:pointer;">
-                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-red), var(--accent-orange));">🧱</div>
-                        <h3>4 Scenarii</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">De la Dunning-Kruger la abdicarea judecății</p>
-                    </div>
-                    <div class="card" onclick="showSection('social-media')" style="cursor:pointer;">
-                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));">📱</div>
-                        <h3>Simulatoare</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Echo chamber, viralitate, prostie de grup</p>
-                    </div>
-                    <div class="card" onclick="showSection('self-test')" style="cursor:pointer;">
-                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));">✅</div>
-                        <h3>Auto-evaluare</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Testează-ți propriile bias-uri</p>
-                    </div>
+                <div class="highlight-box">
+                    <p style="font-size: 1.1rem; text-align: center;">
+                        Inteligenta individuala nu se insumeaza in grupuri.<br>
+                        <strong>Se dilueaza.</strong><br>
+                        <span style="color: var(--accent-primary);">Acest site exploreaza cum si de ce.</span>
+                    </p>
+                </div>
+
+                <h3 style="margin: 2rem 0 1rem;">🗂️ Exploreaza Scenariile</h3>
+                <div class="grid-4">
+                    <a href="pages/scenarios/workplace.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: var(--gradient-primary);">💼</div>
+                        <h4>La munca</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Meeting-uri, ierarhii, code reviews</p>
+                    </a>
+                    <a href="pages/scenarios/school.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: var(--gradient-cool);">🎓</div>
+                        <h4>La scoala</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Presiunea peer-ului, conformism</p>
+                    </a>
+                    <a href="pages/scenarios/family.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: var(--gradient-warm);">👨‍👩‍👧‍👦</div>
+                        <h4>In familie</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Traditii, autoritate, generatii</p>
+                    </a>
+                    <a href="pages/scenarios/friends.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));">👥</div>
+                        <h4>Intre prieteni</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Echo chambers, loialitate vs adevar</p>
+                    </a>
+                    <a href="pages/scenarios/neighbors.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-yellow), var(--accent-orange));">🏘️</div>
+                        <h4>Intre vecini</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Barfa, zvonuri, grupuri WhatsApp</p>
+                    </a>
+                    <a href="pages/scenarios/social-media.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-secondary));">📱</div>
+                        <h4>Social Media</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Algoritmi, viralitate, triburi</p>
+                    </a>
+                    <a href="pages/scenarios/politics.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-indigo), var(--accent-purple));">🗳️</div>
+                        <h4>In politica</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Tribalism, polarizare, propaganda</p>
+                    </a>
+                    <a href="pages/scenarios/cultural.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-green), var(--accent-primary));">🌍</div>
+                        <h4>Cultural</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Diferente culturale, geografice</p>
+                    </a>
+                </div>
+
+                <h3 style="margin: 2rem 0 1rem;">🧬 Cand Devenim Prosti?</h3>
+                <div class="grid-3">
+                    <a href="pages/triggers/physiological.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));">🧬</div>
+                        <h4>Factori Fiziologici</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Somn, stres, glucoza, deshidratare</p>
+                    </a>
+                    <a href="pages/triggers/emotional.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-orange));">💔</div>
+                        <h4>Factori Emotionali</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Amygdala hijack, furie, frica</p>
+                    </a>
+                    <a href="pages/triggers/contextual.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-secondary), var(--accent-green));">🌐</div>
+                        <h4>Factori Contextuali</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Presiune, autoritate, anonimat</p>
+                    </a>
+                </div>
+
+                <h3 style="margin: 2rem 0 1rem;">🎓 IQ vs Prostie</h3>
+                <div class="grid-3">
+                    <a href="pages/iq-paradox/high-iq-stupidity.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));">🏆</div>
+                        <h4>Paradoxul IQ-ului Inalt</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Nobel Disease, Mensa si conspiratii</p>
+                    </a>
+                    <a href="pages/iq-paradox/multiple-intelligences.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));">🧩</div>
+                        <h4>Inteligente Multiple</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">IQ, EQ, SQ, PQ, Intelepciune</p>
+                    </a>
+                    <a href="pages/iq-paradox/rationality.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-secondary));">🎯</div>
+                        <h4>Rationality Quotient</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Dysrationalia, bias-uri, calibrare</p>
+                    </a>
+                </div>
+
+                <h3 style="margin: 2rem 0 1rem;">📜 Istoria Prostiei</h3>
+                <div class="grid-4">
+                    <a href="pages/history/ancient.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));">🏛️</div>
+                        <h4>Antichitate</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Socrate, Platon, Aristotel</p>
+                    </a>
+                    <a href="pages/history/medieval.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));">🏰</div>
+                        <h4>Evul Mediu</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Bufoni, Erasmus, vrajitoare</p>
+                    </a>
+                    <a href="pages/history/modern.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));">🏭</div>
+                        <h4>Era Moderna</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Tulipmania, propaganda, bule</p>
+                    </a>
+                    <a href="pages/history/digital.html" class="card scenario-card card-link">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));">📱</div>
+                        <h4>Era Digitala</h4>
+                        <p class="text-muted" style="font-size: 0.85rem;">Anti-vaxx, QAnon, crypto</p>
+                    </a>
                 </div>
 
                 <div class="card" style="margin-top: 2rem;">
-                    <h3 style="margin-bottom: 1rem;">📊 Ce vei găsi aici</h3>
+                    <h3 style="margin-bottom: 1rem;">📚 Ce vei gasi aici</h3>
                     <div class="grid-2">
                         <div>
                             <h4 style="color: var(--accent-orange); margin-bottom: 0.5rem;">Teorie</h4>
                             <ul style="color: var(--text-secondary); padding-left: 1.2rem;">
                                 <li>Efectul Dunning-Kruger explicat vizual</li>
-                                <li>Prostia Bonhoefferiană adaptată la era digitală</li>
-                                <li>Niveluri de cunoaștere și iluzii cognitive</li>
-                                <li>Dinamica prostiei de grup</li>
+                                <li>Mecanismele prostiei colective</li>
+                                <li>Istoria prostiei de la antici la era digitala</li>
+                                <li>IQ vs Rationalitate - paradoxul inteligentei</li>
+                                <li>Bonhoeffer adaptat la era digitala</li>
                             </ul>
                         </div>
                         <div>
-                            <h4 style="color: var(--accent-cyan); margin-bottom: 0.5rem;">Practică</h4>
+                            <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Practica</h4>
                             <ul style="color: var(--text-secondary); padding-left: 1.2rem;">
-                                <li>Simulatoare interactive</li>
+                                <li>15+ simulatoare interactive</li>
+                                <li>Fiecare scenariu cu simulator dedicat</li>
                                 <li>Quiz-uri de auto-evaluare</li>
+                                <li>Test de rationalitate (CRT)</li>
                                 <li>Diagnostic pentru identificarea blocajelor</li>
-                                <li>Strategii concrete pentru fiecare situație</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- ==================== SCENARIOS ==================== -->
-            <section class="section" id="scenarios">
+            <!-- ==================== MECHANISMS ==================== -->
+            <section class="section" id="mechanisms">
                 <div class="section-header">
-                    <h2>🧱 Cele 4 Scenarii de Blocaj</h2>
-                    <p>Click pe fiecare card pentru detalii</p>
+                    <h2>⚙️ Mecanismele Diluarii IQ</h2>
+                    <p>10 moduri prin care grupurile devin mai putin inteligente</p>
                 </div>
 
-                <div class="expandable-card card" onclick="toggleCard(this)">
-                    <div class="card-header">
-                        <div class="card-icon" style="background: linear-gradient(135deg, #ff6b6b, #ee5a5a);">01</div>
-                        <div>
-                            <div class="card-title">Dunning-Kruger Clasic</div>
-                            <div class="card-subtitle">Ignoranța dublă - crede sincer că știe</div>
-                        </div>
-                        <span class="expand-icon">▼</span>
-                    </div>
-                    <div class="card-content">
-                        <div style="padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                            <p><strong>Nu e prostie bonhoefferiană, ci ignoranță dublă.</strong></p>
-                            <p style="margin-top: 0.5rem;">Omul <em>chiar crede</em> că înțelege. A citit un articol pe Medium, a văzut un tutorial, a auzit un buzzword.</p>
-
-                            <div class="highlight-box" style="margin-top: 1rem;">
-                                <p>💭 "Am citit despre microservicii, deci știu cum să le implementez"</p>
-                                <p>💭 "Am făcut un TODO app în React, pot scala orice"</p>
-                            </div>
-
-                            <div class="highlight-box green">
-                                <h4 style="color: var(--accent-green);">💡 Soluția</h4>
-                                <p>Pune-l să implementeze. <strong>Realitatea poate penetra unde argumentele nu pot.</strong></p>
-                            </div>
+                <div class="mechanism-list">
+                    <div class="mechanism-item">
+                        <div class="mechanism-number">1</div>
+                        <div class="mechanism-content">
+                            <h4>Cascade Informationale</h4>
+                            <p>Primii care vorbesc seteaza directia. Ceilalti urmeaza chiar daca au informatii contrare.</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="expandable-card card" onclick="toggleCard(this)">
-                    <div class="card-header">
-                        <div class="card-icon" style="background: linear-gradient(135deg, #ffa726, #ff9800);">02</div>
-                        <div>
-                            <div class="card-title">Ego și Defensivitate</div>
-                            <div class="card-subtitle">A luat o poziție publică - identitatea e în joc</div>
-                        </div>
-                        <span class="expand-icon">▼</span>
-                    </div>
-                    <div class="card-content">
-                        <div style="padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                            <p>Dacă acceptă că greșește, <strong>pierde față</strong>. Cu cât insisți, cu atât se înrădăcinează.</p>
-
-                            <div class="highlight-box orange" style="margin-top: 1rem;">
-                                <p>🎭 "Am spus în meeting că React e mai bun..."</p>
-                                <p>🎭 "Șeful a văzut propunerea mea..."</p>
-                            </div>
-
-                            <div class="highlight-box green">
-                                <h4 style="color: var(--accent-green);">💡 Soluția</h4>
-                                <p>Dă-i o cale elegantă: <em>"Ideea ta de bază e bună, dar dacă am ajusta..."</em></p>
-                            </div>
+                    <div class="mechanism-item">
+                        <div class="mechanism-number">2</div>
+                        <div class="mechanism-content">
+                            <h4>Conformism Social</h4>
+                            <p>Presiunea de a fi de acord cu grupul suprima gandirea independenta.</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="expandable-card card" onclick="toggleCard(this)">
-                    <div class="card-header">
-                        <div class="card-icon" style="background: linear-gradient(135deg, #42a5f5, #2196f3);">03</div>
-                        <div>
-                            <div class="card-title">Lipsa Fundamentelor</div>
-                            <div class="card-subtitle">Nu poate procesa - îi lipsesc conceptele</div>
+                    <div class="mechanism-item">
+                        <div class="mechanism-number">3</div>
+                        <div class="mechanism-content">
+                            <h4>Difuzia Responsabilitatii</h4>
+                            <p>"Altcineva probabil a verificat" - nimeni nu verifica.</p>
                         </div>
-                        <span class="expand-icon">▼</span>
                     </div>
-                    <div class="card-content">
-                        <div style="padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                            <p>E ca și cum ai explica recursivitate cuiva care nu înțelege funcțiile. <strong>Nu e încăpățânare - e imposibilitate.</strong></p>
-
-                            <div class="highlight-box blue" style="margin-top: 1rem;">
-                                <p>❓ Tu: "Avem nevoie de idempotență în API"</p>
-                                <p>💬 El: "Da, să punem un retry"</p>
-                            </div>
-
-                            <div class="highlight-box green">
-                                <h4 style="color: var(--accent-green);">💡 Soluția</h4>
-                                <p>Coboară la fundamente. Construiește de acolo.</p>
-                            </div>
+                    <div class="mechanism-item">
+                        <div class="mechanism-number">4</div>
+                        <div class="mechanism-content">
+                            <h4>Polarizare de Grup</h4>
+                            <p>Grupurile devin mai extreme decat indivizii care le compun.</p>
+                        </div>
+                    </div>
+                    <div class="mechanism-item">
+                        <div class="mechanism-number">5</div>
+                        <div class="mechanism-content">
+                            <h4>Gandirea de Grup (Groupthink)</h4>
+                            <p>Suprimarea dizidentelor in favoarea armoniei false.</p>
+                        </div>
+                    </div>
+                    <div class="mechanism-item">
+                        <div class="mechanism-number">6</div>
+                        <div class="mechanism-content">
+                            <h4>Efectul Bandwagon</h4>
+                            <p>"Toata lumea face asta" - adoptarea comportamentelor majoritare fara evaluare.</p>
+                        </div>
+                    </div>
+                    <div class="mechanism-item">
+                        <div class="mechanism-number">7</div>
+                        <div class="mechanism-content">
+                            <h4>Pluralistic Ignorance</h4>
+                            <p>Nimeni nu crede, dar toata lumea pretinde ca crede pentru ca crede ca ceilalti cred.</p>
+                        </div>
+                    </div>
+                    <div class="mechanism-item">
+                        <div class="mechanism-number">8</div>
+                        <div class="mechanism-content">
+                            <h4>Authority Bias</h4>
+                            <p>Credinta oarba in autoritati chiar cand gresesc evident.</p>
+                        </div>
+                    </div>
+                    <div class="mechanism-item">
+                        <div class="mechanism-number">9</div>
+                        <div class="mechanism-content">
+                            <h4>In-group Bias</h4>
+                            <p>Tribul meu are dreptate. Ceilalti gresesc prin definitie.</p>
+                        </div>
+                    </div>
+                    <div class="mechanism-item">
+                        <div class="mechanism-number">10</div>
+                        <div class="mechanism-content">
+                            <h4>Status Quo Bias</h4>
+                            <p>"Asa s-a facut mereu" - rezistenta la schimbare chiar cand e necesara.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="expandable-card card" onclick="toggleCard(this)">
-                    <div class="card-header">
-                        <div class="card-icon" style="background: linear-gradient(135deg, #ab47bc, #9c27b0);">04</div>
-                        <div>
-                            <div class="card-title">Aproape Bonhoefferian</div>
-                            <div class="card-subtitle">Repetă dogme fără să proceseze</div>
-                        </div>
-                        <span class="expand-icon">▼</span>
-                    </div>
-                    <div class="card-content">
-                        <div style="padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                            <p>Repetă ce a citit pe Stack Overflow fără să evalueze contextul. <strong>E abdicare a judecății.</strong></p>
-
-                            <div class="highlight-box purple" style="margin-top: 1rem;">
-                                <p>👤 "Kubernetes e soluția" — "De ce?" — "Toată lumea folosește"</p>
-                                <p>👤 "Dar avem 3 useri" — "Nu contează, e best practice"</p>
-                            </div>
-
-                            <div class="highlight-box green">
-                                <h4 style="color: var(--accent-green);">💡 Soluția</h4>
-                                <p>Forțează confruntarea cu realitatea. Argumentele nu penetrează dogma.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ==================== DUNNING-KRUGER ==================== -->
-            <section class="section" id="dunning-kruger">
-                <div class="section-header">
-                    <h2>📈 Efectul Dunning-Kruger</h2>
-                    <p>De ce cei mai puțin competenți sunt adesea cei mai încrezători</p>
-                </div>
-
-                <div class="card">
-                    <div class="grid-2">
-                        <div>
-                            <span class="tag orange">1999</span>
-                            <span class="tag blue">Cornell</span>
-                            <h3 style="margin-top: 1rem;">David Dunning & Justin Kruger</h3>
-                        </div>
-                        <div class="highlight-box" style="margin: 0;">
-                            <p><strong>Ideea centrală:</strong> Competența de a <em>face</em> și de a <em>evalua</em> sunt <span style="color: var(--accent-red);">aceleași competențe</span>.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Interactive Graph -->
-                <div class="card">
-                    <h3 style="margin-bottom: 1rem;">🎮 Explorează Curba</h3>
-                    <svg width="100%" height="250" viewBox="0 0 500 250" preserveAspectRatio="xMidYMid meet">
-                        <defs>
-                            <linearGradient id="curveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#ef5350"/>
-                                <stop offset="25%" style="stop-color:#ffa726"/>
-                                <stop offset="50%" style="stop-color:#42a5f5"/>
-                                <stop offset="100%" style="stop-color:#66bb6a"/>
-                            </linearGradient>
-                        </defs>
-
-                        <line x1="50" y1="220" x2="480" y2="220" stroke="#444" stroke-width="2"/>
-                        <line x1="50" y1="220" x2="50" y2="30" stroke="#444" stroke-width="2"/>
-
-                        <text x="250" y="245" fill="#888" text-anchor="middle" font-size="12">Competență →</text>
-
-                        <path d="M 50 210 C 80 210, 100 50, 130 50 C 160 50, 180 60, 200 190 C 220 220, 260 210, 320 170 C 380 130, 420 80, 480 70"
-                              fill="none" stroke="url(#curveGrad)" stroke-width="4" stroke-linecap="round"/>
-
-                        <circle cx="130" cy="50" r="8" fill="#ef5350"/>
-                        <circle cx="200" cy="190" r="8" fill="#42a5f5"/>
-                        <circle cx="480" cy="70" r="8" fill="#66bb6a"/>
-
-                        <text x="130" y="35" fill="#ef5350" text-anchor="middle" font-size="11">"Mount Stupid"</text>
-                        <text x="200" y="210" fill="#42a5f5" text-anchor="middle" font-size="11">"Valea Disperării"</text>
-                        <text x="430" y="55" fill="#66bb6a" text-anchor="middle" font-size="11">Experți</text>
-
-                        <circle cx="50" cy="210" r="10" fill="white" id="dk-position"/>
-                    </svg>
-
-                    <div class="dk-slider-container">
-                        <input type="range" class="dk-slider" min="0" max="100" value="0" id="dk-slider" oninput="updateDKPosition(this.value)">
-                    </div>
-
-                    <div class="dk-info-panel" id="dk-info">
-                        <div class="dk-phase-name" style="color: var(--accent-red);">Faza 1: Nu știi că nu știi</div>
-                        <p>Încredere maximă, competență minimă. "E simplu, ce mare lucru."</p>
-                    </div>
-                </div>
-
-                <!-- Phases Timeline -->
-                <div class="card">
-                    <h3 style="margin-bottom: 1.5rem;">🔄 Cele 4 Faze</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <h4 style="color: var(--accent-red);">1. Nu știi că nu știi</h4>
-                            <p>Încredere maximă, competență minimă. <em>"E simplu, ce mare lucru."</em></p>
-                        </div>
-                        <div class="timeline-item">
-                            <h4 style="color: var(--accent-orange);">2. Știi că nu știi</h4>
-                            <p>Prăbușirea încrederii. <em>"Valea disperării"</em></p>
-                        </div>
-                        <div class="timeline-item">
-                            <h4 style="color: var(--accent-green);">3. Știi că știi</h4>
-                            <p>Competență reală, încredere calibrată.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h4 style="color: var(--accent-blue);">4. Nu mai știi că știi</h4>
-                            <p>Expertul pentru care totul a devenit "normal".</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3 style="color: var(--accent-purple);">🧠 Metacogniția</h3>
-                    <p><strong>Metacogniția</strong> — capacitatea de a-ți evalua propria gândire — se dezvoltă odată cu competența.</p>
-
-                    <div class="comparison-table" style="margin-top: 1.5rem;">
-                        <div class="comparison-col bad">
-                            <h4>♟️ Începător</h4>
-                            <p>Nu vede de ce mutarea e proastă.</p>
-                            <p style="font-style: italic; color: var(--text-secondary);">"Am mutat. Pare ok."</p>
-                        </div>
-                        <div class="comparison-col good">
-                            <h4>♔ Maestru</h4>
-                            <p>Vede instant 5 probleme.</p>
-                            <p style="font-style: italic; color: var(--text-secondary);">"E vulnerabil pe diagonală..."</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ==================== KNOWLEDGE LEVELS ==================== -->
-            <section class="section" id="knowledge-levels">
-                <div class="section-header">
-                    <h2>🎓 Niveluri de Cunoaștere</h2>
-                    <p>Click pe fiecare nivel pentru detalii</p>
-                </div>
-
-                <div class="pyramid-container">
-                    <div class="pyramid-level pyramid-level-1" onclick="showPyramidLevel(1)">
-                        <strong>Am auzit/citit</strong> — informația a trecut prin fața ochilor
-                    </div>
-                    <div class="pyramid-level pyramid-level-2" onclick="showPyramidLevel(2)">
-                        <strong>Îmi amintesc</strong> — pot reproduce informația
-                    </div>
-                    <div class="pyramid-level pyramid-level-3" onclick="showPyramidLevel(3)">
-                        <strong>Înțeleg</strong> — pot explica de ce
-                    </div>
-                    <div class="pyramid-level pyramid-level-4" onclick="showPyramidLevel(4)">
-                        <strong>Știu</strong> — am integrat în model
-                    </div>
-                    <div class="pyramid-level pyramid-level-5" onclick="showPyramidLevel(5)">
-                        <strong>Am competență</strong>
-                    </div>
-                </div>
-
-                <div class="pyramid-detail" id="pyramid-detail-1">
-                    <h4>Nivelul 1: Am auzit/citit</h4>
-                    <p>Cel mai superficial nivel. Ai scanat un titlu, ai auzit un termen. Informația a <em>existat</em> în proximitatea ta, dar nu a intrat cu adevărat.</p>
-                </div>
-                <div class="pyramid-detail" id="pyramid-detail-2">
-                    <h4>Nivelul 2: Îmi amintesc</h4>
-                    <p>Poți repeta ce ai citit, dar fără garanție de acuratețe. Memoria e reconstructivă, nu reproductivă.</p>
-                </div>
-                <div class="pyramid-detail" id="pyramid-detail-3">
-                    <h4>Nivelul 3: Înțeleg</h4>
-                    <p>Aici începe cunoașterea reală. <strong>Examenul clasic:</strong> poți explica cuiva care nu știe nimic?</p>
-                </div>
-                <div class="pyramid-detail" id="pyramid-detail-4">
-                    <h4>Nivelul 4: Știu</h4>
-                    <p>Cunoașterea a devenit parte din modul în care vezi lumea. Poți recunoaște când <em>nu</em> se aplică.</p>
-                </div>
-                <div class="pyramid-detail" id="pyramid-detail-5">
-                    <h4>Nivelul 5: Am competență</h4>
-                    <p>Poți produce, nu doar consuma. Diferența între a ști despre pictură și a putea picta.</p>
+                <div class="highlight-box" style="margin-top: 2rem; text-align: center;">
+                    <p style="font-size: 1.1rem;">
+                        Aceste mecanisme actioneaza <strong>simultan</strong> si se <strong>amplifica reciproc</strong>.<br>
+                        Rezultatul: grupuri de oameni inteligenti care iau decizii proaste.
+                    </p>
                 </div>
 
                 <div class="card" style="margin-top: 2rem;">
-                    <h3 style="color: var(--accent-orange);">🧠 De ce confuzia e răspândită?</h3>
-                    <div class="grid-2" style="margin-top: 1rem;">
-                        <div class="highlight-box orange">
-                            <h4>💫 Fluența Cognitivă</h4>
-                            <p>Dacă ceva <strong>sună familiar</strong>, creierul interpretează ca "știu".</p>
-                        </div>
-                        <div class="highlight-box purple">
-                            <h4>🪞 Iluzia Înțelegerii</h4>
-                            <p><strong>Claritatea a fost a autorului, nu a ta.</strong> Tu ai urmărit pasiv.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ==================== GROUP STUPIDITY ==================== -->
-            <section class="section" id="group-stupidity">
-                <div class="section-header">
-                    <h2>👥 Prostia de Grup</h2>
-                    <p>Emergentă, nu aditivă — inteligența nu se însumează, se diluează</p>
-                </div>
-
-                <div class="formula-box">
-                    <div class="formula">
-                        100 oameni × IQ 100 <span class="equals">≠</span> Grup IQ 100
-                    </div>
-                    <p style="color: var(--accent-red); font-size: 1.2rem;">Obții adesea un grup care se comportă cu IQ 70</p>
-                </div>
-
-                <div class="card">
-                    <h3 style="margin-bottom: 1rem;">🔬 De ce se întâmplă?</h3>
+                    <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">🛡️ Cum ne protejam?</h3>
                     <div class="grid-2">
-                        <div class="highlight-box">
-                            <h4>Conformism social</h4>
-                            <p>Presiunea de a fi de acord cu grupul suprimă gândirea independentă.</p>
-                        </div>
-                        <div class="highlight-box blue">
-                            <h4>Difuzia responsabilității</h4>
-                            <p>"Altcineva probabil a verificat" — nimeni nu verifică.</p>
+                        <div class="highlight-box teal">
+                            <h4>La nivel individual</h4>
+                            <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                                <li>Cultiva-ti metacognitia</li>
+                                <li>Verifica inainte de a distribui</li>
+                                <li>Accepta ca poti gresi</li>
+                                <li>Cauta contraargumente</li>
+                            </ul>
                         </div>
                         <div class="highlight-box orange">
-                            <h4>Cascade informaționale</h4>
-                            <p>Primii care vorbesc setează direcția, ceilalți urmează.</p>
+                            <h4>La nivel de grup</h4>
+                            <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                                <li>Desemneaza un "avocatul diavolului"</li>
+                                <li>Cere parerile in scris inainte de discutie</li>
+                                <li>Incurajeaza dezacordul constructiv</li>
+                                <li>Roteste cine vorbeste primul</li>
+                            </ul>
                         </div>
-                        <div class="highlight-box purple">
-                            <h4>Polarizare de grup</h4>
-                            <p>Grupurile devin mai extreme decât indivizii.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Group Simulator -->
-                <div class="simulator">
-                    <div class="simulator-header">
-                        <span class="simulator-title">🎮 Simulator: Decizie de Grup</span>
-                        <div class="simulator-controls">
-                            <button class="sim-btn primary" onclick="startGroupSim()">Pornește</button>
-                            <button class="sim-btn secondary" onclick="resetGroupSim()">Reset</button>
-                        </div>
-                    </div>
-                    <p style="margin-bottom: 1rem; color: var(--text-secondary);">Verde = decizie corectă, Roșu = decizie greșită (influențată de grup)</p>
-                    <div class="simulator-canvas">
-                        <div style="display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; padding: 1rem;" id="group-grid"></div>
-                    </div>
-                    <div class="echo-stats" id="group-stats">
-                        <div class="echo-stat">
-                            <div class="value" id="stat-independent">0</div>
-                            <div class="label">Gândesc independent</div>
-                        </div>
-                        <div class="echo-stat">
-                            <div class="value" id="stat-conform">0</div>
-                            <div class="label">Conformiști</div>
-                        </div>
-                        <div class="echo-stat">
-                            <div class="value" id="stat-correct">-</div>
-                            <div class="label">Decizia corectă?</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ==================== SOCIAL MEDIA ==================== -->
-            <section class="section" id="social-media">
-                <div class="section-header">
-                    <h2>📱 Fabrici de Prostie</h2>
-                    <p>De ce rețelele sociale amplifică prostia colectivă</p>
-                </div>
-
-                <div class="grid-2">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon" style="background: var(--accent-red);">⚡</div>
-                            <div class="card-title">1. Reacție, nu Reflecție</div>
-                        </div>
-                        <p>Ai 2 secunde să scrollezi. <strong>Nu ai timp să gândești.</strong></p>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon" style="background: var(--accent-orange);">🎯</div>
-                            <div class="card-title">2. Algoritm pentru Emoție</div>
-                        </div>
-                        <p>Se răspândește ce provoacă <strong>indignare, furie, teamă</strong>.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon" style="background: var(--accent-blue);">🔄</div>
-                            <div class="card-title">3. Echo Chambers</div>
-                        </div>
-                        <p>Vezi doar ce confirmă ce crezi deja.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon" style="background: var(--accent-purple);">👥</div>
-                            <div class="card-title">4. Autoritatea Difuză</div>
-                        </div>
-                        <p>"Toată lumea zice" = algoritm care îți arată ce vrei.</p>
-                    </div>
-                </div>
-
-                <div class="card" style="margin-top: 1rem;">
-                    <div class="card-header">
-                        <div class="card-icon" style="background: var(--accent-yellow);">⚔️</div>
-                        <div class="card-title">5. Identitate Tribală</div>
-                    </div>
-                    <p>Nu mai contează ce e adevărat. Contează <strong>ce spune tribul</strong>. A accepta că tribul greșește = trădare.</p>
-                </div>
-
-                <!-- Echo Chamber Simulator -->
-                <div class="simulator" style="margin-top: 2rem;">
-                    <div class="simulator-header">
-                        <span class="simulator-title">🎮 Simulator: Echo Chamber</span>
-                        <div class="simulator-controls">
-                            <button class="sim-btn primary" onclick="startEchoSim()">Pornește</button>
-                            <button class="sim-btn secondary" onclick="resetEchoSim()">Reset</button>
-                        </div>
-                    </div>
-                    <p style="margin-bottom: 1rem; color: var(--text-secondary);">Urmărește cum algoritmul îți filtrează feed-ul. Dă Like pentru a influența!</p>
-                    <div class="simulator-canvas">
-                        <div class="echo-feed" id="echo-feed"></div>
-                    </div>
-                    <div class="echo-stats">
-                        <div class="echo-stat">
-                            <div class="value" id="echo-agree">0</div>
-                            <div class="label">Confirmă</div>
-                        </div>
-                        <div class="echo-stat">
-                            <div class="value" id="echo-disagree">0</div>
-                            <div class="label">Contrazic</div>
-                        </div>
-                        <div class="echo-stat">
-                            <div class="value" id="echo-hidden">0</div>
-                            <div class="label">Ascunse</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Viral Simulator -->
-                <div class="simulator" style="margin-top: 2rem;">
-                    <div class="simulator-header">
-                        <span class="simulator-title">🎮 Simulator: Răspândirea Virală</span>
-                        <div class="simulator-controls">
-                            <button class="sim-btn primary" onclick="startViralSim()">Pornește</button>
-                            <button class="sim-btn secondary" onclick="resetViralSim()">Reset</button>
-                        </div>
-                    </div>
-                    <p style="margin-bottom: 1rem; color: var(--text-secondary);">Roșu = a crezut dezinformarea. Verde = a verificat (imun).</p>
-                    <div class="simulator-canvas">
-                        <div class="viral-grid" id="viral-grid"></div>
-                    </div>
-                    <div class="echo-stats">
-                        <div class="echo-stat">
-                            <div class="value" id="viral-infected">0</div>
-                            <div class="label">Au crezut</div>
-                        </div>
-                        <div class="echo-stat">
-                            <div class="value" id="viral-immune">0</div>
-                            <div class="label">Imuni</div>
-                        </div>
-                        <div class="echo-stat">
-                            <div class="value" id="viral-pending">400</div>
-                            <div class="label">N-au văzut</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ==================== BONHOEFFER 2.0 ==================== -->
-            <section class="section" id="bonhoeffer">
-                <div class="section-header">
-                    <h2>📜 Bonhoeffer 2.0</h2>
-                    <p>De la prostia în fața puterii politice la prostia algoritmică</p>
-                </div>
-
-                <div class="comparison-table">
-                    <div class="comparison-col bad">
-                        <h4 style="color: var(--accent-red);">Original</h4>
-                        <p>Prostia în fața <strong>puterii politice</strong></p>
-                        <p>Un dictator care forțează</p>
-                        <p>Abdicare explicită</p>
-                    </div>
-                    <div class="comparison-col" style="border-top: 3px solid var(--accent-cyan);">
-                        <h4 style="color: var(--accent-cyan);">Bonhoeffer 2.0</h4>
-                        <p>Prostia în fața <strong>puterii algoritmice</strong></p>
-                        <p>Un feed care seduce</p>
-                        <p>Abdicare graduală</p>
-                    </div>
-                </div>
-
-                <div class="highlight-box" style="text-align: center; margin-top: 2rem;">
-                    <p style="font-size: 1.2rem;">Nimeni nu ți-a cerut explicit să-ți predai judecata.</p>
-                    <p style="font-size: 1.2rem; margin-top: 0.5rem;"><strong>Dar ai făcut-o oricum, scroll cu scroll, like cu like.</strong></p>
-                </div>
-
-                <div class="card" style="margin-top: 2rem;">
-                    <h3 style="color: var(--accent-red);">🎭 Partea cea mai insidioasă</h3>
-                    <div class="highlight-box" style="text-align: center;">
-                        <p style="font-size: 1.1rem;"><strong>Toată lumea crede că ea e imună.</strong></p>
-                        <p>Că ea gândește independent. Că prostii sunt ceilalți.</p>
-                        <p style="margin-top: 1rem; color: var(--accent-red);">
-                            Ceea ce e <strong>simptomul perfect al prostiei</strong> — incapacitatea de a-ți vedea propria prostie.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="formula-box" style="margin-top: 2rem;">
-                    <h3 style="margin-bottom: 1rem;">Concluzia dureroasă</h3>
-                    <p>Rețelele sociale nu fac oamenii proști.</p>
-                    <p style="font-size: 1.3rem; margin-top: 0.5rem; color: var(--accent-red);">
-                        <strong>Fac prostia vizibilă, virală, și recompensată.</strong>
-                    </p>
-                    <p style="margin-top: 1rem; color: var(--text-secondary);">
-                        Înainte, prostia ta rămânea la masa din bucătărie.<br>
-                        Acum are reach de milioane și like-uri care o validează.
-                    </p>
-                </div>
-            </section>
-
-            <!-- ==================== SELF TEST ==================== -->
-            <section class="section" id="self-test">
-                <div class="section-header">
-                    <h2>✅ Auto-evaluare</h2>
-                    <p>Testează-ți onest nivelul de cunoaștere</p>
-                </div>
-
-                <div class="card">
-                    <h3 style="margin-bottom: 1.5rem;">Când zici "știu X", întreabă-te:</h3>
-                    <div class="quiz-options" id="self-test-questions">
-                        <div class="quiz-option" onclick="toggleSelfTest(this)">
-                            <span style="margin-right: 1rem;">☐</span> Pot explica fără să caut?
-                        </div>
-                        <div class="quiz-option" onclick="toggleSelfTest(this)">
-                            <span style="margin-right: 1rem;">☐</span> Pot răspunde la întrebări follow-up?
-                        </div>
-                        <div class="quiz-option" onclick="toggleSelfTest(this)">
-                            <span style="margin-right: 1rem;">☐</span> Știu limitele și excepțiile?
-                        </div>
-                        <div class="quiz-option" onclick="toggleSelfTest(this)">
-                            <span style="margin-right: 1rem;">☐</span> Știu de unde știu și cât de fiabilă e sursa?
-                        </div>
-                        <div class="quiz-option" onclick="toggleSelfTest(this)">
-                            <span style="margin-right: 1rem;">☐</span> Pot aplica în contexte diferite?
-                        </div>
-                    </div>
-                    <div class="quiz-result" id="self-test-result"></div>
-
-                    <div class="highlight-box" style="margin-top: 1.5rem; text-align: center;">
-                        <p>Dacă nu poți bifa toate, <strong style="color: var(--accent-red);">nu știi</strong>.</p>
-                        <p style="color: var(--accent-red);">Poate fi mai periculos decât ignoranța totală.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ==================== DIAGNOSTIC ==================== -->
-            <section class="section" id="diagnostic">
-                <div class="section-header">
-                    <h2>🔍 Diagnostic Rapid</h2>
-                    <p>Identifică tipul de blocaj și strategia potrivită</p>
-                </div>
-
-                <div class="card">
-                    <h3 style="margin-bottom: 1.5rem;">Ce observi la persoana respectivă?</h3>
-                    <div class="quiz-options">
-                        <div class="quiz-option" onclick="showDiagnostic(1)">E foarte încrezător și agresiv pe poziția lui</div>
-                        <div class="quiz-option" onclick="showDiagnostic(2)">A propus public soluția și nu vrea să recunoască</div>
-                        <div class="quiz-option" onclick="showDiagnostic(3)">Răspunde cu concepte adiacente dar irelevante</div>
-                        <div class="quiz-option" onclick="showDiagnostic(4)">Citează "best practices" fără să gândească contextul</div>
-                    </div>
-                    <div class="quiz-result" id="diagnostic-result"></div>
-                </div>
-
-                <div class="card" style="margin-top: 1.5rem;">
-                    <h3>📋 Rezumat Strategii</h3>
-                    <div class="grid-2" style="margin-top: 1rem;">
-                        <div class="highlight-box"><h4 style="color: var(--accent-red);">Dunning-Kruger</h4><p>→ Lasă-l să implementeze</p></div>
-                        <div class="highlight-box orange"><h4 style="color: var(--accent-orange);">Ego</h4><p>→ Oferă o cale elegantă</p></div>
-                        <div class="highlight-box blue"><h4 style="color: var(--accent-blue);">Fundamente</h4><p>→ Coboară la bază</p></div>
-                        <div class="highlight-box purple"><h4 style="color: var(--accent-purple);">Dogmă</h4><p>→ Forțează confruntarea</p></div>
-                    </div>
-                    <div class="highlight-box green" style="text-align: center; margin-top: 1.5rem;">
-                        <p>Și uneori, <strong>nu merită efortul</strong> — lasă realitatea să predea lecția.</p>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
-    <script>
-        // ===== NAVIGATION =====
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-            document.getElementById('sidebar').classList.remove('open');
-            window.scrollTo(0, 0);
-        }
-
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('open');
-        }
-
-        function toggleCard(card) {
-            card.classList.toggle('expanded');
-        }
-
-        // ===== PYRAMID =====
-        function showPyramidLevel(level) {
-            document.querySelectorAll('.pyramid-level').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.pyramid-detail').forEach(d => d.classList.remove('visible'));
-            document.querySelector('.pyramid-level-' + level).classList.add('active');
-            document.getElementById('pyramid-detail-' + level).classList.add('visible');
-        }
-
-        // ===== DUNNING-KRUGER =====
-        function updateDKPosition(value) {
-            const position = document.getElementById('dk-position');
-            const info = document.getElementById('dk-info');
-            const x = 50 + (value / 100) * 430;
-            let y = value < 25 ? 210 - (value / 25) * 160 : value < 40 ? 50 + ((value - 25) / 15) * 140 : value < 70 ? 190 - ((value - 40) / 30) * 50 : 140 - ((value - 70) / 30) * 70;
-            position.setAttribute('cx', x);
-            position.setAttribute('cy', y);
-
-            const phases = [
-                { name: "Faza 1: Nu știi că nu știi", color: "var(--accent-red)", desc: 'Încredere maximă, competență minimă.' },
-                { name: "Faza 2: Știi că nu știi", color: "var(--accent-orange)", desc: 'Prăbușirea încrederii. Valea disperării.' },
-                { name: "Faza 3: Competență în creștere", color: "var(--accent-blue)", desc: 'Încredere calibrată. Știi ce știi și ce nu.' },
-                { name: "Faza 4: Expert", color: "var(--accent-green)", desc: 'Competență reală. "Depinde" e adesea răspunsul.' }
-            ];
-            let phase = value < 25 ? phases[0] : value < 45 ? phases[1] : value < 75 ? phases[2] : phases[3];
-            info.innerHTML = `<div class="dk-phase-name" style="color: ${phase.color};">${phase.name}</div><p>${phase.desc}</p>`;
-        }
-
-        // ===== ECHO SIMULATOR =====
-        const echoPosts = [
-            { text: "Tehnologia X e clar viitorul!", agree: true },
-            { text: "Studiu: X are probleme de scalabilitate", agree: false },
-            { text: "Am implementat X și e fantastic! 🚀", agree: true },
-            { text: "Y e mai potrivit pentru 80% din cazuri", agree: false },
-            { text: "Companiile mari adoptă X în masă!", agree: true },
-            { text: "Atenție: X are costuri ascunse", agree: false },
-            { text: "Tutorial: Învață X în 10 minute", agree: true },
-            { text: "Când NU ar trebui să folosești X", agree: false },
-        ];
-        let echoInterval, echoAgree = 0, echoDisagree = 0, echoHidden = 0, echoIdx = 0, echoBias = 0.5;
-
-        function startEchoSim() { resetEchoSim(); echoInterval = setInterval(addEchoPost, 1500); }
-        function resetEchoSim() { clearInterval(echoInterval); document.getElementById('echo-feed').innerHTML = ''; echoAgree = echoDisagree = echoHidden = echoIdx = 0; echoBias = 0.5; updateEchoStats(); }
-
-        function addEchoPost() {
-            if (echoIdx >= echoPosts.length) { clearInterval(echoInterval); return; }
-            const post = echoPosts[echoIdx];
-            const show = post.agree ? Math.random() < echoBias + 0.3 : Math.random() < (1 - echoBias);
-            if (show) {
-                const div = document.createElement('div');
-                div.className = 'echo-post ' + (post.agree ? 'agree' : 'disagree');
-                div.innerHTML = `<p>${post.text}</p><button onclick="likeEcho(this,${post.agree})" style="background:none;border:none;cursor:pointer;color:var(--text-secondary);margin-top:0.5rem;">👍 Like</button>`;
-                document.getElementById('echo-feed').insertBefore(div, document.getElementById('echo-feed').firstChild);
-                post.agree ? echoAgree++ : echoDisagree++;
-            } else { echoHidden++; }
-            echoIdx++;
-            updateEchoStats();
-        }
-
-        function likeEcho(btn, agree) { btn.style.color = 'var(--accent-cyan)'; btn.textContent = '👍 Liked!'; echoBias = agree ? Math.min(echoBias + 0.15, 0.95) : Math.max(echoBias - 0.1, 0.2); }
-        function updateEchoStats() { document.getElementById('echo-agree').textContent = echoAgree; document.getElementById('echo-disagree').textContent = echoDisagree; document.getElementById('echo-hidden').textContent = echoHidden; }
-
-        // ===== VIRAL SIMULATOR =====
-        let viralGrid = [], viralInterval, viralInfected = 0, viralImmune = 0;
-
-        function initViralGrid() {
-            const grid = document.getElementById('viral-grid'); grid.innerHTML = ''; viralGrid = [];
-            for (let i = 0; i < 400; i++) {
-                const cell = document.createElement('div'); cell.className = 'viral-cell';
-                grid.appendChild(cell);
-                viralGrid.push({ el: cell, state: 'pending', immune: Math.random() < 0.15 });
-            }
-        }
-
-        function startViralSim() { resetViralSim(); for (let i = 0; i < 3; i++) infectCell(Math.floor(Math.random() * 400)); viralInterval = setInterval(spreadViral, 200); }
-        function resetViralSim() { clearInterval(viralInterval); viralInfected = viralImmune = 0; initViralGrid(); updateViralStats(); }
-
-        function infectCell(idx) {
-            const cell = viralGrid[idx]; if (cell.state !== 'pending') return;
-            if (cell.immune) { cell.state = 'immune'; cell.el.classList.add('immune'); viralImmune++; }
-            else { cell.state = 'infected'; cell.el.classList.add('infected'); viralInfected++; }
-            updateViralStats();
-        }
-
-        function spreadViral() {
-            const newInf = [];
-            viralGrid.forEach((cell, idx) => { if (cell.state === 'infected') getNeighbors(idx).forEach(n => { if (viralGrid[n].state === 'pending' && Math.random() < 0.3) newInf.push(n); }); });
-            newInf.forEach(infectCell);
-            if (!newInf.length) clearInterval(viralInterval);
-        }
-
-        function getNeighbors(idx) { const n = [], r = Math.floor(idx / 20), c = idx % 20; if (r > 0) n.push(idx - 20); if (r < 19) n.push(idx + 20); if (c > 0) n.push(idx - 1); if (c < 19) n.push(idx + 1); return n; }
-        function updateViralStats() { document.getElementById('viral-infected').textContent = viralInfected; document.getElementById('viral-immune').textContent = viralImmune; document.getElementById('viral-pending').textContent = 400 - viralInfected - viralImmune; }
-
-        // ===== GROUP SIMULATOR =====
-        let groupGrid = [], groupInterval;
-
-        function initGroupGrid() {
-            const grid = document.getElementById('group-grid'); grid.innerHTML = ''; groupGrid = [];
-            for (let i = 0; i < 100; i++) {
-                const cell = document.createElement('div');
-                cell.style.cssText = 'aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,0.2);transition:all 0.3s;';
-                grid.appendChild(cell);
-                groupGrid.push({ el: cell, correct: Math.random() < 0.7, indep: Math.random(), decided: false, decision: null });
-            }
-        }
-
-        function startGroupSim() {
-            resetGroupSim();
-            groupGrid[0].decided = true; groupGrid[0].decision = false; groupGrid[0].el.style.background = 'var(--accent-red)';
-            groupInterval = setInterval(simGroup, 100);
-        }
-        function resetGroupSim() { clearInterval(groupInterval); initGroupGrid(); document.getElementById('stat-independent').textContent = '0'; document.getElementById('stat-conform').textContent = '0'; document.getElementById('stat-correct').textContent = '-'; }
-
-        function simGroup() {
-            const undec = groupGrid.filter(g => !g.decided);
-            if (!undec.length) { clearInterval(groupInterval); calcGroupResult(); return; }
-            const p = undec[Math.floor(Math.random() * undec.length)];
-            p.decided = true;
-            const wrong = groupGrid.filter(g => g.decided && !g.decision).length;
-            const right = groupGrid.filter(g => g.decided && g.decision).length;
-            const total = wrong + right;
-            if (p.indep > 0.7) p.decision = p.correct;
-            else { const pressure = total > 0 ? wrong / total : 0.5; p.decision = pressure > 0.5 + (p.indep * 0.3) ? false : p.correct; }
-            p.el.style.background = p.decision ? 'var(--accent-green)' : 'var(--accent-red)';
-            document.getElementById('stat-independent').textContent = groupGrid.filter(g => g.decided && g.indep > 0.7).length;
-            document.getElementById('stat-conform').textContent = groupGrid.filter(g => g.decided && g.indep <= 0.7).length;
-        }
-
-        function calcGroupResult() {
-            const correct = groupGrid.filter(g => g.decision).length;
-            const el = document.getElementById('stat-correct');
-            el.textContent = correct > 50 ? '✓ DA' : '✗ NU';
-            el.style.color = correct > 50 ? 'var(--accent-green)' : 'var(--accent-red)';
-        }
-
-        // ===== SELF TEST =====
-        function toggleSelfTest(opt) {
-            opt.classList.toggle('selected');
-            opt.querySelector('span').textContent = opt.classList.contains('selected') ? '☑' : '☐';
-            const sel = document.querySelectorAll('#self-test-questions .selected').length;
-            const res = document.getElementById('self-test-result');
-            if (!sel) { res.classList.remove('show'); return; }
-            res.classList.add('show');
-            if (sel === 5) { res.style.background = 'rgba(102,187,106,0.2)'; res.innerHTML = '<strong style="color:var(--accent-green);">Felicitări!</strong> Probabil chiar știi.'; }
-            else if (sel >= 3) { res.style.background = 'rgba(255,167,38,0.2)'; res.innerHTML = '<strong style="color:var(--accent-orange);">Aproape.</strong> Sunt goluri.'; }
-            else { res.style.background = 'rgba(233,69,96,0.2)'; res.innerHTML = '<strong style="color:var(--accent-red);">Sincer:</strong> ai familiaritate, nu cunoaștere.'; }
-        }
-
-        // ===== DIAGNOSTIC =====
-        function showDiagnostic(type) {
-            const res = document.getElementById('diagnostic-result');
-            res.classList.add('show');
-            const d = {
-                1: { t: "🏔️ Dunning-Kruger", c: "var(--accent-red)", s: "Lasă-l să implementeze." },
-                2: { t: "🛡️ Ego", c: "var(--accent-orange)", s: "Oferă o cale elegantă." },
-                3: { t: "🧩 Fundamente", c: "var(--accent-blue)", s: "Coboară la bază." },
-                4: { t: "📜 Dogmă", c: "var(--accent-purple)", s: "Forțează confruntarea." }
-            }[type];
-            res.innerHTML = `<h4 style="color:${d.c};margin-bottom:0.5rem;">${d.t}</h4><p><strong>Strategia:</strong> ${d.s}</p>`;
-            res.style.cssText = `background:rgba(255,255,255,0.05);border:1px solid ${d.c};border-radius:12px;padding:1.5rem;`;
-        }
-
-        // ===== INIT =====
-        document.addEventListener('DOMContentLoaded', () => { initViralGrid(); initGroupGrid(); });
-    </script>
+    <script src="js/main.js"></script>
+    <script src="js/simulators.js"></script>
 </body>
 </html>

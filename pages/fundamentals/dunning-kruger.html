@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efectul Dunning-Kruger | Anatomia Prostiei</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>📈 Efectul Dunning-Kruger</h1>
+            <p class="subtitle">De ce cei mai putin competenti sunt adesea cei mai increzatori</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="card">
+            <div class="grid-2">
+                <div>
+                    <span class="tag orange">1999</span>
+                    <span class="tag blue">Cornell University</span>
+                    <h3 style="margin-top: 1rem;">David Dunning & Justin Kruger</h3>
+                    <p class="text-muted" style="margin-top: 0.5rem;">Studiu: "Unskilled and Unaware of It"</p>
+                </div>
+                <div class="highlight-box" style="margin: 0;">
+                    <p><strong>Ideea centrala:</strong></p>
+                    <p>Competenta de a <em>face</em> si de a <em>evalua</em> sunt <span style="color: var(--accent-orange);">aceleasi competente</span>.</p>
+                    <p style="margin-top: 0.5rem;">Daca nu stii sa faci, nu stii nici sa evaluezi.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRAFIC INTERACTIV -->
+        <h2 style="margin: 2rem 0 1rem;">🎮 Exploreaza Curba Dunning-Kruger</h2>
+
+        <div class="card">
+            <svg width="100%" height="280" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                    <linearGradient id="curveGradDK" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#f59e0b"/>
+                        <stop offset="25%" style="stop-color:#f59e0b"/>
+                        <stop offset="50%" style="stop-color:#3b82f6"/>
+                        <stop offset="100%" style="stop-color:#22c55e"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Axes -->
+                <line x1="50" y1="240" x2="480" y2="240" stroke="#444" stroke-width="2"/>
+                <line x1="50" y1="240" x2="50" y2="30" stroke="#444" stroke-width="2"/>
+
+                <!-- Labels -->
+                <text x="265" y="270" fill="#888" text-anchor="middle" font-size="12">Competenta Reala →</text>
+                <text x="25" y="135" fill="#888" text-anchor="middle" font-size="12" transform="rotate(-90, 25, 135)">Incredere →</text>
+
+                <!-- Curve -->
+                <path d="M 50 230 C 80 230, 100 50, 130 50 C 160 50, 180 60, 200 200 C 220 240, 260 230, 320 180 C 380 130, 420 80, 480 70"
+                      fill="none" stroke="url(#curveGradDK)" stroke-width="4" stroke-linecap="round"/>
+
+                <!-- Points -->
+                <circle cx="130" cy="50" r="10" fill="#f59e0b"/>
+                <circle cx="200" cy="200" r="10" fill="#3b82f6"/>
+                <circle cx="480" cy="70" r="10" fill="#22c55e"/>
+
+                <!-- Labels -->
+                <text x="130" y="30" fill="#f59e0b" text-anchor="middle" font-size="12" font-weight="bold">"Mount Stupid"</text>
+                <text x="200" y="225" fill="#3b82f6" text-anchor="middle" font-size="12" font-weight="bold">"Valea Disperarii"</text>
+                <text x="430" y="55" fill="#22c55e" text-anchor="middle" font-size="12" font-weight="bold">Experti</text>
+
+                <!-- Interactive position -->
+                <circle cx="50" cy="230" r="12" fill="white" stroke="#14b8a6" stroke-width="3" id="dk-position"/>
+            </svg>
+
+            <div class="slider-container">
+                <input type="range" class="custom-slider" min="0" max="100" value="0" id="dk-slider" oninput="updateDKPosition(this.value)">
+            </div>
+
+            <div class="highlight-box teal" id="dk-info" style="margin-top: 1rem;">
+                <div style="font-size: 1.2rem; font-weight: bold; color: var(--accent-orange);">Faza 1: Nu stii ca nu stii</div>
+                <p>Incredere maxima, competenta minima. "E simplu, ce mare lucru."</p>
+            </div>
+        </div>
+
+        <!-- CELE 4 FAZE -->
+        <h2 style="margin: 2rem 0 1rem;">🔄 Cele 4 Faze ale Competentei</h2>
+
+        <div class="card">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-orange);">1. Incompetenta Inconstient</h4>
+                    <p><strong>Nu stii ca nu stii.</strong></p>
+                    <p class="text-muted">Incredere maxima, competenta minima. "E simplu, ce mare lucru."</p>
+                    <div class="highlight-box orange" style="margin-top: 0.5rem;">
+                        <p>💬 "Am citit un articol despre machine learning, pot sa fac AI"</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-blue);">2. Incompetenta Constienta</h4>
+                    <p><strong>Stii ca nu stii.</strong></p>
+                    <p class="text-muted">Prabusirea increderii. "Valea disperarii" - realizezi cat de mult nu stii.</p>
+                    <div class="highlight-box blue" style="margin-top: 0.5rem;">
+                        <p>💬 "Am inceput sa invat si e mult mai greu decat credeam..."</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-purple);">3. Competenta Constienta</h4>
+                    <p><strong>Stii ca stii.</strong></p>
+                    <p class="text-muted">Competenta reala, incredere calibrata. Stii ce stii si ce nu stii.</p>
+                    <div class="highlight-box purple" style="margin-top: 0.5rem;">
+                        <p>💬 "Pot face X, dar Y inca imi da batai de cap"</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-green);">4. Competenta Inconstienta</h4>
+                    <p><strong>Nu mai stii ca stii.</strong></p>
+                    <p class="text-muted">Expertul pentru care totul a devenit "normal". Subestimeaza dificultatea pentru altii.</p>
+                    <div class="highlight-box green" style="margin-top: 0.5rem;">
+                        <p>💬 "Nu stiu de ce li se pare greu, e destul de intuitiv"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- METACOGNITIA -->
+        <h2 style="margin: 2rem 0 1rem;">🧠 Metacognitia - Cheia Problemei</h2>
+
+        <div class="card">
+            <h3 style="color: var(--accent-purple); margin-bottom: 1rem;">Ce e Metacognitia?</h3>
+            <p><strong>Metacognitia</strong> = capacitatea de a-ti evalua propria gandire.</p>
+            <p class="text-muted" style="margin-top: 0.5rem;">
+                E abilitatea de a sti cat de bine stii ceva. De a-ti recunoaste limitele.
+            </p>
+
+            <div class="comparison-table" style="margin-top: 1.5rem;">
+                <div class="comparison-col bad">
+                    <h4>♟️ Incepator la Sah</h4>
+                    <p>Nu vede de ce mutarea e proasta.</p>
+                    <p style="font-style: italic; color: var(--text-secondary);">"Am mutat. Pare ok."</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.85rem;">Nu stie ce nu stie.</p>
+                </div>
+                <div class="comparison-col good">
+                    <h4>♔ Maestru la Sah</h4>
+                    <p>Vede instant 5 probleme.</p>
+                    <p style="font-style: italic; color: var(--text-secondary);">"E vulnerabil pe diagonala..."</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.85rem;">Vede ce incepatorii nu pot vedea.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DE CE E PROBLEMATIC -->
+        <h2 style="margin: 2rem 0 1rem;">⚠️ De Ce E Problematic?</h2>
+
+        <div class="card">
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">1</div>
+                    <div class="mechanism-content">
+                        <h4>Decizii Proaste</h4>
+                        <p>Cine nu stie ca nu stie ia decizii cu incredere maxima - si greseste.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">2</div>
+                    <div class="mechanism-content">
+                        <h4>Nu Accepta Feedback</h4>
+                        <p>De ce sa asculte? E sigur ca are dreptate.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">3</div>
+                    <div class="mechanism-content">
+                        <h4>Domina Conversatiile</h4>
+                        <p>Increderea e persuasiva. Cei incompetenti vorbesc mai mult si mai tare.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">4</div>
+                    <div class="mechanism-content">
+                        <h4>Influenteaza pe Altii</h4>
+                        <p>Increderea e contagioasa. Oamenii urmeaza pe cei siguri pe ei.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOLUTIA -->
+        <h2 style="margin: 2rem 0 1rem;">💡 Cum Combatem Efectul D-K?</h2>
+
+        <div class="card">
+            <h3 style="color: var(--accent-green); margin-bottom: 1rem;">Pentru Tine</h3>
+            <div class="grid-2">
+                <div class="highlight-box green">
+                    <h4>1. Cultiva Metacognitia</h4>
+                    <p>Intreaba-te mereu: "Cat de sigur sunt? De ce?"</p>
+                </div>
+                <div class="highlight-box blue">
+                    <h4>2. Cauta Feedback</h4>
+                    <p>Intreaba oameni care stiu mai bine. Asculta-i.</p>
+                </div>
+                <div class="highlight-box purple">
+                    <h4>3. Testeaza-te</h4>
+                    <p>Poti implementa, nu doar vorbi? Fa, nu doar gandi.</p>
+                </div>
+                <div class="highlight-box teal">
+                    <h4>4. Expune-te la Experti</h4>
+                    <p>Vezi cat de mult nu stii in comparatie cu ei.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="color: var(--accent-orange); margin-bottom: 1rem;">Pentru Altii (in D-K)</h3>
+            <div class="highlight-box orange">
+                <p><strong>Nu argumenta. Lasa-i sa implementeze.</strong></p>
+                <p style="margin-top: 0.5rem;">Realitatea e cel mai bun profesor. Daca nu pot face ce pretind ca stiu, vor invata mai repede decat din discutii.</p>
+            </div>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.2rem;">
+                "Problema cu lumea e ca prostii sunt plini de certitudini,<br>
+                iar oamenii inteligenti sunt plini de indoieli."
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem;">— Bertrand Russell</p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

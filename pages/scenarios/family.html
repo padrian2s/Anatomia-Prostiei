@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Familie | Traditie vs. Gandire Critica</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>👨‍👩‍👧‍👦 In Familie</h1>
+            <p class="subtitle">Autoritatea generationala si perpetuarea credintelor</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; text-align: center;">
+                <strong>Familia:</strong> Primul si cel mai puternic grup in care invatam conformismul.<br>
+                <span style="color: var(--accent-orange);">"Asa s-a facut mereu" e argumentul suprem.</span>
+            </p>
+        </div>
+
+        <!-- SITUATII -->
+        <h2 style="margin: 2rem 0 1rem;">🎯 Situatii Tipice</h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-warm);">1</div>
+                <div>
+                    <div class="card-title">Masa de Familie</div>
+                    <div class="card-subtitle">Dezbaterea asimetrica</div>
+                </div>
+            </div>
+            <p>Bunicii au autoritatea traditionala. Parintii au autoritatea ierarhica. Copiii... tac.</p>
+            <div class="highlight-box orange" style="margin-top: 1rem;">
+                <p>👴 "Pe vremea noastra era mai bine!"</p>
+                <p>🧑 (stie ca nu e adevarat): "Mhm..."</p>
+                <p>👧 (vrea sa contrazica): *priveste spre parinti pentru permisiune*</p>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Traditia castiga prin autoritate, nu prin argument.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-cool);">2</div>
+                <div>
+                    <div class="card-title">Decizii Mari in Familie</div>
+                    <div class="card-subtitle">"Stim noi ce e mai bine pentru tine"</div>
+                </div>
+            </div>
+            <p>Alegerea carierei, a partenerului, a locuintei - influentate de presiunea familiala.</p>
+            <div class="highlight-box purple" style="margin-top: 1rem;">
+                <p>👨‍👩‍👧 "Fa-te doctor/avocat/inginer!"</p>
+                <p>🧑 "Dar eu vreau sa fac arta..."</p>
+                <p>👨‍👩‍👧 "Arta nu e meserie! Ce o sa zica lumea?"</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-primary);">3</div>
+                <div>
+                    <div class="card-title">Superstiții si Credinte</div>
+                    <div class="card-subtitle">Transmiterea intergenerationala a erorilor</div>
+                </div>
+            </div>
+            <p>Credintele false se transmit de la generatie la generatie fara verificare.</p>
+            <div class="highlight-box blue" style="margin-top: 1rem;">
+                <p>👵 "Nu sta in curent ca te imbolnavesti!"</p>
+                <p>👩 "Nu manca pepene cu lapte!"</p>
+                <p>👴 "Vaccinurile sunt periculoase, pe vremea mea..."</p>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Nimeni nu verifica. E "intelepciune populara".</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-yellow), var(--accent-orange));">4</div>
+                <div>
+                    <div class="card-title">Conflictul Generational</div>
+                    <div class="card-subtitle">Nou vs. Vechi</div>
+                </div>
+            </div>
+            <p>Generatiile tinere au acces la mai multa informatie, dar au mai putina autoritate.</p>
+            <div class="highlight-box yellow" style="margin-top: 1rem;">
+                <p>🧑 "Am citit un studiu care zice ca..."</p>
+                <p>👴 "Ce studii? Eu am experienta de viata!"</p>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Experienta anecdotica bate datele stiintifice.</p>
+            </div>
+        </div>
+
+        <!-- SIMULATOR -->
+        <h2 style="margin: 2rem 0 1rem;">🎮 Simulator: Masa de Familie</h2>
+
+        <div class="simulator">
+            <div class="simulator-header">
+                <span class="simulator-title">Dezbatere familiala pe un subiect controversat</span>
+                <div class="simulator-controls">
+                    <button class="sim-btn primary" onclick="startFamilySim()">Porneste</button>
+                    <button class="sim-btn secondary" onclick="resetFamilySim()">Reset</button>
+                </div>
+            </div>
+            <p class="simulator-description">
+                Un subiect controversat la masa. Bunicii au o parere traditionala.
+                Urmareste cum autoritatea genrationala influenteaza "consensul".
+            </p>
+            <div class="simulator-canvas">
+                <div id="family-table"></div>
+            </div>
+        </div>
+
+        <!-- MECANISME -->
+        <h2 style="margin: 2rem 0 1rem;">⚙️ Mecanisme Active</h2>
+
+        <div class="grid-2">
+            <div class="highlight-box teal">
+                <h4>👑 Autoritatea Traditionala</h4>
+                <p>Varsta = intelepciune. Experienta bate cunoasterea, chiar daca e anecdotica.</p>
+            </div>
+            <div class="highlight-box orange">
+                <h4>❤️ Loialitatea Familiala</h4>
+                <p>A contrazice familia e "tradare". Armonia > Adevarul.</p>
+            </div>
+            <div class="highlight-box purple">
+                <h4>📜 Status Quo Bias</h4>
+                <p>"Asa s-a facut mereu" - rezistenta la schimbare din principiu.</p>
+            </div>
+            <div class="highlight-box blue">
+                <h4>🔄 Transmitere Intergenerationala</h4>
+                <p>Credintele se mostenesc odata cu valorile, fara filtrare.</p>
+            </div>
+        </div>
+
+        <!-- DINAMICA -->
+        <h2 style="margin: 2rem 0 1rem;">📊 Dinamica Puterii in Familie</h2>
+
+        <div class="card">
+            <div class="pyramid-container">
+                <div class="pyramid-level pyramid-level-5" style="width: 35%; background: linear-gradient(135deg, #78909c, #607d8b);">
+                    👴👵 Bunicii
+                </div>
+                <div class="pyramid-level pyramid-level-4" style="width: 50%; background: linear-gradient(135deg, #7986cb, #5c6bc0);">
+                    👨👩 Parintii
+                </div>
+                <div class="pyramid-level pyramid-level-3" style="width: 65%; background: linear-gradient(135deg, #4fc3f7, #29b6f6);">
+                    🧑👧 Copiii (adulti)
+                </div>
+                <div class="pyramid-level pyramid-level-2" style="width: 80%; background: linear-gradient(135deg, #81c784, #66bb6a);">
+                    👶 Copiii (minori)
+                </div>
+            </div>
+            <p style="text-align: center; color: var(--text-secondary); margin-top: 1rem;">
+                Autoritatea scade pe masura ce cobori in ierarhie.<br>
+                Ironic: accesul la informatie corecta creste.
+            </p>
+        </div>
+
+        <!-- PATTERN-URI DE COMUNICARE -->
+        <h2 style="margin: 2rem 0 1rem;">💬 Pattern-uri de Comunicare Toxice</h2>
+
+        <div class="card">
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">!</div>
+                    <div class="mechanism-content">
+                        <h4>"Ce o sa zica lumea?"</h4>
+                        <p>Presiunea comunitatii externe folosita pentru a impune conformism intern.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">!</div>
+                    <div class="mechanism-content">
+                        <h4>"Dupa tot ce-am facut pentru tine..."</h4>
+                        <p>Guilt-tripping pentru a inhiba gandirea independenta.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">!</div>
+                    <div class="mechanism-content">
+                        <h4>"O sa intelegi cand o sa ai copii"</h4>
+                        <p>Invalidarea argumentelor bazata pe lipsa "experientei".</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">!</div>
+                    <div class="mechanism-content">
+                        <h4>"Noi stim ce e mai bine"</h4>
+                        <p>Autoritatea parentala ca substitut pentru argument.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOLUTII -->
+        <h2 style="margin: 2rem 0 1rem;">💡 Cum Navigam Sanatos?</h2>
+
+        <div class="card">
+            <h3 style="color: var(--accent-green); margin-bottom: 1rem;">Echilibru intre Respect si Gandire Critica</h3>
+            <div class="grid-2">
+                <div class="highlight-box green">
+                    <h4>Pentru Tineri</h4>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>Asculta inainte de a contrazice</li>
+                        <li>Intreaba "de ce?" fara agresivitate</li>
+                        <li>Respecta experienta, verifica faptele</li>
+                        <li>Alege batailile - nu totul merita dezbatut</li>
+                    </ul>
+                </div>
+                <div class="highlight-box blue">
+                    <h4>Pentru Parinti/Bunici</h4>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>Accepta ca lumea s-a schimbat</li>
+                        <li>Experienta ta nu e universala</li>
+                        <li>Intrebarile nu sunt insubordonare</li>
+                        <li>Modelul "eu am gresit cand..."</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.2rem;">
+                "Familia e locul unde inveti prima data<br>
+                ca a avea dreptate e mai putin important<br>
+                decat a pastra armonia."
+            </p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/simulators.js"></script>
+</body>
+</html>

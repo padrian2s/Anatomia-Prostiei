@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intre Vecini | Barfa si Zvonuri</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>🏘️ Intre Vecini</h1>
+            <p class="subtitle">Cum se raspandesc zvonurile si dezinformarea in comunitati</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; text-align: center;">
+                <strong>Vecinatatea:</strong> O retea sociala offline unde zvonurile<br>
+                se raspandesc la fel de viral ca pe internet.<br>
+                <span style="color: var(--accent-orange);">"A zis vecina care stie de la..." - sursa suprema.</span>
+            </p>
+        </div>
+
+        <!-- SITUATII -->
+        <h2 style="margin: 2rem 0 1rem;">🎯 Situatii Tipice</h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-yellow), var(--accent-orange));">1</div>
+                <div>
+                    <div class="card-title">Grupul de WhatsApp al Blocului</div>
+                    <div class="card-subtitle">Dezinformarea instantanee</div>
+                </div>
+            </div>
+            <p>Orice informatie, verificata sau nu, se raspandeste in secunde.</p>
+            <div class="highlight-box orange" style="margin-top: 1rem;">
+                <p>📱 "URGENT! Am auzit ca vor sa mareasca intretinerea cu 50%!"</p>
+                <p>📱 "OMG! De unde stii?"</p>
+                <p>📱 "A zis vecina de la 3"</p>
+                <p>📱 *30 de mesaje de indignare*</p>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Nimeni nu verifica. Toata lumea reactioneaza.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-cool);">2</div>
+                <div>
+                    <div class="card-title">Sedinta de Bloc</div>
+                    <div class="card-subtitle">"Cine tipa mai tare castiga"</div>
+                </div>
+            </div>
+            <p>Deciziile nu se iau pe baza de argumente, ci pe baza de voce si persistenta.</p>
+            <div class="highlight-box blue" style="margin-top: 1rem;">
+                <p>🗣️ Vecin 1: *argumenteaza calm si logic*</p>
+                <p>🗣️ Vecin 2: *TIPA SI REPETA ACELASI LUCRU*</p>
+                <p>👥 Restul: "Hai sa-l lasam pe domnul de la 2, sa terminam..."</p>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Cel persistent castiga, nu cel corect.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-warm);">3</div>
+                <div>
+                    <div class="card-title">Barfa ca Sursa de Informatie</div>
+                    <div class="card-subtitle">"A zis doamna care stie"</div>
+                </div>
+            </div>
+            <p>Informatia trece prin 5 intermediari, fiecare adaugand sau schimband detalii.</p>
+            <div class="highlight-box purple" style="margin-top: 1rem;">
+                <p>🔊 Original: "Vecinul de la 5 a primit o amenda de parcare"</p>
+                <p>→ Dupa 3 transmiteri: "Vecinul de la 5 are probleme cu politia"</p>
+                <p>→ Dupa 5 transmiteri: "Vecinul de la 5 e urmarit penal"</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-primary);">4</div>
+                <div>
+                    <div class="card-title">Mobilizarea Colectiva</div>
+                    <div class="card-subtitle">"Facem plangere toti!"</div>
+                </div>
+            </div>
+            <p>Un vecin nemultumit mobilizeaza intregul bloc pentru cauze personale.</p>
+            <div class="highlight-box teal" style="margin-top: 1rem;">
+                <p>📝 "Va rog sa semnati toti! E pentru binele blocului!"</p>
+                <p>🧑 "Dar despre ce e plangerea?"</p>
+                <p>📝 "Nu conteaza, semneaza si tu, toti au semnat!"</p>
+            </div>
+        </div>
+
+        <!-- SIMULATOR -->
+        <h2 style="margin: 2rem 0 1rem;">🎮 Simulator: Raspandirea Zvonului</h2>
+
+        <div class="simulator">
+            <div class="simulator-header">
+                <span class="simulator-title">Cum se raspandeste un zvon in bloc</span>
+                <div class="simulator-controls">
+                    <button class="sim-btn primary" onclick="startNeighborSim()">Porneste</button>
+                    <button class="sim-btn secondary" onclick="resetNeighborSim()">Reset</button>
+                </div>
+            </div>
+            <p class="simulator-description">
+                Un zvon neadevarat porneste de la un apartament.
+                🏠 = n-a auzit | 😱 = a crezut | 🤔 = a verificat si respins
+            </p>
+            <div class="simulator-canvas">
+                <div id="neighbor-building"></div>
+            </div>
+            <div class="sim-stats">
+                <div class="sim-stat">
+                    <div class="value" id="rumor-believed">0</div>
+                    <div class="label">Au crezut</div>
+                </div>
+                <div class="sim-stat">
+                    <div class="value" id="rumor-verified">0</div>
+                    <div class="label">Au verificat</div>
+                </div>
+                <div class="sim-stat">
+                    <div class="value" id="rumor-pending">20</div>
+                    <div class="label">N-au auzit</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TIPURI DE VECINI -->
+        <h2 style="margin: 2rem 0 1rem;">👤 Roluri in Dinamica Vecinatatii</h2>
+
+        <div class="grid-3">
+            <div class="card">
+                <div style="font-size: 2rem; text-align: center; margin-bottom: 0.5rem;">📢</div>
+                <h4 style="text-align: center; color: var(--accent-orange);">Transmitorul</h4>
+                <p class="text-muted" style="font-size: 0.85rem; text-align: center;">Stie totul despre toata lumea. Prima sursa pentru orice zvon.</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 2rem; text-align: center; margin-bottom: 0.5rem;">🔊</div>
+                <h4 style="text-align: center; color: var(--accent-purple);">Amplificatorul</h4>
+                <p class="text-muted" style="font-size: 0.85rem; text-align: center;">Preia informatia si o exagereaza. Adauga detalii dramatice.</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 2rem; text-align: center; margin-bottom: 0.5rem;">😱</div>
+                <h4 style="text-align: center; color: var(--accent-pink);">Credulul</h4>
+                <p class="text-muted" style="font-size: 0.85rem; text-align: center;">Crede orice. Nu verifica niciodata. Redistribuie imediat.</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 2rem; text-align: center; margin-bottom: 0.5rem;">🤫</div>
+                <h4 style="text-align: center; color: var(--accent-blue);">Tacutul</h4>
+                <p class="text-muted" style="font-size: 0.85rem; text-align: center;">Stie ca e fals, dar nu spune nimic. Nu vrea sa se bage.</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 2rem; text-align: center; margin-bottom: 0.5rem;">🤔</div>
+                <h4 style="text-align: center; color: var(--accent-green);">Scepticul</h4>
+                <p class="text-muted" style="font-size: 0.85rem; text-align: center;">Verifica inainte sa creada. Rar, dar esential.</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 2rem; text-align: center; margin-bottom: 0.5rem;">🦸</div>
+                <h4 style="text-align: center; color: var(--accent-primary);">Corectorul</h4>
+                <p class="text-muted" style="font-size: 0.85rem; text-align: center;">Incearca sa corecteze dezinformarea. Adesea ignorat.</p>
+            </div>
+        </div>
+
+        <!-- MECANISME -->
+        <h2 style="margin: 2rem 0 1rem;">⚙️ Mecanisme Active</h2>
+
+        <div class="grid-2">
+            <div class="highlight-box teal">
+                <h4>📞 Telefon Fara Fir</h4>
+                <p>Informatia se degradeaza la fiecare transmitere. Dupa 5 intermediari, e ireconoscibila.</p>
+            </div>
+            <div class="highlight-box orange">
+                <h4>🏃 Social Proof Local</h4>
+                <p>"Daca toata scara a auzit, probabil e adevarat."</p>
+            </div>
+            <div class="highlight-box purple">
+                <h4>👀 Presiunea Comunitatii</h4>
+                <p>A nu fi de acord cu blocul = a fi "dificil".</p>
+            </div>
+            <div class="highlight-box blue">
+                <h4>⚡ Urgenta Falsa</h4>
+                <p>"URGENT!" face oamenii sa reactioneze inainte sa gandeasca.</p>
+            </div>
+        </div>
+
+        <!-- CICLUL ZVONULUI -->
+        <h2 style="margin: 2rem 0 1rem;">🔄 Ciclul de Viata al Zvonului</h2>
+
+        <div class="card">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-primary);">1. Nastere</h4>
+                    <p>Cineva aude/vede ceva si interpreteaza gresit sau exagereaza.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-orange);">2. Transmitere</h4>
+                    <p>Spune vecinului. Fiecare adauga sau omite detalii.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-green);">3. Validare Sociala</h4>
+                    <p>"Daca toti au auzit, e adevarat." Nimeni nu verifica.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-blue);">4. Reactie</h4>
+                    <p>Mobilizare, indignare, actiune - toate bazate pe fals.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOLUTII -->
+        <h2 style="margin: 2rem 0 1rem;">💡 Cum Combatem Dezinformarea?</h2>
+
+        <div class="card">
+            <h3 style="color: var(--accent-green); margin-bottom: 1rem;">Pentru un Bloc Mai Sanatos</h3>
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number">1</div>
+                    <div class="mechanism-content">
+                        <h4>Verifica Sursa</h4>
+                        <p>"De unde stii?" - intreaba inainte sa crezi sau sa redistribui.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">2</div>
+                    <div class="mechanism-content">
+                        <h4>Canal Oficial</h4>
+                        <p>Administratorul/presedintele sa fie sursa unica pentru informatii oficiale.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">3</div>
+                    <div class="mechanism-content">
+                        <h4>Regula "24 de Ore"</h4>
+                        <p>Nu reactiona la "URGENT" inainte de a verifica a doua zi.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">4</div>
+                    <div class="mechanism-content">
+                        <h4>Corecteaza Public</h4>
+                        <p>Daca stii ca e fals, spune. Tacerea valideaza dezinformarea.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.2rem;">
+                "Barfa e cea mai veche forma de social media.<br>
+                Si la fel de toxica."
+            </p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/simulators.js"></script>
+</body>
+</html>

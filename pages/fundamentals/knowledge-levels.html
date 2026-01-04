@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niveluri de Cunoastere | Anatomia Prostiei</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>🎓 Niveluri de Cunoastere</h1>
+            <p class="subtitle">Diferenta dintre "am auzit" si "stiu"</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; text-align: center;">
+                Creierul confunda <strong>familiaritatea</strong> cu <strong>cunoasterea</strong>.<br>
+                "Am citit despre X" ≠ "Stiu X"<br>
+                <span style="color: var(--accent-orange);">Aceasta confuzie e sursa multor erori cognitive.</span>
+            </p>
+        </div>
+
+        <!-- PIRAMIDA -->
+        <h2 style="margin: 2rem 0 1rem;">🔺 Piramida Cunoasterii</h2>
+
+        <div class="card">
+            <p class="text-muted" style="text-align: center; margin-bottom: 1rem;">Click pe fiecare nivel pentru detalii</p>
+
+            <div class="pyramid-container">
+                <div class="pyramid-level pyramid-level-5" onclick="showPyramidLevel(5)">
+                    <strong>🏆 Am Competenta</strong> — pot produce, nu doar consuma
+                </div>
+                <div class="pyramid-level pyramid-level-4" onclick="showPyramidLevel(4)">
+                    <strong>💡 Stiu</strong> — am integrat in modelul mental
+                </div>
+                <div class="pyramid-level pyramid-level-3" onclick="showPyramidLevel(3)">
+                    <strong>🧠 Inteleg</strong> — pot explica de ce
+                </div>
+                <div class="pyramid-level pyramid-level-2" onclick="showPyramidLevel(2)">
+                    <strong>📝 Imi Amintesc</strong> — pot reproduce informatia
+                </div>
+                <div class="pyramid-level pyramid-level-1" onclick="showPyramidLevel(1)">
+                    <strong>👀 Am Auzit/Citit</strong> — informatia a trecut prin fata ochilor
+                </div>
+            </div>
+
+            <div class="pyramid-detail" id="pyramid-detail-1">
+                <h4 style="color: var(--accent-purple);">Nivelul 1: Am Auzit/Citit</h4>
+                <p>Cel mai superficial nivel. Ai scanat un titlu, ai auzit un termen, ai scrollat pe langa o informatie.</p>
+                <p style="margin-top: 0.5rem;">Informatia a <em>existat</em> in proximitatea ta, dar nu a intrat cu adevarat.</p>
+                <div class="highlight-box purple" style="margin-top: 1rem;">
+                    <p>💬 "Stiu despre blockchain, am citit un articol"</p>
+                    <p class="text-muted">Realitate: Ai scanat titlul articolului.</p>
+                </div>
+            </div>
+            <div class="pyramid-detail" id="pyramid-detail-2">
+                <h4 style="color: var(--accent-blue);">Nivelul 2: Imi Amintesc</h4>
+                <p>Poti repeta ce ai citit, dar fara garantie de acuratete.</p>
+                <p style="margin-top: 0.5rem;"><strong>Memoria e reconstructiva, nu reproductiva.</strong> O refaci de fiecare data, cu erori.</p>
+                <div class="highlight-box blue" style="margin-top: 1rem;">
+                    <p>💬 "Blockchain e ceva cu... blocuri de date... legate..."</p>
+                    <p class="text-muted">Fragmentele nu se leaga intr-un tot coerent.</p>
+                </div>
+            </div>
+            <div class="pyramid-detail" id="pyramid-detail-3">
+                <h4 style="color: var(--accent-secondary);">Nivelul 3: Inteleg</h4>
+                <p>Aici incepe cunoasterea reala.</p>
+                <p style="margin-top: 0.5rem;"><strong>Testul clasic:</strong> Poti explica cuiva care nu stie nimic, in termeni simpli?</p>
+                <div class="highlight-box teal" style="margin-top: 1rem;">
+                    <p>💬 "Blockchain e o baza de date distribuita unde..."</p>
+                    <p class="text-muted">Poti raspunde la "de ce?" si "cum?"</p>
+                </div>
+            </div>
+            <div class="pyramid-detail" id="pyramid-detail-4">
+                <h4 style="color: var(--accent-primary);">Nivelul 4: Stiu</h4>
+                <p>Cunoasterea a devenit parte din modul in care vezi lumea.</p>
+                <p style="margin-top: 0.5rem;">Poti recunoaste cand <em>nu</em> se aplica. Stii limitele conceptului.</p>
+                <div class="highlight-box" style="margin-top: 1rem;">
+                    <p>💬 "Blockchain e potrivit pentru X, dar nu pentru Y din cauza Z..."</p>
+                    <p class="text-muted">Stii cand NU e solutia potrivita.</p>
+                </div>
+            </div>
+            <div class="pyramid-detail" id="pyramid-detail-5">
+                <h4 style="color: var(--accent-green);">Nivelul 5: Am Competenta</h4>
+                <p>Poti <strong>produce</strong>, nu doar <strong>consuma</strong>.</p>
+                <p style="margin-top: 0.5rem;">Diferenta intre a sti despre pictura si a putea picta. Intre a citi despre programare si a putea programa.</p>
+                <div class="highlight-box green" style="margin-top: 1rem;">
+                    <p>💬 "Am implementat un blockchain pentru proiectul X..."</p>
+                    <p class="text-muted">Poti demonstra prin actiune, nu doar prin vorbe.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ILUZIA CUNOASTERII -->
+        <h2 style="margin: 2rem 0 1rem;">🎭 Iluzia Cunoasterii</h2>
+
+        <div class="card">
+            <h3 style="color: var(--accent-orange); margin-bottom: 1rem;">De Ce Confundam Nivelurile?</h3>
+
+            <div class="grid-2">
+                <div class="highlight-box orange">
+                    <h4>💫 Fluenta Cognitiva</h4>
+                    <p>Daca ceva <strong>suna familiar</strong>, creierul interpreteaza ca "stiu".</p>
+                    <p class="text-muted" style="margin-top: 0.5rem;">Am auzit termenul de 10 ori → "Il stiu"</p>
+                </div>
+                <div class="highlight-box purple">
+                    <h4>🪞 Iluzia Intelegerii</h4>
+                    <p><strong>Claritatea a fost a autorului, nu a ta.</strong></p>
+                    <p class="text-muted" style="margin-top: 0.5rem;">Tu ai urmărit pasiv. Explicatia buna a mascat lipsa ta de intelegere.</p>
+                </div>
+                <div class="highlight-box blue">
+                    <h4>📚 Expunere ≠ Invatare</h4>
+                    <p>Timpul petrecut citind nu garanteaza intelegere.</p>
+                    <p class="text-muted" style="margin-top: 0.5rem;">Poti citi 10 carti si sa nu inveti nimic daca nu procesezi activ.</p>
+                </div>
+                <div class="highlight-box teal">
+                    <h4>🔁 Memoria ca Reconstructie</h4>
+                    <p>Nu-ti amintesti ce ai citit. Reconstruiesti din fragmente.</p>
+                    <p class="text-muted" style="margin-top: 0.5rem;">Si umpli golurile cu presupuneri.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TESTUL FEYNMAN -->
+        <h2 style="margin: 2rem 0 1rem;">🧪 Testul Feynman</h2>
+
+        <div class="card">
+            <h3 style="margin-bottom: 1rem;">Cum Stii Daca Chiar Stii?</h3>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-primary);">Pasul 1: Alege un concept</h4>
+                    <p>Ceva ce crezi ca stii. Scrie-l pe o foaie.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-orange);">Pasul 2: Explica-l simplu</h4>
+                    <p>Ca si cum ai explica unui copil de 10 ani. Fara jargon.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-green);">Pasul 3: Identifica golurile</h4>
+                    <p>Unde te-ai blocat? Unde ai folosit jargon ca sa maschezi neintelegerea?</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-blue);">Pasul 4: Revino la sursa</h4>
+                    <p>Studiaza ce nu ai putut explica. Repeta testul.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 1.5rem; text-align: center;">
+                <p style="font-size: 1.1rem;">
+                    <strong>"Daca nu poti explica simplu, nu intelegi suficient de bine."</strong>
+                </p>
+                <p style="color: var(--text-secondary);">— Richard Feynman</p>
+            </div>
+        </div>
+
+        <!-- CHECKLIST -->
+        <h2 style="margin: 2rem 0 1rem;">✅ Checklist: Chiar Stii?</h2>
+
+        <div class="card">
+            <h3 style="margin-bottom: 1rem;">Cand zici "stiu X", intreaba-te:</h3>
+
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number">1</div>
+                    <div class="mechanism-content">
+                        <h4>Pot explica fara sa caut?</h4>
+                        <p>Fara Google, fara note, din memorie?</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">2</div>
+                    <div class="mechanism-content">
+                        <h4>Pot raspunde la intrebari follow-up?</h4>
+                        <p>"De ce?", "Cum?", "Ce se intampla daca...?"</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">3</div>
+                    <div class="mechanism-content">
+                        <h4>Stiu limitele si exceptiile?</h4>
+                        <p>Cand NU se aplica? Ce cazuri speciale exista?</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">4</div>
+                    <div class="mechanism-content">
+                        <h4>Stiu de unde stiu?</h4>
+                        <p>Care e sursa? Cat de fiabila e?</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">5</div>
+                    <div class="mechanism-content">
+                        <h4>Pot aplica in contexte diferite?</h4>
+                        <p>Sau doar repet ce am memorat?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box orange" style="margin-top: 1.5rem; text-align: center;">
+                <p>Daca nu poti bifa toate, <strong>nu stii</strong>.</p>
+                <p>Ai familiaritate, nu cunoastere.</p>
+                <p style="margin-top: 0.5rem; color: var(--accent-orange);">Si asta poate fi mai periculos decat ignoranta totala.</p>
+            </div>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.2rem;">
+                "A citi fara a gandi<br>
+                e ca a manca fara a digera."
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem;">— Edmund Burke</p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

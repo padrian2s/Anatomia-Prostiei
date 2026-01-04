@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rationality Quotient | Gandire Rationala</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>🎯 Rationality Quotient</h1>
+            <p class="subtitle">De ce oamenii inteligenti fac alegeri irationale</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; text-align: center;">
+                <strong>Inteligenta ≠ Rationalitate</strong><br>
+                Poti avea IQ 140 si totusi:<br>
+                <span style="color: var(--accent-orange);">sa crezi in horoscop, sa iei decizii financiare proaste, sa fii victima manipularii.</span>
+            </p>
+        </div>
+
+        <!-- DEFINITIE -->
+        <h2 style="margin: 2rem 0 1rem;">📚 Ce Este Rationalitatea?</h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));">RQ</div>
+                <div>
+                    <div class="card-title">Rationality Quotient</div>
+                    <div class="card-subtitle">Keith Stanovich - "What Intelligence Tests Miss"</div>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 1.5rem;">
+                <div class="highlight-box blue">
+                    <h4>Rationalitate Epistemica</h4>
+                    <p style="margin-top: 0.5rem;">Cat de bine iti reprezinti realitatea?</p>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>Credintele tale reflecta adevarul?</li>
+                        <li>Iti actualizezi credintele cand apar dovezi noi?</li>
+                        <li>Eviti auto-inselarea?</li>
+                    </ul>
+                </div>
+                <div class="highlight-box green">
+                    <h4>Rationalitate Instrumentala</h4>
+                    <p style="margin-top: 0.5rem;">Cat de bine iti atingi obiectivele?</p>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>Actiunile tale duc la ce vrei?</li>
+                        <li>Alegi mijloacele potrivite?</li>
+                        <li>Eviti sabotarea de sine?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 1.5rem; text-align: center;">
+                <p style="font-size: 1.1rem;">
+                    <strong>O persoana rationala:</strong><br>
+                    Crede ce e adevarat si face ce functioneaza.
+                </p>
+            </div>
+        </div>
+
+        <!-- DYSRATIONALIA -->
+        <h2 style="margin: 2rem 0 1rem;">🧠 Dysrationalia - Diagnostic</h2>
+
+        <div class="card">
+            <p style="margin-bottom: 1rem;">
+                <strong>Dysrationalia</strong> = incapacitatea de a gandi si actiona rational, in ciuda inteligentei adecvate.
+            </p>
+
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">1</div>
+                    <div class="mechanism-content">
+                        <h4>Mindware Gap</h4>
+                        <p>Nu ai "software-ul" mental necesar: probabilitati, logica, metoda stiintifica.</p>
+                        <p class="text-muted">Scoala invata fapte, nu cum sa gandesti.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-purple);">2</div>
+                    <div class="mechanism-content">
+                        <h4>Contaminated Mindware</h4>
+                        <p>Ai "software" toxic instalat: superstitii, teorii conspirative, gandire magica.</p>
+                        <p class="text-muted">Credinte care par plauzibile dar duc la concluzii gresite.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-blue);">3</div>
+                    <div class="mechanism-content">
+                        <h4>Override Failure</h4>
+                        <p>Nu poti suprascrie raspunsurile automate ale Sistemului 1.</p>
+                        <p class="text-muted">Stii ca gresesti dar nu te poti opri.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box orange" style="margin-top: 1.5rem;">
+                <p style="text-align: center;">
+                    <strong>Vestea buna:</strong> Spre deosebire de IQ, rationalitatea poate fi antrenata!<br>
+                    E o abilitate, nu o capacitate fixa.
+                </p>
+            </div>
+        </div>
+
+        <!-- SIMULATOR -->
+        <h2 style="margin: 2rem 0 1rem;">🧪 Test de Rationalitate</h2>
+
+        <div class="card">
+            <h3 style="margin-bottom: 1rem;">Cognitive Reflection Test + Bonus</h3>
+            <p class="text-muted" style="margin-bottom: 1.5rem;">Raspunde la fiecare intrebare. Numara cate ai nimerit din prima.</p>
+
+            <div id="rationality-test">
+                <div class="quiz-question" id="q1">
+                    <div class="highlight-box">
+                        <p><strong>1.</strong> O bata si o minge costa 1.10 lei. Bata costa cu 1 leu mai mult decat mingea. Cat costa mingea?</p>
+                        <input type="text" id="a1" placeholder="Raspunsul tau..." style="width: 100%; padding: 0.5rem; margin-top: 0.5rem; border: 1px solid var(--border-light); border-radius: 4px;">
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="q2" style="margin-top: 1rem;">
+                    <div class="highlight-box">
+                        <p><strong>2.</strong> 5 masini produc 5 piese in 5 minute. Cat dureaza ca 100 de masini sa produca 100 de piese?</p>
+                        <input type="text" id="a2" placeholder="Raspunsul tau..." style="width: 100%; padding: 0.5rem; margin-top: 0.5rem; border: 1px solid var(--border-light); border-radius: 4px;">
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="q3" style="margin-top: 1rem;">
+                    <div class="highlight-box">
+                        <p><strong>3.</strong> Nuferii dintr-un lac isi dubleaza aria in fiecare zi. Daca acopera tot lacul in 48 de zile, in cate zile acopera jumatate din lac?</p>
+                        <input type="text" id="a3" placeholder="Raspunsul tau..." style="width: 100%; padding: 0.5rem; margin-top: 0.5rem; border: 1px solid var(--border-light); border-radius: 4px;">
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="q4" style="margin-top: 1rem;">
+                    <div class="highlight-box">
+                        <p><strong>4.</strong> Intr-o cursa, il depasesti pe cel de pe locul 2. Pe ce loc esti acum?</p>
+                        <input type="text" id="a4" placeholder="Raspunsul tau..." style="width: 100%; padding: 0.5rem; margin-top: 0.5rem; border: 1px solid var(--border-light); border-radius: 4px;">
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="q5" style="margin-top: 1rem;">
+                    <div class="highlight-box">
+                        <p><strong>5.</strong> Maria are 32 de ani, e necasatorita, vorbitoare directa si foarte inteligenta. Ca studenta a fost preocupata de discriminare si justitie sociala. Ce e mai probabil?</p>
+                        <p style="margin-top: 0.5rem;">A) Maria e casiera la banca<br>B) Maria e casiera la banca si activista feminista</p>
+                        <input type="text" id="a5" placeholder="A sau B?" style="width: 100%; padding: 0.5rem; margin-top: 0.5rem; border: 1px solid var(--border-light); border-radius: 4px;">
+                    </div>
+                </div>
+
+                <button onclick="checkRationalityTest()" style="margin-top: 1.5rem; padding: 1rem 2rem; background: var(--accent-primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">
+                    Verifica Raspunsurile
+                </button>
+
+                <div id="rationality-results" class="quiz-result" style="margin-top: 1rem;"></div>
+            </div>
+        </div>
+
+        <!-- BIAS-URI COMUNE -->
+        <h2 style="margin: 2rem 0 1rem;">🎭 Bias-uri Care Afecteaza Rationalitatea</h2>
+
+        <div class="card">
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">1</div>
+                    <div class="mechanism-content">
+                        <h4>Confirmation Bias</h4>
+                        <p>Cauti dovezi care confirma ce crezi deja. Ignori ce te contrazice.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-purple);">2</div>
+                    <div class="mechanism-content">
+                        <h4>Sunk Cost Fallacy</h4>
+                        <p>Continui sa investesti in ceva pentru ca ai investit deja, nu pentru ca are sens.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-blue);">3</div>
+                    <div class="mechanism-content">
+                        <h4>Availability Heuristic</h4>
+                        <p>Judeci probabilitatea dupa cat de usor iti amintesti exemple.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-pink);">4</div>
+                    <div class="mechanism-content">
+                        <h4>Anchoring</h4>
+                        <p>Prima informatie "ancora" judecata, chiar daca e irelevanta.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-green);">5</div>
+                    <div class="mechanism-content">
+                        <h4>Conjunction Fallacy</h4>
+                        <p>Crezi ca doua evenimente impreuna sunt mai probabile decat unul singur (Linda problem).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CUM SA-TI ANTRENEZI RQ -->
+        <h2 style="margin: 2rem 0 1rem;">💪 Cum Sa-ti Antrenezi Rationalitatea</h2>
+
+        <div class="card">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-primary);">1. Invata probabilitatile de baza</h4>
+                    <p>Base rates, conditionalitati, frecvente naturale. Nu intuitive, dar esentiale.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-orange);">2. Practica gandirea Bayesiana</h4>
+                    <p>Actualizeaza-ti credintele gradual, bazat pe dovezi noi. Nu "am dreptate/gresesc".</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-green);">3. Cauta activ dezconfirmari</h4>
+                    <p>Intreaba-te: "Ce ar trebui sa vad daca gresesc?" si cauta exact asta.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-blue);">4. Incetineste</h4>
+                    <p>Cand simti certitudine imediata, e un semnal sa activezi Sistemul 2.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-purple);">5. Tine un jurnal de predictii</h4>
+                    <p>Noteaza predictiile, verifica-le mai tarziu. Calibreaza-ti increderea.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CALIBRARE -->
+        <h2 style="margin: 2rem 0 1rem;">📊 Calibrarea - Metrica Cheie</h2>
+
+        <div class="card">
+            <p style="margin-bottom: 1rem;">
+                O persoana rationala e <strong>calibrata</strong>: nivelul de incredere corespunde cu rata de succes.
+            </p>
+
+            <div class="highlight-box">
+                <h4>Exemplu de calibrare perfecta:</h4>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>Cand zic "sunt 50% sigur" → am dreptate 50% din timp</li>
+                    <li>Cand zic "sunt 80% sigur" → am dreptate 80% din timp</li>
+                    <li>Cand zic "sunt 99% sigur" → am dreptate 99% din timp</li>
+                </ul>
+            </div>
+
+            <div class="grid-2" style="margin-top: 1.5rem;">
+                <div class="highlight-box orange">
+                    <h4>Overconfidence (prea increzator)</h4>
+                    <p>Zici 90% sigur dar ai dreptate 60% din timp.</p>
+                    <p class="text-muted">Problema comuna la experti!</p>
+                </div>
+                <div class="highlight-box blue">
+                    <h4>Underconfidence (prea putin increzator)</h4>
+                    <p>Zici 50% sigur dar ai dreptate 80% din timp.</p>
+                    <p class="text-muted">Pierzi oportunitati din exces de prudenta.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box green" style="margin-top: 1.5rem; text-align: center;">
+                <p style="font-size: 1.1rem;">
+                    <strong>Superforecasters</strong> (cei mai buni predictori din studiile lui Philip Tetlock)<br>
+                    sunt calibrati exceptional. Nu sunt mai inteligenti, ci mai rationali.
+                </p>
+            </div>
+        </div>
+
+        <!-- RESURSE -->
+        <h2 style="margin: 2rem 0 1rem;">📖 Resurse Pentru Aprofundare</h2>
+
+        <div class="card">
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number">📘</div>
+                    <div class="mechanism-content">
+                        <h4>Daniel Kahneman - "Thinking, Fast and Slow"</h4>
+                        <p>Cartea fundamentala despre Sistemul 1 si Sistemul 2.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">📗</div>
+                    <div class="mechanism-content">
+                        <h4>Keith Stanovich - "What Intelligence Tests Miss"</h4>
+                        <p>Argumentul pentru Rationality Quotient.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">📙</div>
+                    <div class="mechanism-content">
+                        <h4>Julia Galef - "The Scout Mindset"</h4>
+                        <p>Cum sa gandesti ca un cercetator, nu ca un avocat.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">📕</div>
+                    <div class="mechanism-content">
+                        <h4>Philip Tetlock - "Superforecasting"</h4>
+                        <p>Ce fac diferit cei care prezic bine viitorul.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTE FINAL -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.2rem;">
+                "Rationalitatea nu inseamna sa nu ai emotii.<br>
+                Inseamna sa nu te lasi pacalit de ele."
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem;">— Adaptare dupa Eliezer Yudkowsky</p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        function checkRationalityTest() {
+            const answers = {
+                a1: { correct: "5", wrong: "10", explanation: "Daca mingea costa 5 bani, bata costa 1.05 lei. Total: 1.10 lei." },
+                a2: { correct: "5", wrong: "100", explanation: "Fiecare masina produce 1 piesa in 5 minute. 100 masini lucreaza in paralel." },
+                a3: { correct: "47", wrong: "24", explanation: "Se dubleaza zilnic, deci ziua 47 = jumatate din ziua 48." },
+                a4: { correct: "2", wrong: "1", explanation: "L-ai depasit pe cel de pe 2, deci ai luat locul lui. Nu esti primul." },
+                a5: { correct: "a", wrong: "b", explanation: "Conjunction fallacy: A include B, deci A e mai probabil sau egal." }
+            };
+
+            let score = 0;
+            let resultsHTML = '<div style="margin-top: 1rem;">';
+
+            for (let i = 1; i <= 5; i++) {
+                const userAnswer = document.getElementById('a' + i).value.toLowerCase().trim().replace(/[^a-z0-9]/g, '');
+                const correct = answers['a' + i].correct;
+                const isCorrect = userAnswer === correct ||
+                                  (i === 1 && userAnswer === '5bani') ||
+                                  (i === 2 && userAnswer === '5minute') ||
+                                  (i === 3 && userAnswer === '47zile') ||
+                                  (i === 4 && (userAnswer === '2' || userAnswer === 'doi' || userAnswer === 'aldoilea' || userAnswer === 'locul2')) ||
+                                  (i === 5 && userAnswer === 'a');
+
+                if (isCorrect) {
+                    score++;
+                    resultsHTML += `<div class="highlight-box green" style="margin-top: 0.5rem; padding: 0.8rem;">
+                        <strong>Q${i}: ✓ Corect!</strong>
+                    </div>`;
+                } else {
+                    resultsHTML += `<div class="highlight-box orange" style="margin-top: 0.5rem; padding: 0.8rem;">
+                        <strong>Q${i}: ✗</strong> Raspuns corect: ${correct}
+                        <p class="text-muted" style="margin-top: 0.3rem;">${answers['a' + i].explanation}</p>
+                    </div>`;
+                }
+            }
+
+            resultsHTML += '</div>';
+
+            let interpretation = '';
+            if (score === 5) {
+                interpretation = '<div class="highlight-box green" style="margin-top: 1rem;"><h4>Excelent! (5/5)</h4><p>Ai rezistat tuturor capcanelor cognitive. Sistemul 2 e activ!</p></div>';
+            } else if (score >= 3) {
+                interpretation = '<div class="highlight-box blue" style="margin-top: 1rem;"><h4>Bine! (' + score + '/5)</h4><p>Ai prins unele capcane. Cu practica poti imbunatati.</p></div>';
+            } else {
+                interpretation = '<div class="highlight-box orange" style="margin-top: 1rem;"><h4>Atentie! (' + score + '/5)</h4><p>Sistemul 1 a dominat. E normal - majoritatea gresesc. Dar arata ca ai loc de imbunatatire.</p></div>';
+            }
+
+            document.getElementById('rationality-results').innerHTML = interpretation + resultsHTML;
+        }
+    </script>
+</body>
+</html>

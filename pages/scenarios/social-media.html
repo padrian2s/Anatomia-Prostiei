@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media | Fabrici de Prostie Colectiva</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>📱 Social Media</h1>
+            <p class="subtitle">Cum algoritmii amplifica prostia colectiva</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="formula-box">
+            <p style="font-size: 1.2rem;">
+                Retelele sociale nu fac oamenii prosti.<br>
+                <strong style="color: var(--accent-orange);">Fac prostia vizibila, virala si recompensata.</strong>
+            </p>
+        </div>
+
+        <!-- MECANISME PRINCIPALE -->
+        <h2 style="margin: 2rem 0 1rem;">⚙️ Mecanismele Amplificarii</h2>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));">⚡</div>
+                    <div class="card-title">1. Reactie, nu Reflectie</div>
+                </div>
+                <p>Ai 2 secunde sa scrollezi. Nu ai timp sa gandesti. Algoritm optimizat pentru engagement, nu pentru adevar.</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));">🎯</div>
+                    <div class="card-title">2. Emotia ca Combustibil</div>
+                </div>
+                <p>Se raspandeste ce provoaca <strong>indignare, furie, teama</strong>. Nuanta nu e virala.</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-secondary));">🔄</div>
+                    <div class="card-title">3. Echo Chambers</div>
+                </div>
+                <p>Algoritmul iti arata ce vrei sa vezi. Confirmarea devine realitate perceputa.</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-indigo));">👥</div>
+                    <div class="card-title">4. Autoritatea Difuza</div>
+                </div>
+                <p>"Toata lumea zice" = algoritmul iti arata ce vrei. 10.000 de like-uri nu fac un lucru adevarat.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-yellow), var(--accent-orange));">⚔️</div>
+                <div class="card-title">5. Identitatea Tribala</div>
+            </div>
+            <p>Nu mai conteaza ce e adevarat. Conteaza <strong>ce spune tribul</strong>. A accepta ca tribul greseste = tradare.</p>
+            <div class="highlight-box orange" style="margin-top: 1rem;">
+                <p>🗣️ "Studiul X contrazice ce credem noi"</p>
+                <p>👥 "Studiul e biased / platit de inamici / fake"</p>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Adevarul e filtrat prin identitate, nu prin dovezi.</p>
+            </div>
+        </div>
+
+        <!-- SIMULATOR ECHO CHAMBER -->
+        <h2 style="margin: 2rem 0 1rem;">🎮 Simulator: Echo Chamber</h2>
+
+        <div class="simulator">
+            <div class="simulator-header">
+                <span class="simulator-title">Cum algoritmul iti filtreaza feed-ul</span>
+                <div class="simulator-controls">
+                    <button class="sim-btn primary" onclick="startEchoSim()">Porneste</button>
+                    <button class="sim-btn secondary" onclick="resetEchoSim()">Reset</button>
+                </div>
+            </div>
+            <p class="simulator-description">
+                Urmareste cum algoritmul decide ce postari iti arata.
+                Da Like pentru a influenta! Cu cat dai Like la un tip de continut, cu atat vezi mai mult din acelasi tip.
+            </p>
+            <div class="simulator-canvas">
+                <div class="echo-feed" id="echo-feed"></div>
+            </div>
+            <div class="sim-stats">
+                <div class="sim-stat">
+                    <div class="value" id="echo-agree">0</div>
+                    <div class="label">Confirma opinia ta</div>
+                </div>
+                <div class="sim-stat">
+                    <div class="value" id="echo-disagree">0</div>
+                    <div class="label">Contrazic opinia ta</div>
+                </div>
+                <div class="sim-stat">
+                    <div class="value" id="echo-hidden">0</div>
+                    <div class="label">Ascunse de algoritm</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIMULATOR VIRAL -->
+        <h2 style="margin: 2rem 0 1rem;">🎮 Simulator: Raspandirea Virala</h2>
+
+        <div class="simulator">
+            <div class="simulator-header">
+                <span class="simulator-title">Cum se raspandeste dezinformarea</span>
+                <div class="simulator-controls">
+                    <button class="sim-btn primary" onclick="startViralSim()">Porneste</button>
+                    <button class="sim-btn secondary" onclick="resetViralSim()">Reset</button>
+                </div>
+            </div>
+            <p class="simulator-description">
+                O informatie falsa porneste de la cateva persoane.
+                🟠 = a crezut si a distribuit | 🟢 = a verificat (imun) | ⬜ = n-a vazut inca
+            </p>
+            <div class="simulator-canvas">
+                <div class="viral-grid" id="viral-grid"></div>
+            </div>
+            <div class="sim-stats">
+                <div class="sim-stat">
+                    <div class="value" id="viral-infected">0</div>
+                    <div class="label">Au crezut</div>
+                </div>
+                <div class="sim-stat">
+                    <div class="value" id="viral-immune">0</div>
+                    <div class="label">Imuni (au verificat)</div>
+                </div>
+                <div class="sim-stat">
+                    <div class="value" id="viral-pending">400</div>
+                    <div class="label">N-au vazut</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ANATOMIA POSTARII VIRALE -->
+        <h2 style="margin: 2rem 0 1rem;">📊 Anatomia Continutului Viral</h2>
+
+        <div class="card">
+            <h3 style="margin-bottom: 1rem;">Ce se raspandeste cel mai rapid?</h3>
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">1</div>
+                    <div class="mechanism-content">
+                        <h4>Indignare Morala</h4>
+                        <p>"Nu pot sa cred ca X a facut Y!" - Viralitate maxima, acuratete minima.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-pink);">2</div>
+                    <div class="mechanism-content">
+                        <h4>Noi vs. Ei</h4>
+                        <p>Content care defineste un inamic. Tribalism amplificat algoritmic.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-purple);">3</div>
+                    <div class="mechanism-content">
+                        <h4>Simplificare Extrema</h4>
+                        <p>"Solutia e simpla!" - Nuanta nu e share-uibila.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-blue);">4</div>
+                    <div class="mechanism-content">
+                        <h4>Confirmare de Bias</h4>
+                        <p>"Studiu CONFIRMA ce stiam deja!" - Validare pentru credintele existente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CE NU SE RASPANDESTE -->
+        <div class="card">
+            <h3 style="margin-bottom: 1rem; color: var(--accent-green);">Ce NU se raspandeste</h3>
+            <div class="grid-2">
+                <div class="highlight-box blue">
+                    <p>🤔 Nuanta si complexitate</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">"Depinde de context..."</p>
+                </div>
+                <div class="highlight-box green">
+                    <p>📊 Date si surse verificabile</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">"Conform studiului X din Y..."</p>
+                </div>
+                <div class="highlight-box purple">
+                    <p>🔄 Corectii si actualizari</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">"Informatia de ieri era gresita..."</p>
+                </div>
+                <div class="highlight-box teal">
+                    <p>🎓 Explicatii detaliate</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">"E complicat, lasati-ma sa explic..."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BONHOEFFER 2.0 -->
+        <h2 style="margin: 2rem 0 1rem;">📜 Bonhoeffer 2.0</h2>
+
+        <div class="comparison-table">
+            <div class="comparison-col bad">
+                <h4 style="color: var(--accent-orange);">Original (1943)</h4>
+                <ul style="padding-left: 1.2rem;">
+                    <li>Prostia in fata <strong>puterii politice</strong></li>
+                    <li>Un dictator care forteaza</li>
+                    <li>Abdicare explicita a gandirii</li>
+                    <li>Propaganda de stat</li>
+                </ul>
+            </div>
+            <div class="comparison-col" style="border-top: 3px solid var(--accent-primary);">
+                <h4 style="color: var(--accent-primary);">Bonhoeffer 2.0 (2024)</h4>
+                <ul style="padding-left: 1.2rem;">
+                    <li>Prostia in fata <strong>puterii algoritmice</strong></li>
+                    <li>Un feed care seduce</li>
+                    <li>Abdicare graduala, invizibila</li>
+                    <li>Propaganda personalizata</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="text-align: center; margin-top: 1rem;">
+            <p style="font-size: 1.1rem;">
+                Nimeni nu ti-a cerut explicit sa-ti predai judecata.<br>
+                <strong>Dar ai facut-o oricum, scroll cu scroll, like cu like.</strong>
+            </p>
+        </div>
+
+        <!-- PARTEA INSIDIOASA -->
+        <div class="card" style="margin-top: 2rem;">
+            <h3 style="color: var(--accent-pink); margin-bottom: 1rem;">🎭 Partea cea mai insidioasa</h3>
+            <div class="highlight-box pink" style="text-align: center;">
+                <p style="font-size: 1.1rem;"><strong>Toata lumea crede ca ea e imuna.</strong></p>
+                <p>Ca ea gandeste independent. Ca prostii sunt ceilalti.</p>
+                <p style="margin-top: 1rem; color: var(--accent-pink);">
+                    Ceea ce e <strong>simptomul perfect al prostiei</strong> — incapacitatea de a-ti vedea propria prostie.
+                </p>
+            </div>
+        </div>
+
+        <!-- SOLUTII -->
+        <h2 style="margin: 2rem 0 1rem;">💡 Cum Ne Protejam?</h2>
+
+        <div class="card">
+            <h3 style="color: var(--accent-green); margin-bottom: 1rem;">Igiena Digitala</h3>
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number">1</div>
+                    <div class="mechanism-content">
+                        <h4>Regula de 24 de Ore</h4>
+                        <p>Nu distribui nimic emotionant imediat. Asteapta o zi, verifica, apoi decide.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">2</div>
+                    <div class="mechanism-content">
+                        <h4>Urmareste Diversitate</h4>
+                        <p>Urmareste intentionat voci care TE contrazic. Sparge bula.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">3</div>
+                    <div class="mechanism-content">
+                        <h4>Verifica Sursa</h4>
+                        <p>"De unde stii?" - intreaba-te inainte de a crede sau distribui.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">4</div>
+                    <div class="mechanism-content">
+                        <h4>Limiteaza Expunerea</h4>
+                        <p>Cu cat petreci mai mult timp pe social media, cu atat esti mai vulnerabil.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">5</div>
+                    <div class="mechanism-content">
+                        <h4>Recunoaste Manipularea</h4>
+                        <p>Daca ceva te face foarte furios foarte repede, probabil asta e scopul.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.1rem;">
+                "Inainte, prostia ta ramanea la masa din bucatarie.<br>
+                Acum are reach de milioane si like-uri care o valideaza."
+            </p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/simulators.js"></script>
+</body>
+</html>

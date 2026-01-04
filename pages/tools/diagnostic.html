@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Rapid | Identifica Blocajul</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>🔍 Diagnostic Rapid</h1>
+            <p class="subtitle">Identifica tipul de blocaj si strategia potrivita</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; text-align: center;">
+                Cand cineva <strong>"nu poate procesa"</strong> un argument,<br>
+                cauza nu e intotdeauna aceeasi.<br>
+                <span style="color: var(--accent-primary);">Depinde de ce anume blocheaza procesarea.</span>
+            </p>
+        </div>
+
+        <!-- DIAGNOSTIC TOOL -->
+        <h2 style="margin: 2rem 0 1rem;">🎯 Ce Observi?</h2>
+
+        <div class="card">
+            <h3 style="margin-bottom: 1.5rem;">Alege descrierea care se potriveste cel mai bine:</h3>
+            <div class="quiz-options">
+                <div class="quiz-option" onclick="showDiagnostic(1)">
+                    <strong>E foarte increzator si agresiv pe pozitia lui</strong>
+                    <p class="text-muted" style="margin-top: 0.3rem; font-size: 0.85rem;">"E simplu, nu inteleg de ce nu vedeti"</p>
+                </div>
+                <div class="quiz-option" onclick="showDiagnostic(2)">
+                    <strong>A propus public solutia si nu vrea sa recunoasca</strong>
+                    <p class="text-muted" style="margin-top: 0.3rem; font-size: 0.85rem;">"Am zis in meeting ca...", "Seful a vazut propunerea mea..."</p>
+                </div>
+                <div class="quiz-option" onclick="showDiagnostic(3)">
+                    <strong>Raspunde cu concepte adiacente dar irelevante</strong>
+                    <p class="text-muted" style="margin-top: 0.3rem; font-size: 0.85rem;">Nu prinde esenta, se pierde in detalii tangentiale</p>
+                </div>
+                <div class="quiz-option" onclick="showDiagnostic(4)">
+                    <strong>Citeaza "best practices" fara sa gandeasca contextul</strong>
+                    <p class="text-muted" style="margin-top: 0.3rem; font-size: 0.85rem;">"Toata lumea foloseste X", "Am citit ca Y e solutia"</p>
+                </div>
+            </div>
+            <div class="quiz-result" id="diagnostic-result"></div>
+        </div>
+
+        <!-- CELE 4 SCENARII -->
+        <h2 style="margin: 2rem 0 1rem;">🧱 Cele 4 Tipuri de Blocaj</h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));">01</div>
+                <div>
+                    <div class="card-title">Dunning-Kruger Clasic</div>
+                    <div class="card-subtitle">Ignoranta dubla - crede sincer ca stie</div>
+                </div>
+            </div>
+            <p><strong>Nu e prostie bonhoefferiana, ci ignoranta dubla.</strong> Omul <em>chiar crede</em> ca intelege.</p>
+
+            <div class="highlight-box orange" style="margin-top: 1rem;">
+                <h4>Cum il recunosti?</h4>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>Certitudine extrema pe subiecte complexe</li>
+                    <li>Nu pune intrebari, doar afirma</li>
+                    <li>Simplifica totul: "E usor, ce mare lucru"</li>
+                    <li>Nu recunoaste ca exista complexitate</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box green" style="margin-top: 1rem;">
+                <h4>💡 Strategia</h4>
+                <p><strong>Pune-l sa implementeze.</strong> Realitatea poate penetra unde argumentele nu pot.</p>
+                <p class="text-muted" style="margin-top: 0.5rem;">"OK, arata-mi. Fa un prototip. Implementeaza."</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-yellow), var(--accent-orange));">02</div>
+                <div>
+                    <div class="card-title">Ego si Defensivitate</div>
+                    <div class="card-subtitle">A luat o pozitie publica - identitatea e in joc</div>
+                </div>
+            </div>
+            <p>Daca accepta ca greseste, <strong>pierde fata</strong>. Cu cat insisti, cu atat se inradacineaza.</p>
+
+            <div class="highlight-box yellow" style="margin-top: 1rem;">
+                <h4>Cum il recunosti?</h4>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>A propus solutia in public</li>
+                    <li>Se apara chiar cand argumentele sunt slabe</li>
+                    <li>Reactioneaza emotional la contradictie</li>
+                    <li>Muta discutia de la idee la persoana</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box green" style="margin-top: 1rem;">
+                <h4>💡 Strategia</h4>
+                <p><strong>Da-i o cale eleganta.</strong> Salveaza-i fata.</p>
+                <p class="text-muted" style="margin-top: 0.5rem;">"Ideea ta de baza e buna, dar daca am ajusta putin..."</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-secondary));">03</div>
+                <div>
+                    <div class="card-title">Lipsa Fundamentelor</div>
+                    <div class="card-subtitle">Nu poate procesa - ii lipsesc conceptele</div>
+                </div>
+            </div>
+            <p>E ca si cum ai explica recursivitate cuiva care nu intelege functiile. <strong>Nu e incapatanare - e imposibilitate.</strong></p>
+
+            <div class="highlight-box blue" style="margin-top: 1rem;">
+                <h4>Cum il recunosti?</h4>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>Raspunsurile sunt tangentiale, nu pe subiect</li>
+                    <li>Confunda concepte inrudite</li>
+                    <li>Foloseste jargon gresit</li>
+                    <li>Pare sa asculte dar nu intelege</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box green" style="margin-top: 1rem;">
+                <h4>💡 Strategia</h4>
+                <p><strong>Coboara la fundamente.</strong> Construieste de acolo.</p>
+                <p class="text-muted" style="margin-top: 0.5rem;">"Hai sa incepem de la baza. Ce intelegi prin X?"</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));">04</div>
+                <div>
+                    <div class="card-title">Aproape Bonhoefferian</div>
+                    <div class="card-subtitle">Repeta dogme fara sa proceseze</div>
+                </div>
+            </div>
+            <p>Repeta ce a citit pe Stack Overflow fara sa evalueze contextul. <strong>E abdicare a judecatii.</strong></p>
+
+            <div class="highlight-box purple" style="margin-top: 1rem;">
+                <h4>Cum il recunosti?</h4>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>Citeaza autoritati in loc sa argumenteze</li>
+                    <li>"Toata lumea face asa" e argumentul final</li>
+                    <li>Nu poate explica DE CE e buna solutia</li>
+                    <li>Respinge contraargumente fara sa le proceseze</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box green" style="margin-top: 1rem;">
+                <h4>💡 Strategia</h4>
+                <p><strong>Forteaza confruntarea cu realitatea.</strong> Argumentele nu penetreaza dogma.</p>
+                <p class="text-muted" style="margin-top: 0.5rem;">"OK, hai sa incercam. Daca esueaza, reconsideram?"</p>
+            </div>
+        </div>
+
+        <!-- TABEL REZUMAT -->
+        <h2 style="margin: 2rem 0 1rem;">📋 Tabel Rezumat</h2>
+
+        <div class="card">
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--accent-primary);">
+                            <th style="text-align: left; padding: 0.8rem;">Tip</th>
+                            <th style="text-align: left; padding: 0.8rem;">Semn Principal</th>
+                            <th style="text-align: left; padding: 0.8rem;">Strategia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 0.8rem; color: var(--accent-orange);">Dunning-Kruger</td>
+                            <td style="padding: 0.8rem;">Certitudine extrema</td>
+                            <td style="padding: 0.8rem;">Lasa-l sa implementeze</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 0.8rem; color: var(--accent-yellow);">Ego</td>
+                            <td style="padding: 0.8rem;">Pozitie publica</td>
+                            <td style="padding: 0.8rem;">Ofera cale eleganta</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 0.8rem; color: var(--accent-blue);">Fundamente</td>
+                            <td style="padding: 0.8rem;">Raspunsuri tangentiale</td>
+                            <td style="padding: 0.8rem;">Coboara la baza</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.8rem; color: var(--accent-purple);">Dogma</td>
+                            <td style="padding: 0.8rem;">Citate si autoritati</td>
+                            <td style="padding: 0.8rem;">Forteaza confruntarea</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- CAND NU MERITA -->
+        <h2 style="margin: 2rem 0 1rem;">⏸️ Cand NU Merita Efortul?</h2>
+
+        <div class="card">
+            <div class="highlight-box orange">
+                <h4>Semne ca e mai bine sa te retragi:</h4>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>Persoana nu vrea sa invete, vrea sa "castige"</li>
+                    <li>Conversatia a devenit personala, nu despre idei</li>
+                    <li>Acelasi argument e respins de 3 ori fara motiv nou</li>
+                    <li>Costul tau emotional depaseste beneficiul potential</li>
+                    <li>Persoana nu are putere de decizie oricum</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box green" style="margin-top: 1rem; text-align: center;">
+                <p style="font-size: 1.1rem;">
+                    Uneori, <strong>cea mai inteleapta strategie e sa lasi realitatea sa predea lectia</strong>.
+                </p>
+                <p class="text-muted" style="margin-top: 0.5rem;">Asteapta. Esecul va convinge mai bine decat tu.</p>
+            </div>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.2rem;">
+                "Nu poti trezi pe cineva care se preface ca doarme."
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem;">— Proverb</p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

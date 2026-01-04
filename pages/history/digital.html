@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prostia Digitala | Era Informatiei (Dezinformarii)</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>📱 Prostia Digitala</h1>
+            <p class="subtitle">Noi forme de irationalitate in era informatiei</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; text-align: center;">
+                <strong>Internetul promitea democratizarea cunoasterii.</strong><br>
+                A livrat si democratizarea prostiei.<br>
+                <span style="color: var(--accent-pink);">Acum oricine poate raspandi orice, instant, global.</span>
+            </p>
+        </div>
+
+        <!-- TIMELINE INTERACTIV -->
+        <h2 style="margin: 2rem 0 1rem;">📅 Timeline: Prostia Digitala</h2>
+
+        <div class="card">
+            <p style="margin-bottom: 1rem;">Click pe fiecare eveniment pentru detalii:</p>
+
+            <div class="mechanism-list" id="digital-timeline">
+                <div class="mechanism-item" style="cursor: pointer;" onclick="showTimelineEvent(1)">
+                    <div class="mechanism-number" style="background: var(--accent-blue);">1998</div>
+                    <div class="mechanism-content">
+                        <h4>Wakefield si Mitul Anti-Vaccin</h4>
+                        <p class="text-muted">Studiul fraudulos care a pornit totul</p>
+                    </div>
+                </div>
+                <div class="mechanism-item" style="cursor: pointer;" onclick="showTimelineEvent(2)">
+                    <div class="mechanism-number" style="background: var(--accent-purple);">2004</div>
+                    <div class="mechanism-content">
+                        <h4>Facebook - Inceputul Echo Chambers</h4>
+                        <p class="text-muted">Social media ca amplificator de bias</p>
+                    </div>
+                </div>
+                <div class="mechanism-item" style="cursor: pointer;" onclick="showTimelineEvent(3)">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">2015</div>
+                    <div class="mechanism-content">
+                        <h4>Flat Earth Revival</h4>
+                        <p class="text-muted">YouTube resusciteaza o prostie medievala</p>
+                    </div>
+                </div>
+                <div class="mechanism-item" style="cursor: pointer;" onclick="showTimelineEvent(4)">
+                    <div class="mechanism-number" style="background: var(--accent-pink);">2017</div>
+                    <div class="mechanism-content">
+                        <h4>QAnon</h4>
+                        <p class="text-muted">Cea mai mare teorie conspiratiei din era digitala</p>
+                    </div>
+                </div>
+                <div class="mechanism-item" style="cursor: pointer;" onclick="showTimelineEvent(5)">
+                    <div class="mechanism-number" style="background: var(--accent-green);">2021</div>
+                    <div class="mechanism-content">
+                        <h4>NFTs si Crypto Mania</h4>
+                        <p class="text-muted">Tulipmania 2.0</p>
+                    </div>
+                </div>
+                <div class="mechanism-item" style="cursor: pointer;" onclick="showTimelineEvent(6)">
+                    <div class="mechanism-number" style="background: var(--accent-secondary);">2023</div>
+                    <div class="mechanism-content">
+                        <h4>AI Hype</h4>
+                        <p class="text-muted">Supraevaluare si temeri nerealiste</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="timeline-detail" class="quiz-result" style="margin-top: 1rem;"></div>
+        </div>
+
+        <!-- ANTI-VAXX -->
+        <h2 style="margin: 2rem 0 1rem;">💉 Anti-Vaxx Movement</h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));">!</div>
+                <div>
+                    <div class="card-title">De la un studiu fraudulos la o pandemie de dezinformare</div>
+                    <div class="card-subtitle">Andrew Wakefield, 1998</div>
+                </div>
+            </div>
+
+            <div class="timeline" style="margin-top: 1.5rem;">
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-primary);">1998: Studiul</h4>
+                    <p>Wakefield publica in Lancet: vaccinul MMR cauzeaza autism. 12 copii in studiu.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-blue);">2000s: Raspandirea</h4>
+                    <p>Media preia. Celebritati amplifica (Jenny McCarthy). Parintii se sperie.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-orange);">2010: Retragerea</h4>
+                    <p>Studiul e retras. Wakefield pierde licenta. Frauda dovedita.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-pink);">2020s: Persistenta</h4>
+                    <p>Miscarea continua. COVID a amplificat-o. Milioane cred in continuare.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box orange" style="margin-top: 1.5rem;">
+                <h4>De ce persista dupa debunking?</h4>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li><strong>Backfire effect:</strong> Corectia intareste credinta la unii</li>
+                    <li><strong>Identitate:</strong> A deveni anti-vaxx = comunitate, identitate</li>
+                    <li><strong>Neincredere:</strong> "Big Pharma minte" e mai plauzibil pentru multi</li>
+                    <li><strong>Echo chambers:</strong> Algoritmii continua sa serveasca dezinformare</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FLAT EARTH -->
+        <h2 style="margin: 2rem 0 1rem;">🌍 Flat Earth Revival</h2>
+
+        <div class="card">
+            <div class="highlight-box purple">
+                <h4>Cum a reinviat o idee din Evul Mediu?</h4>
+                <p style="margin-top: 0.5rem;">
+                    In 2015, aproape nimeni nu credea ca Pamantul e plat.
+                    In 2019, 16% din americani nu erau "siguri" ca e rotund.
+                </p>
+            </div>
+
+            <div class="mechanism-list" style="margin-top: 1.5rem;">
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-pink);">YT</div>
+                    <div class="mechanism-content">
+                        <h4>Algoritmul YouTube</h4>
+                        <p>Recomanda continut "interesant". Conspiratiile = engagement ridicat.</p>
+                        <p class="text-muted">Un video → rabbit hole → "cercetare" de ore.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-blue);">🎭</div>
+                    <div class="mechanism-content">
+                        <h4>Identitate si Comunitate</h4>
+                        <p>A fi flat earther = a fi "trezit", special, parte dintr-o elita care "stie".</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">🔍</div>
+                    <div class="mechanism-content">
+                        <h4>Pseudo-Scepticism</h4>
+                        <p>"Fa-ti propriile cercetari!" = Refuza expertii, crede YouTube.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 1.5rem; text-align: center;">
+                <p style="font-size: 1.1rem;">
+                    <strong>Ironia:</strong> Folosesc GPS (bazat pe sateliti) pentru a merge la conferinte Flat Earth.
+                </p>
+            </div>
+        </div>
+
+        <!-- QANON -->
+        <h2 style="margin: 2rem 0 1rem;">🐇 QAnon</h2>
+
+        <div class="card">
+            <div class="highlight-box pink">
+                <h4>Cea mai complexa teorie conspiratiei din istorie</h4>
+                <p style="margin-top: 0.5rem;">
+                    O "elita globala" de pedofili satanisti controleaza lumea.
+                    Trump era "salvator" secret. "Q" era informator din interior.
+                </p>
+            </div>
+
+            <div class="grid-2" style="margin-top: 1.5rem;">
+                <div class="highlight-box">
+                    <h4>De ce a functionat:</h4>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li><strong>Gamificare:</strong> "Decodeaza" indiciile lui Q</li>
+                        <li><strong>Comunitate:</strong> "Where We Go One, We Go All"</li>
+                        <li><strong>Mesia:</strong> Un salvator vine sa ne scape</li>
+                        <li><strong>Pattern-matching:</strong> Totul "confirma" teoria</li>
+                    </ul>
+                </div>
+                <div class="highlight-box orange">
+                    <h4>Consecinte reale:</h4>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>Familii rupte</li>
+                        <li>Violenta (6 ianuarie 2021)</li>
+                        <li>Radicalizare politica</li>
+                        <li>Erodarea increderii in institutii</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box purple" style="margin-top: 1.5rem;">
+                <h4>Mecanisme psihologice:</h4>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li><strong>Apophenia:</strong> Gasesti pattern-uri in random</li>
+                    <li><strong>Proportionality bias:</strong> Evenimente mari = cauze mari (nu aleatorii)</li>
+                    <li><strong>Tribalism:</strong> "Noi" stim adevarul, "ei" sunt oii</li>
+                    <li><strong>Sunk cost:</strong> Am investit prea mult ca sa renunt</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CRYPTO MANIA -->
+        <h2 style="margin: 2rem 0 1rem;">🪙 Crypto Mania</h2>
+
+        <div class="card">
+            <div class="highlight-box">
+                <h4>Tulipmania cu Blockchain</h4>
+                <p style="margin-top: 0.5rem;">
+                    Tehnologia blockchain ARE valoare. Dar asta nu inseamna ca orice "coin" e o investitie.
+                </p>
+            </div>
+
+            <div class="mechanism-list" style="margin-top: 1.5rem;">
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">🐕</div>
+                    <div class="mechanism-content">
+                        <h4>Dogecoin / Shiba Inu</h4>
+                        <p>Coins create ca gluma, evaluate la miliarde. "Ironic" investing.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-pink);">🖼️</div>
+                    <div class="mechanism-content">
+                        <h4>NFT Mania (2021)</h4>
+                        <p>"JPEG-uri" vandute cu milioane. Celebrul "Bored Ape" = $300k. Acum? $30k.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-purple);">💥</div>
+                    <div class="mechanism-content">
+                        <h4>FTX / Terra Luna</h4>
+                        <p>Colapsuri de zeci de miliarde. "Genii" financiare = frauda.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box orange" style="margin-top: 1.5rem;">
+                <h4>Acelasi pattern:</h4>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>FOMO - Toti fac bani, doar eu nu</li>
+                    <li>"De data asta e diferit" (nu e)</li>
+                    <li>Greater Fool Theory</li>
+                    <li>Celebrite care promoveaza (platite)</li>
+                    <li>Comunitate = echo chamber</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- AI HYPE -->
+        <h2 style="margin: 2rem 0 1rem;">🤖 AI Hype Cycle</h2>
+
+        <div class="card">
+            <div class="grid-2">
+                <div class="highlight-box orange">
+                    <h4>Supraevaluare:</h4>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>"AI va inlocui toti programatorii"</li>
+                        <li>"AGI in 2-3 ani"</li>
+                        <li>Orice companie + AI = valoare x10</li>
+                    </ul>
+                </div>
+                <div class="highlight-box purple">
+                    <h4>Temeri nerealiste:</h4>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>"AI va distruge omenirea"</li>
+                        <li>"Skynet e inevitabil"</li>
+                        <li>Confuzie intre ChatGPT si AGI</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 1.5rem;">
+                <h4>Gartner Hype Cycle:</h4>
+                <ol style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                    <li><strong>Innovation Trigger:</strong> Tehnologie noua apare</li>
+                    <li><strong>Peak of Inflated Expectations:</strong> "Va schimba totul!"</li>
+                    <li><strong>Trough of Disillusionment:</strong> "Nu a schimbat nimic..."</li>
+                    <li><strong>Slope of Enlightenment:</strong> Utilizari realiste apar</li>
+                    <li><strong>Plateau of Productivity:</strong> Adoptie matura</li>
+                </ol>
+            </div>
+
+            <div class="highlight-box green" style="margin-top: 1rem; text-align: center;">
+                <p style="font-size: 1.1rem;">
+                    <strong>Realitatea:</strong> AI e transformator, dar nu magic.<br>
+                    Nici salvator, nici apocalipsa. Un instrument puternic.
+                </p>
+            </div>
+        </div>
+
+        <!-- DE CE E MAI RAU ACUM -->
+        <h2 style="margin: 2rem 0 1rem;">⚡ De Ce Era Digitala E Diferita?</h2>
+
+        <div class="card">
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number">1</div>
+                    <div class="mechanism-content">
+                        <h4>Viteza</h4>
+                        <p>Dezinformarea circula in minute, nu zile. Corectia nu mai prinde din urma.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">2</div>
+                    <div class="mechanism-content">
+                        <h4>Scala</h4>
+                        <p>Un singur post poate ajunge la milioane. Oricine poate fi "influencer".</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">3</div>
+                    <div class="mechanism-content">
+                        <h4>Personalizare</h4>
+                        <p>Algoritmii creeaza bule personalizate. Fiecare traieste in propria realitate.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">4</div>
+                    <div class="mechanism-content">
+                        <h4>Incentive perverse</h4>
+                        <p>Engagement > Adevar. Indignarea = click-uri = bani.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">5</div>
+                    <div class="mechanism-content">
+                        <h4>Lipsa gatekeeperilor</h4>
+                        <p>Jurnalistii/editorii nu mai filtreaza. Oricine publica orice.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTE FINAL -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.2rem;">
+                "O minciuna poate inconjura lumea<br>
+                inainte ca adevarul sa-si puna pantofii."
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem;">— Mark Twain (probabil apocrif, ironic)</p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        function showTimelineEvent(id) {
+            const events = {
+                1: {
+                    title: "Wakefield si Mitul Anti-Vaccin (1998)",
+                    content: `<p>Andrew Wakefield a publicat un studiu in Lancet sugerand o legatura intre vaccinul MMR si autism.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Realitatea:</strong> Studiul era fraudulos. Wakefield avea brevete pentru un vaccin alternativ. A fost retras si a pierdut licenta.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Impactul:</strong> Zeci de studii cu milioane de participanti au infirmat legatura. Dar miscarea anti-vaxx continua, amplificata de social media.</p>`,
+                    color: "blue"
+                },
+                2: {
+                    title: "Facebook si Echo Chambers (2004+)",
+                    content: `<p>Social media a creat "bule" unde vezi doar continut care confirma ce crezi deja.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Mecanismul:</strong> Algoritmii maximizeaza engagement. Engagement = emotie. Emotie = polarizare.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Rezultat:</strong> Doua persoane pot trai in "realitati" complet diferite, fiecare convinsa ca a ei e singura valida.</p>`,
+                    color: "purple"
+                },
+                3: {
+                    title: "Flat Earth Revival (2015+)",
+                    content: `<p>O idee abandonata de secole a revenit prin YouTube.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Cum:</strong> Algoritmul recomanda continut "interesant". Conspiratiile genereaza engagement. Rabbit holes de ore.</p>
+                    <p style="margin-top: 0.5rem;"><strong>De ce conteaza:</strong> Nu e doar despre pamant plat. E despre cum se formeaza si raspandesc credintele irationale in era digitala.</p>`,
+                    color: "orange"
+                },
+                4: {
+                    title: "QAnon (2017+)",
+                    content: `<p>Cea mai complexa si periculoasa teorie conspiratiei din era digitala.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Structura:</strong> Gamificare (decodeaza indicii), comunitate (WWG1WGA), mesianisme (Trump salvatorul).</p>
+                    <p style="margin-top: 0.5rem;"><strong>Impactul:</strong> Familii rupte, violenta politica (6 ianuarie), erodarea increderii in democratie.</p>`,
+                    color: "pink"
+                },
+                5: {
+                    title: "Crypto/NFT Mania (2021)",
+                    content: `<p>Tulipmania pentru era digitala.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Pattern-ul:</strong> Tehnologie reala (blockchain) → supraevaluare → FOMO → bula → colaps.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Victime:</strong> Multi au pierdut economiile. "Influenceri" platiti au promovat scam-uri. Reglementarea a venit tarziu.</p>`,
+                    color: "green"
+                },
+                6: {
+                    title: "AI Hype (2023+)",
+                    content: `<p>Supraevaluare si temeri, ambele deconectate de realitate.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Supraevaluare:</strong> "AGI in 2 ani", "va inlocui toti programatorii".</p>
+                    <p style="margin-top: 0.5rem;"><strong>Temeri exagerate:</strong> Skynet, sfarsitul omenirii imediat.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Realitate:</strong> Instrument puternic cu limitari clare. Nici salvator, nici apocalipsa.</p>`,
+                    color: "teal"
+                }
+            };
+
+            const e = events[id];
+            document.getElementById('timeline-detail').innerHTML = `
+                <div class="highlight-box ${e.color}" style="margin-top: 1rem;">
+                    <h4>${e.title}</h4>
+                    ${e.content}
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factori Emotionali | Amygdala Hijack</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>💔 Factori Emotionali</h1>
+            <p class="subtitle">Cand emotia opreste logica</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; text-align: center;">
+                <strong>Emotiile nu sunt inamicul rationalitatii.</strong><br>
+                Dar cand devin prea intense, preiau controlul.<br>
+                <span style="color: var(--accent-pink);">Si atunci, chiar si cei mai inteligenti devin "prosti".</span>
+            </p>
+        </div>
+
+        <!-- SIMULATOR -->
+        <h2 style="margin: 2rem 0 1rem;">🌡️ Simulator: Termometrul Emotional</h2>
+
+        <div class="card">
+            <p style="margin-bottom: 1rem;">Vezi cum creste "temperatura" emotionala si scade rationalitatea:</p>
+
+            <div class="simulator-container" id="emotional-thermometer">
+                <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 200px;">
+                        <label><strong>Intensitate emotionala:</strong></label>
+                        <input type="range" id="emotion-intensity" min="0" max="100" value="30" style="width: 100%;" oninput="updateEmotionalThermometer()">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary);">
+                            <span>Calm</span>
+                            <span>Moderat</span>
+                            <span>Intens</span>
+                            <span>Hijack</span>
+                        </div>
+                    </div>
+
+                    <div style="width: 60px; height: 200px; background: linear-gradient(to top, var(--accent-green), var(--accent-yellow), var(--accent-orange), var(--accent-pink)); border-radius: 30px; position: relative; border: 3px solid var(--border-medium);">
+                        <div id="thermometer-level" style="position: absolute; bottom: 0; left: 0; right: 0; background: var(--bg-card); border-radius: 0 0 27px 27px; height: 70%; transition: height 0.3s;"></div>
+                        <div id="thermometer-marker" style="position: absolute; left: -20px; width: 100px; text-align: center; font-weight: bold; transition: bottom 0.3s;" >30%</div>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-top: 1.5rem;">
+                    <div class="highlight-box" id="rational-capacity">
+                        <h4>Capacitate Rationala</h4>
+                        <div style="font-size: 2rem; margin: 0.5rem 0;" id="rational-score">85%</div>
+                        <p id="rational-status">Gandire clara, decizii ponderate</p>
+                    </div>
+                    <div class="highlight-box" id="emotion-state">
+                        <h4>Stare Emotionala</h4>
+                        <div style="font-size: 2rem; margin: 0.5rem 0;" id="emotion-name">😌 Calm</div>
+                        <p id="emotion-description">Cortexul prefrontal in control</p>
+                    </div>
+                </div>
+
+                <div id="hijack-warning" style="display: none; margin-top: 1rem;" class="highlight-box pink">
+                    <h4>⚠️ AMYGDALA HIJACK</h4>
+                    <p>Sistemul limbic a preluat controlul. Reactii primitive activate. Gandirea rationala suspendata.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AMYGDALA HIJACK -->
+        <h2 style="margin: 2rem 0 1rem;">🧠 Amygdala Hijack</h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-orange));">🔥</div>
+                <div>
+                    <div class="card-title">Daniel Goleman</div>
+                    <div class="card-subtitle">Termen introdus in "Emotional Intelligence" (1995)</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;">
+                <strong>Amygdala</strong> e centrul emotiilor si al raspunsului fight-or-flight.
+                Cand detecteaza o amenintare (reala sau perceputa), poate "deturna" creierul.
+            </p>
+
+            <div class="timeline" style="margin-top: 1.5rem;">
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-primary);">Pasul 1: Trigger</h4>
+                    <p>Ceva activeaza un raspuns emotional intens (insulta, frica, indignare).</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-orange);">Pasul 2: Bypass</h4>
+                    <p>Amygdala reactioneaza INAINTE ca informatia sa ajunga la cortexul prefrontal.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-pink);">Pasul 3: Hijack</h4>
+                    <p>Gandirea rationala e suspendata. Reactii primitive: atac, fuga, inghetare.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-blue);">Pasul 4: Regret</h4>
+                    <p>Dupa 20-30 minute, cortexul revine. "De ce am facut/zis asta?"</p>
+                </div>
+            </div>
+
+            <div class="highlight-box orange" style="margin-top: 1.5rem; text-align: center;">
+                <p style="font-size: 1.1rem;">
+                    <strong>Durata unui hijack:</strong> 20-30 minute<br>
+                    In acest timp, esti literalmente incapabil de gandire rationala.
+                </p>
+            </div>
+        </div>
+
+        <!-- EMOTII SPECIFICE -->
+        <h2 style="margin: 2rem 0 1rem;">🎭 Emotii Care Ne Prostesc</h2>
+
+        <div class="card">
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-pink);">😡</div>
+                    <div class="mechanism-content">
+                        <h4>Furia</h4>
+                        <p>Activeaza dorinta de a pedepsi, chiar in detrimentul propriu.</p>
+                        <p class="text-muted">Studii: Oamenii furiosi accepta oferte mai proaste doar ca sa pedepseasca.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-purple);">😨</div>
+                    <div class="mechanism-content">
+                        <h4>Frica</h4>
+                        <p>Supraestimeaza riscurile, evitare excesiva, decizii defensive.</p>
+                        <p class="text-muted">Studii: Oamenii speriati vad pericole unde nu exista.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">😤</div>
+                    <div class="mechanism-content">
+                        <h4>Indignarea Morala</h4>
+                        <p>Cea mai periculoasa: te simti INDREPTATIT sa fii irational.</p>
+                        <p class="text-muted">"Am dreptate, deci orice fac e justificat."</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-pink);">💕</div>
+                    <div class="mechanism-content">
+                        <h4>Indragostirea</h4>
+                        <p>"Love is blind" - literalmente. Dezactiveaza zone critice ale creierului.</p>
+                        <p class="text-muted">Studii fMRI: Indragostirea reduce activitatea in cortexul prefrontal.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-blue);">😢</div>
+                    <div class="mechanism-content">
+                        <h4>Tristetea/Depresia</h4>
+                        <p>Ceata cognitiva, incetinire, dificultate in luarea deciziilor.</p>
+                        <p class="text-muted">Nu e prostie - e temporar disabilitate cognitiva.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INDIGNAREA MORALA -->
+        <h2 style="margin: 2rem 0 1rem;">🔥 Focus: Indignarea Morala</h2>
+
+        <div class="card">
+            <div class="highlight-box orange">
+                <h4>De ce e cea mai periculoasa?</h4>
+                <p style="margin-top: 0.5rem;">
+                    Celelalte emotii le recunoastem ca problematice. Stim ca furia ne face sa gresim.
+                </p>
+                <p style="margin-top: 0.5rem;">
+                    Dar indignarea morala vine cu <strong>certitudine de dreptate</strong>:
+                </p>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>"Eu am dreptate, ei sunt rai"</li>
+                    <li>"Orice fac e justificat de cauza"</li>
+                    <li>"Cine nu e de acord e complice"</li>
+                </ul>
+            </div>
+
+            <div class="grid-2" style="margin-top: 1.5rem;">
+                <div class="highlight-box">
+                    <h4>Online, e amplificata:</h4>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>Algoritmii promoveaza continut care indigneaza</li>
+                        <li>Echo chambers valideaza indignarea</li>
+                        <li>Anonimatul reduce inhibitiile</li>
+                        <li>Viralitatea recompenseaza extremismul</li>
+                    </ul>
+                </div>
+                <div class="highlight-box purple">
+                    <h4>Consecinte:</h4>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>Polarizare extrema</li>
+                        <li>Incapacitate de dialog</li>
+                        <li>Dehumanizarea oponentilor</li>
+                        <li>Actiuni regretate ulterior</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOVE IS BLIND -->
+        <h2 style="margin: 2rem 0 1rem;">💘 Focus: "Love is Blind"</h2>
+
+        <div class="card">
+            <p style="margin-bottom: 1rem;">
+                Nu e doar o expresie - e un fenomen neurologic documentat.
+            </p>
+
+            <div class="highlight-box pink">
+                <h4>Ce arata studiile fMRI:</h4>
+                <p style="margin-top: 0.5rem;">Cand oamenii indragostiti vad poza partenerului:</p>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li><strong>Se activeaza:</strong> Centrii recompensei (dopamina), ca la droguri</li>
+                    <li><strong>Se DEzactiveaza:</strong> Cortexul prefrontal (judecata) si amigdala (frica, suspiciune)</li>
+                </ul>
+            </div>
+
+            <div class="mechanism-list" style="margin-top: 1.5rem;">
+                <div class="mechanism-item">
+                    <div class="mechanism-number">1</div>
+                    <div class="mechanism-content">
+                        <h4>Idealizare</h4>
+                        <p>Partenerul pare perfect. Defectele sunt invizibile sau "adorabile".</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">2</div>
+                    <div class="mechanism-content">
+                        <h4>Ignorarea red flags</h4>
+                        <p>Comportamente problematice sunt scuzate sau rationalizate.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">3</div>
+                    <div class="mechanism-content">
+                        <h4>Decizii pripite</h4>
+                        <p>Mutari, casatorii, copii - decise in stare de "ebrietate emotionala".</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 1.5rem; text-align: center;">
+                <p style="font-size: 1.1rem;">
+                    <strong>De ce evolutiv?</strong> Pentru a asigura reproducerea.<br>
+                    Creierul temporar ne "prosteste" ca sa formam cupluri.
+                </p>
+            </div>
+        </div>
+
+        <!-- TEHNICI DE REGLARE -->
+        <h2 style="margin: 2rem 0 1rem;">🧘 Tehnici de Reglare Emotionala</h2>
+
+        <div class="card">
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-green);">1</div>
+                    <div class="mechanism-content">
+                        <h4>STOP - Name It to Tame It</h4>
+                        <p>Numeste emotia. "Sunt furios." Simpla etichetare reduce intensitatea.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-green);">2</div>
+                    <div class="mechanism-content">
+                        <h4>Regula celor 6 secunde</h4>
+                        <p>Asteapta 6 secunde inainte de a reactiona. Permite cortexului sa se activeze.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-green);">3</div>
+                    <div class="mechanism-content">
+                        <h4>Tehnica 5-4-3-2-1</h4>
+                        <p>5 lucruri vazute, 4 auzite, 3 atinse, 2 mirosite, 1 gustat. Ancoreaza in prezent.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-green);">4</div>
+                    <div class="mechanism-content">
+                        <h4>Distantare temporala</h4>
+                        <p>"Cum voi vedea asta peste o saptamana? Un an? Zece ani?"</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-green);">5</div>
+                    <div class="mechanism-content">
+                        <h4>Regula de 24 ore</h4>
+                        <p>Nu trimite email-ul. Nu posta. Nu lua decizia. Asteapta pana maine.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 1.5rem; text-align: center;">
+                <p style="font-size: 1.1rem;">
+                    <strong>Mantra:</strong> "Pot simti asta fara sa actionez pe baza lui."<br>
+                    Emotia nu e o comanda. E informatie.
+                </p>
+            </div>
+        </div>
+
+        <!-- CAND E OK -->
+        <h2 style="margin: 2rem 0 1rem;">✅ Cand Emotiile AJUTA</h2>
+
+        <div class="card">
+            <p style="margin-bottom: 1rem;">
+                Nu toate emotiile sunt inamice. In dozele potrivite:
+            </p>
+
+            <div class="grid-2">
+                <div class="highlight-box green">
+                    <h4>Emotii utile:</h4>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li><strong>Frica moderata:</strong> Te protejeaza de riscuri reale</li>
+                        <li><strong>Furia controlata:</strong> Te motiveaza sa schimbi situatii injuste</li>
+                        <li><strong>Tristetea:</strong> Semnaleaza pierderi, invita la reflectie</li>
+                        <li><strong>Entuziasmul:</strong> Alimenteaza creativitatea si motivatia</li>
+                    </ul>
+                </div>
+                <div class="highlight-box blue">
+                    <h4>Cheia e echilibrul:</h4>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>Emotii prea slabe = decizii reci, dezumanizate</li>
+                        <li>Emotii prea intense = decizii impulsive, regretate</li>
+                        <li>Emotii moderate = informeaza dar nu controleaza</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTE FINAL -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.2rem;">
+                "Intre stimul si raspuns exista un spatiu.<br>
+                In acel spatiu sta puterea noastra de a alege."
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem;">— Viktor Frankl</p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        function updateEmotionalThermometer() {
+            const intensity = parseInt(document.getElementById('emotion-intensity').value);
+
+            // Update thermometer visual
+            document.getElementById('thermometer-level').style.height = (100 - intensity) + '%';
+            document.getElementById('thermometer-marker').style.bottom = intensity + '%';
+            document.getElementById('thermometer-marker').textContent = intensity + '%';
+
+            // Calculate rational capacity (inverse relationship)
+            let rationalCapacity;
+            if (intensity < 30) {
+                rationalCapacity = 95 - (intensity * 0.5);
+            } else if (intensity < 60) {
+                rationalCapacity = 80 - ((intensity - 30) * 1);
+            } else if (intensity < 80) {
+                rationalCapacity = 50 - ((intensity - 60) * 1.5);
+            } else {
+                rationalCapacity = 20 - ((intensity - 80) * 1);
+            }
+            rationalCapacity = Math.max(0, Math.round(rationalCapacity));
+
+            // Update displays
+            document.getElementById('rational-score').textContent = rationalCapacity + '%';
+
+            const emotionName = document.getElementById('emotion-name');
+            const emotionDesc = document.getElementById('emotion-description');
+            const rationalStatus = document.getElementById('rational-status');
+            const rationalBox = document.getElementById('rational-capacity');
+            const emotionBox = document.getElementById('emotion-state');
+            const hijackWarning = document.getElementById('hijack-warning');
+
+            if (intensity < 20) {
+                emotionName.textContent = '😌 Calm';
+                emotionDesc.textContent = 'Cortexul prefrontal in control total';
+                rationalStatus.textContent = 'Gandire clara, analitica';
+                rationalBox.className = 'highlight-box green';
+                emotionBox.className = 'highlight-box green';
+                hijackWarning.style.display = 'none';
+            } else if (intensity < 40) {
+                emotionName.textContent = '🙂 Activat';
+                emotionDesc.textContent = 'Emotie prezenta dar gestionabila';
+                rationalStatus.textContent = 'Gandire buna, usor colorata emotional';
+                rationalBox.className = 'highlight-box green';
+                emotionBox.className = 'highlight-box blue';
+                hijackWarning.style.display = 'none';
+            } else if (intensity < 60) {
+                emotionName.textContent = '😠 Agitat';
+                emotionDesc.textContent = 'Amigdala se activeaza, competitie pentru control';
+                rationalStatus.textContent = 'Gandire afectata, bias-uri amplificate';
+                rationalBox.className = 'highlight-box blue';
+                emotionBox.className = 'highlight-box orange';
+                hijackWarning.style.display = 'none';
+            } else if (intensity < 80) {
+                emotionName.textContent = '😡 Intens';
+                emotionDesc.textContent = 'Amigdala domina, cortex in defensiva';
+                rationalStatus.textContent = 'Gandire tunelata, reactii impulsive';
+                rationalBox.className = 'highlight-box orange';
+                emotionBox.className = 'highlight-box orange';
+                hijackWarning.style.display = 'none';
+            } else {
+                emotionName.textContent = '🔥 HIJACK';
+                emotionDesc.textContent = 'Amigdala a preluat total controlul';
+                rationalStatus.textContent = 'Gandire rationala suspendata';
+                rationalBox.className = 'highlight-box pink';
+                emotionBox.className = 'highlight-box pink';
+                hijackWarning.style.display = 'block';
+            }
+        }
+
+        // Initialize
+        updateEmotionalThermometer();
+    </script>
+</body>
+</html>

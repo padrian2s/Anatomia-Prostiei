@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factori Fiziologici | Cand Corpul Saboteaza Mintea</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>🧬 Factori Fiziologici</h1>
+            <p class="subtitle">Cand corpul saboteaza mintea</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; text-align: center;">
+                <strong>Creierul nu functioneaza in vid.</strong><br>
+                E dependent de somn, glucoza, hidratare, hormoni.<br>
+                <span style="color: var(--accent-primary);">Cand corpul sufera, gandirea se degradeaza.</span>
+            </p>
+        </div>
+
+        <!-- SIMULATOR -->
+        <h2 style="margin: 2rem 0 1rem;">⏰ Simulator: Ceasul Cognitiv</h2>
+
+        <div class="card">
+            <p style="margin-bottom: 1rem;">Ajusteaza parametrii si vezi cum se degradeaza performanta cognitiva:</p>
+
+            <div class="simulator-container" id="cognitive-clock">
+                <div class="grid-2">
+                    <div>
+                        <label><strong>Ore de somn (ultima noapte):</strong></label>
+                        <input type="range" id="sleep-hours" min="0" max="8" value="7" style="width: 100%;" oninput="updateCognitiveClock()">
+                        <span id="sleep-display">7 ore</span>
+                    </div>
+                    <div>
+                        <label><strong>Nivel de stres (1-10):</strong></label>
+                        <input type="range" id="stress-level" min="1" max="10" value="3" style="width: 100%;" oninput="updateCognitiveClock()">
+                        <span id="stress-display">3/10</span>
+                    </div>
+                    <div>
+                        <label><strong>Ore de la ultima masa:</strong></label>
+                        <input type="range" id="hunger-hours" min="0" max="12" value="2" style="width: 100%;" oninput="updateCognitiveClock()">
+                        <span id="hunger-display">2 ore</span>
+                    </div>
+                    <div>
+                        <label><strong>Pahare de apa azi:</strong></label>
+                        <input type="range" id="water-glasses" min="0" max="8" value="6" style="width: 100%;" oninput="updateCognitiveClock()">
+                        <span id="water-display">6 pahare</span>
+                    </div>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 1.5rem; text-align: center;" id="cognitive-result">
+                    <h3>Performanta Cognitiva Estimata</h3>
+                    <div style="font-size: 3rem; color: var(--accent-green); margin: 1rem 0;" id="cognitive-score">92%</div>
+                    <p id="cognitive-status">Stare buna - gandire clara</p>
+                </div>
+
+                <div id="cognitive-effects" style="margin-top: 1rem;"></div>
+            </div>
+        </div>
+
+        <!-- SOMNUL -->
+        <h2 style="margin: 2rem 0 1rem;">😴 Privarea de Somn</h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));">💤</div>
+                <div>
+                    <div class="card-title">Cel mai subestimat factor</div>
+                    <div class="card-subtitle">Matthew Walker - "Why We Sleep"</div>
+                </div>
+            </div>
+
+            <div class="timeline" style="margin-top: 1.5rem;">
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-primary);">17-19 ore fara somn</h4>
+                    <p>Echivalent cu 0.05% alcool in sange. Legal sa conduci, dar gandirea e afectata.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-orange);">24 ore fara somn</h4>
+                    <p>Echivalent cu 0.10% alcool - peste limita legala! IQ functional scade cu 10-15 puncte.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 style="color: var(--accent-pink);">36+ ore fara somn</h4>
+                    <p>Halucinatii, paranoia, incapacitate de a forma memorii noi.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box orange" style="margin-top: 1.5rem;">
+                <h4>Ce se degradeaza primul?</h4>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li><strong>Atentia sustinuta</strong> - Nu poti ramane concentrat</li>
+                    <li><strong>Memoria de lucru</strong> - Uiti ce tocmai ai gandit</li>
+                    <li><strong>Controlul impulsurilor</strong> - Reactii emotionale exagerate</li>
+                    <li><strong>Creativitatea</strong> - Solutii rigide, lipsa de flexibilitate</li>
+                    <li><strong>Judecata riscului</strong> - Subestimezi pericolele</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 1rem; text-align: center;">
+                <p style="font-size: 1.1rem;">
+                    <strong>Ironia:</strong> Privarea de somn te face prea obosit<br>
+                    ca sa realizezi cat de obosit esti.
+                </p>
+            </div>
+        </div>
+
+        <!-- STRESUL -->
+        <h2 style="margin: 2rem 0 1rem;">😰 Stresul Cronic</h2>
+
+        <div class="card">
+            <div class="grid-2">
+                <div class="highlight-box green">
+                    <h4 style="color: var(--accent-green);">Stres Acut (bun)</h4>
+                    <p>Scurt, intens, cu final clar.</p>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>Creste atentia</li>
+                        <li>Imbunatateste memoria</li>
+                        <li>Activeaza resurse</li>
+                    </ul>
+                    <p class="text-muted" style="margin-top: 0.5rem;">Exemplu: Examen, prezentare</p>
+                </div>
+                <div class="highlight-box orange">
+                    <h4 style="color: var(--accent-orange);">Stres Cronic (rau)</h4>
+                    <p>Prelungit, fara final vizibil.</p>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>Distruge neuronii din hipocamp</li>
+                        <li>Afecteaza memoria</li>
+                        <li>Reduce cortexul prefrontal</li>
+                    </ul>
+                    <p class="text-muted" style="margin-top: 0.5rem;">Exemplu: Job toxic, datorii</p>
+                </div>
+            </div>
+
+            <div class="mechanism-list" style="margin-top: 1.5rem;">
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">C</div>
+                    <div class="mechanism-content">
+                        <h4>Cortizolul - Hormonul Stresului</h4>
+                        <p>Niveluri cronice ridicate:</p>
+                        <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                            <li>Micsoreaza hipocampul (memoria)</li>
+                            <li>Hipertrofiaza amigdala (frica, reactii emotionale)</li>
+                            <li>Subtiaza cortexul prefrontal (decizie, planificare)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box purple" style="margin-top: 1.5rem; text-align: center;">
+                <p style="font-size: 1.1rem;">
+                    <strong>Consecinta:</strong> Sub stres cronic,<br>
+                    creierul trece in "mod supravietuire" - reactii primitive, nu gandire sofisticata.
+                </p>
+            </div>
+        </div>
+
+        <!-- GLUCOZA -->
+        <h2 style="margin: 2rem 0 1rem;">🍎 Glucoza si Creierul</h2>
+
+        <div class="card">
+            <p style="margin-bottom: 1rem;">
+                Creierul consuma ~20% din energia corpului, desi reprezinta doar 2% din masa.
+            </p>
+
+            <div class="highlight-box">
+                <h4>Ego Depletion - Roy Baumeister</h4>
+                <p style="margin-top: 0.5rem;">
+                    Vointa si autocontrolul consuma glucoza. Cand rezervele scad:
+                </p>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>Decizii mai impulsive</li>
+                    <li>Mai putin autocontrol</li>
+                    <li>Alegeri mai usoare (status quo)</li>
+                    <li>Iritabilitate crescuta</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box blue" style="margin-top: 1rem;">
+                <h4>Studiul judecatorilor israelieni</h4>
+                <p style="margin-top: 0.5rem;">
+                    Sansa de eliberare conditionata:
+                </p>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li><strong>Dupa masa:</strong> ~65% aprobare</li>
+                    <li><strong>Inainte de masa:</strong> ~10% aprobare</li>
+                </ul>
+                <p class="text-muted" style="margin-top: 0.5rem;">
+                    Aceeasi judecatori, acelasi tip de cazuri. Diferenta: nivelul de glucoza.
+                </p>
+            </div>
+
+            <div class="highlight-box orange" style="margin-top: 1rem; text-align: center;">
+                <p style="font-size: 1.1rem;">
+                    <strong>Nu lua decizii importante cand esti infometat.</strong><br>
+                    Creierul tau literal nu are combustibil.
+                </p>
+            </div>
+        </div>
+
+        <!-- DESHIDRATAREA -->
+        <h2 style="margin: 2rem 0 1rem;">💧 Deshidratarea</h2>
+
+        <div class="card">
+            <p style="margin-bottom: 1rem;">
+                Creierul e ~75% apa. Chiar si o deshidratare usoara afecteaza cognitia.
+            </p>
+
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number">1%</div>
+                    <div class="mechanism-content">
+                        <h4>Deshidratare 1%</h4>
+                        <p>Sete. Incepi sa simti efecte cognitive usoare.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">2%</div>
+                    <div class="mechanism-content">
+                        <h4>Deshidratare 2%</h4>
+                        <p>Atentie redusa, memorie afectata, oboseala.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">3%</div>
+                    <div class="mechanism-content">
+                        <h4>Deshidratare 3%+</h4>
+                        <p>Confuzie, iritabilitate, performanta severa redusa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box green" style="margin-top: 1.5rem; text-align: center;">
+                <p><strong>Solutia e simpla:</strong> Bea apa regulat, nu astepta setea.</p>
+                <p class="text-muted">Setea apare cand esti deja deshidratat.</p>
+            </div>
+        </div>
+
+        <!-- ALCOOL SI SUBSTANTE -->
+        <h2 style="margin: 2rem 0 1rem;">🍺 Alcool si Substante</h2>
+
+        <div class="card">
+            <div class="highlight-box orange">
+                <h4>Alcoolul dezinhiba cortexul prefrontal</h4>
+                <p style="margin-top: 0.5rem;">
+                    Zona creierului responsabila de:
+                </p>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>Inhibitia impulsurilor</li>
+                    <li>Gandirea pe termen lung</li>
+                    <li>Evaluarea consecintelor</li>
+                    <li>Controlul social</li>
+                </ul>
+                <p style="margin-top: 0.5rem; color: var(--accent-orange);">
+                    De aceea oamenii beti fac si spun lucruri pe care nu le-ar face treji.
+                </p>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 1rem;">
+                <h4>Nu doar alcoolul:</h4>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li><strong>Cannabis:</strong> Afecteaza memoria de lucru si motivatia</li>
+                    <li><strong>Cafeina excesiva:</strong> Anxietate, gandire accelerata dar superficiala</li>
+                    <li><strong>Antihistaminice:</strong> Somnolenta, incetinire cognitiva</li>
+                    <li><strong>Anumite medicamente:</strong> Pot avea efecte cognitive ca efect secundar</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- VARSTA -->
+        <h2 style="margin: 2rem 0 1rem;">👴 Imbatranirea Cognitiva</h2>
+
+        <div class="card">
+            <div class="highlight-box blue">
+                <h4>Ce se intampla natural:</h4>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li><strong>Viteza de procesare</strong> scade gradual dupa 30 ani</li>
+                    <li><strong>Memoria de lucru</strong> se reduce usor</li>
+                    <li><strong>Multitasking</strong> devine mai dificil</li>
+                    <li><strong>Invatarea lucrurilor noi</strong> necesita mai mult efort</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box green" style="margin-top: 1rem;">
+                <h4>Ce ramane sau se imbunatateste:</h4>
+                <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li><strong>Cunostintele acumulate</strong> (inteligenta cristalizata)</li>
+                    <li><strong>Vocabularul</strong> continua sa creasca</li>
+                    <li><strong>Intelepciunea</strong> si judecata complexa</li>
+                    <li><strong>Reglarea emotionala</strong> se imbunatateste</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 1rem; text-align: center;">
+                <p style="font-size: 1.1rem;">
+                    <strong>Important:</strong> Declinul nu e uniform sau inevitabil.<br>
+                    Exercitiul fizic, stimularea mentala si somnul il incetinesc semnificativ.
+                </p>
+            </div>
+        </div>
+
+        <!-- RECOMANDARI -->
+        <h2 style="margin: 2rem 0 1rem;">💡 Recomandari Practice</h2>
+
+        <div class="card">
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number">1</div>
+                    <div class="mechanism-content">
+                        <h4>Nu lua decizii importante cand esti epuizat</h4>
+                        <p>Amana pentru dimineata, dupa somn si masa.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">2</div>
+                    <div class="mechanism-content">
+                        <h4>Programeaza deciziile dificile pentru dimineata</h4>
+                        <p>Vointa si resursele cognitive sunt la maxim.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">3</div>
+                    <div class="mechanism-content">
+                        <h4>Tine un "jurnal de stare"</h4>
+                        <p>Noteaza deciziile si starea fizica. Vezi pattern-uri.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">4</div>
+                    <div class="mechanism-content">
+                        <h4>Cand esti stresat/obosit, foloseste sisteme</h4>
+                        <p>Checklists, reguli prestabilite, nu judecata in timp real.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">5</div>
+                    <div class="mechanism-content">
+                        <h4>Recunoaste limitele</h4>
+                        <p>"Sunt obosit, deci nu pot evalua asta corect acum."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTE FINAL -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.2rem;">
+                "Mens sana in corpore sano."<br>
+                <span style="font-size: 1rem;">Minte sanatoasa in corp sanatos.</span>
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem;">— Juvenal</p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        function updateCognitiveClock() {
+            const sleep = parseInt(document.getElementById('sleep-hours').value);
+            const stress = parseInt(document.getElementById('stress-level').value);
+            const hunger = parseInt(document.getElementById('hunger-hours').value);
+            const water = parseInt(document.getElementById('water-glasses').value);
+
+            document.getElementById('sleep-display').textContent = sleep + ' ore';
+            document.getElementById('stress-display').textContent = stress + '/10';
+            document.getElementById('hunger-display').textContent = hunger + ' ore';
+            document.getElementById('water-display').textContent = water + ' pahare';
+
+            // Calculate cognitive score
+            let score = 100;
+            let effects = [];
+
+            // Sleep impact (optimal 7-8 hours)
+            if (sleep < 4) {
+                score -= 30;
+                effects.push({text: 'Privare severa de somn - risc major de erori', color: 'orange'});
+            } else if (sleep < 6) {
+                score -= 15;
+                effects.push({text: 'Somn insuficient - atentie si memorie afectate', color: 'orange'});
+            } else if (sleep < 7) {
+                score -= 5;
+                effects.push({text: 'Somn sub-optim - performanta usor redusa', color: 'blue'});
+            }
+
+            // Stress impact
+            if (stress > 7) {
+                score -= 20;
+                effects.push({text: 'Stres ridicat - gandire ingustata, reactii emotionale', color: 'orange'});
+            } else if (stress > 5) {
+                score -= 10;
+                effects.push({text: 'Stres moderat - concentrare afectata', color: 'blue'});
+            }
+
+            // Hunger impact
+            if (hunger > 8) {
+                score -= 15;
+                effects.push({text: 'Glucoza scazuta - vointa si autocontrol reduse', color: 'orange'});
+            } else if (hunger > 5) {
+                score -= 8;
+                effects.push({text: 'Timp de la masa - energie mentala in scadere', color: 'blue'});
+            }
+
+            // Hydration impact
+            if (water < 3) {
+                score -= 15;
+                effects.push({text: 'Deshidratare - confuzie, oboseala', color: 'orange'});
+            } else if (water < 5) {
+                score -= 5;
+                effects.push({text: 'Hidratare sub-optima - atentie usor afectata', color: 'blue'});
+            }
+
+            score = Math.max(0, score);
+
+            // Update display
+            const scoreEl = document.getElementById('cognitive-score');
+            const statusEl = document.getElementById('cognitive-status');
+            const resultBox = document.getElementById('cognitive-result');
+
+            scoreEl.textContent = score + '%';
+
+            if (score >= 80) {
+                scoreEl.style.color = 'var(--accent-green)';
+                resultBox.className = 'highlight-box green';
+                statusEl.textContent = 'Stare buna - gandire clara';
+            } else if (score >= 60) {
+                scoreEl.style.color = 'var(--accent-blue)';
+                resultBox.className = 'highlight-box blue';
+                statusEl.textContent = 'Performanta moderata - atentie la decizii importante';
+            } else if (score >= 40) {
+                scoreEl.style.color = 'var(--accent-orange)';
+                resultBox.className = 'highlight-box orange';
+                statusEl.textContent = 'Performanta redusa - evita deciziile majore';
+            } else {
+                scoreEl.style.color = 'var(--accent-pink)';
+                resultBox.className = 'highlight-box pink';
+                statusEl.textContent = 'Stare critica - odihna urgenta necesara';
+            }
+
+            // Show effects
+            let effectsHTML = '';
+            effects.forEach(e => {
+                effectsHTML += `<div class="highlight-box ${e.color}" style="margin-top: 0.5rem; padding: 0.5rem 1rem;">
+                    <p style="margin: 0;">${e.text}</p>
+                </div>`;
+            });
+            document.getElementById('cognitive-effects').innerHTML = effectsHTML;
+        }
+
+        // Initialize
+        updateCognitiveClock();
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-evaluare | Testeaza-ti Bias-urile</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>✅ Auto-evaluare</h1>
+            <p class="subtitle">Testeaza-ti onest nivelul de cunoastere si bias-urile</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; text-align: center;">
+                Primul pas spre gandire critica:<br>
+                <strong>Recunoasterea propriilor limite.</strong><br>
+                <span style="color: var(--accent-primary);">Raspunde onest. Nimeni nu vede rezultatele.</span>
+            </p>
+        </div>
+
+        <!-- TEST 1: NIVELUL DE CUNOASTERE -->
+        <h2 style="margin: 2rem 0 1rem;">🎓 Test 1: Chiar Stii?</h2>
+
+        <div class="card">
+            <h3 style="margin-bottom: 1.5rem;">Cand zici "stiu X", poti bifa toate?</h3>
+            <div class="quiz-options" id="self-test-questions">
+                <div class="quiz-option" onclick="toggleSelfTest(this)">
+                    <span style="margin-right: 1rem;">☐</span> Pot explica fara sa caut pe Google?
+                </div>
+                <div class="quiz-option" onclick="toggleSelfTest(this)">
+                    <span style="margin-right: 1rem;">☐</span> Pot raspunde la intrebari follow-up?
+                </div>
+                <div class="quiz-option" onclick="toggleSelfTest(this)">
+                    <span style="margin-right: 1rem;">☐</span> Stiu limitele si exceptiile?
+                </div>
+                <div class="quiz-option" onclick="toggleSelfTest(this)">
+                    <span style="margin-right: 1rem;">☐</span> Stiu de unde stiu si cat de fiabila e sursa?
+                </div>
+                <div class="quiz-option" onclick="toggleSelfTest(this)">
+                    <span style="margin-right: 1rem;">☐</span> Pot aplica in contexte diferite?
+                </div>
+            </div>
+            <div class="quiz-result" id="self-test-result"></div>
+
+            <div class="highlight-box orange" style="margin-top: 1.5rem; text-align: center;">
+                <p>Daca nu poti bifa toate, <strong>nu stii</strong>.</p>
+                <p style="color: var(--accent-orange);">Ai familiaritate, nu cunoastere.</p>
+            </div>
+        </div>
+
+        <!-- TEST 2: SEMNALE DE ALARMA -->
+        <h2 style="margin: 2rem 0 1rem;">🚨 Test 2: Semnale de Alarma</h2>
+
+        <div class="card">
+            <h3 style="margin-bottom: 1.5rem;">Cat de des iti spui aceste lucruri?</h3>
+
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">?</div>
+                    <div class="mechanism-content">
+                        <h4>"Toata lumea stie ca..."</h4>
+                        <p>Semnal: Invoci consensul imaginar in loc de argumente.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">?</div>
+                    <div class="mechanism-content">
+                        <h4>"E evident ca..."</h4>
+                        <p>Semnal: Etichetezi ca "evident" ce ar trebui argumentat.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">?</div>
+                    <div class="mechanism-content">
+                        <h4>"Cine nu vede asta e prost..."</h4>
+                        <p>Semnal: Ataci persoana in loc sa raspunzi la argument.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">?</div>
+                    <div class="mechanism-content">
+                        <h4>"Am citit ca..." (fara sursa)</h4>
+                        <p>Semnal: Invoci autoritate vaga, neverificabila.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number" style="background: var(--accent-orange);">?</div>
+                    <div class="mechanism-content">
+                        <h4>"Asa a fost mereu..."</h4>
+                        <p>Semnal: Traditia ca argument, nu dovezile.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 1.5rem; text-align: center;">
+                <p>Cu cat folosesti mai des aceste formule,</p>
+                <p style="color: var(--accent-primary);"><strong>cu atat gandesti mai putin.</strong></p>
+            </div>
+        </div>
+
+        <!-- TEST 3: DESCHIDERE LA CONTRAR -->
+        <h2 style="margin: 2rem 0 1rem;">🔄 Test 3: Deschidere la Contrar</h2>
+
+        <div class="card">
+            <h3 style="margin-bottom: 1.5rem;">Gandeste-te la ultima saptamana:</h3>
+
+            <div class="grid-2">
+                <div class="highlight-box green">
+                    <h4 style="color: var(--accent-green);">Semne Bune</h4>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>Mi-am schimbat parerea pe ceva</li>
+                        <li>Am citit ceva cu care nu sunt de acord</li>
+                        <li>Am spus "nu stiu"</li>
+                        <li>Am intrebat "de ce?" cand credeam ca stiu</li>
+                        <li>Am acceptat ca am gresit</li>
+                    </ul>
+                </div>
+                <div class="highlight-box orange">
+                    <h4 style="color: var(--accent-orange);">Semne de Ingrijorare</h4>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>Nu mi-am schimbat nicio parere</li>
+                        <li>Am evitat surse "de la ceilalti"</li>
+                        <li>Am raspuns la tot cu certitudine</li>
+                        <li>Nu am pus la indoiala nimic</li>
+                        <li>Am respins critici fara sa le analizez</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEST 4: VULNERABILITATE LA GRUP -->
+        <h2 style="margin: 2rem 0 1rem;">👥 Test 4: Vulnerabilitate la Presiunea Grupului</h2>
+
+        <div class="card">
+            <h3 style="margin-bottom: 1.5rem;">Cat de des...?</h3>
+
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number">1</div>
+                    <div class="mechanism-content">
+                        <h4>Ti-ai schimbat parerea ca sa fii de acord cu grupul?</h4>
+                        <p>Nu pentru ca te-au convins, ci pentru a evita conflictul.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">2</div>
+                    <div class="mechanism-content">
+                        <h4>Ai tacut cand stiai ca grupul greseste?</h4>
+                        <p>"Mai bine nu ma bag, nu vreau sa par dificil."</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">3</div>
+                    <div class="mechanism-content">
+                        <h4>Ai distribuit ceva fara sa verifici, pentru ca toti distribuiau?</h4>
+                        <p>"Daca toti share-uiesc, probabil e ok."</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">4</div>
+                    <div class="mechanism-content">
+                        <h4>Ti-ai format parerea bazandu-te pe ce zic altii, nu pe propria analiza?</h4>
+                        <p>"Toata lumea zice X, deci X."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box purple" style="margin-top: 1.5rem; text-align: center;">
+                <p>Cu cat raspunzi "des" la mai multe,</p>
+                <p style="color: var(--accent-purple);"><strong>cu atat esti mai vulnerabil la diluarea IQ de grup.</strong></p>
+            </div>
+        </div>
+
+        <!-- SFATURI -->
+        <h2 style="margin: 2rem 0 1rem;">💡 Ce Poti Face?</h2>
+
+        <div class="card">
+            <h3 style="color: var(--accent-green); margin-bottom: 1rem;">Exercitii Zilnice</h3>
+
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number">1</div>
+                    <div class="mechanism-content">
+                        <h4>Regula de 24 de ore</h4>
+                        <p>Nu distribui nimic emotionant imediat. Asteapta, verifica, apoi decide.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">2</div>
+                    <div class="mechanism-content">
+                        <h4>Citeste ceva "inamic"</h4>
+                        <p>O data pe saptamana, citeste o sursa cu care NU esti de acord. Intelege DE CE cred asta.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">3</div>
+                    <div class="mechanism-content">
+                        <h4>Practica "Nu stiu"</h4>
+                        <p>Spune "nu stiu" cel putin o data pe zi. E ok sa nu stii.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">4</div>
+                    <div class="mechanism-content">
+                        <h4>Testul Feynman</h4>
+                        <p>Daca nu poti explica simplu, nu stii suficient de bine.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">5</div>
+                    <div class="mechanism-content">
+                        <h4>Joaca Avocatul Diavolului</h4>
+                        <p>Argumenteaza impotriva a ceea ce crezi. Gaseste slabiciunile propriilor convingeri.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.2rem;">
+                "Primul pas spre cunoastere<br>
+                e sa stii ca nu stii."
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem;">— Socrate</p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

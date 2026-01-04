@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Munca | Diluarea IQ in Mediul Profesional</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>💼 La Munca</h1>
+            <p class="subtitle">Cum se dilueaza IQ-ul in mediul profesional</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; text-align: center;">
+                <strong>Paradoxul:</strong> Pui 10 oameni inteligenti intr-o sala de meeting.<br>
+                Rezultatul? Decizii pe care niciun individ nu le-ar fi luat singur.
+            </p>
+        </div>
+
+        <!-- SITUATII -->
+        <h2 style="margin: 2rem 0 1rem;">🎯 Situatii Tipice</h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-primary);">1</div>
+                <div>
+                    <div class="card-title">Meeting-ul de Decizie</div>
+                    <div class="card-subtitle">"Cine vorbeste primul castiga"</div>
+                </div>
+            </div>
+            <p>Primul care isi exprima parerea seteaza ancora. Ceilalti ajusteaza, rareori contrazic.</p>
+            <div class="highlight-box orange" style="margin-top: 1rem;">
+                <p>💬 <em>"Eu zic ca ar trebui sa folosim Kubernetes."</em></p>
+                <p>→ Urmatorii 5 oameni: <em>"Da, are sens..."</em></p>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Nimeni nu intreaba: "Pentru ce? Avem 3 useri."</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-warm);">2</div>
+                <div>
+                    <div class="card-title">Ierarhia ca Argument</div>
+                    <div class="card-subtitle">"Seful stie mai bine"</div>
+                </div>
+            </div>
+            <p>Autoritatea ierarhica inlocuieste autoritatea expertizei. Juniorii tac, seniorii nu mai gandesc.</p>
+            <div class="highlight-box purple" style="margin-top: 1rem;">
+                <p>👔 Manager: <em>"Deadline-ul e vineri."</em></p>
+                <p>💻 Dev (stie ca e imposibil): <em>"O sa incercam..."</em></p>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Toata lumea stie ca e imposibil. Nimeni nu spune.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-cool);">3</div>
+                <div>
+                    <div class="card-title">Brainstorming-ul Fals</div>
+                    <div class="card-subtitle">"Toate ideile sunt bune!"</div>
+                </div>
+            </div>
+            <p>Sub pretextul creativitatii, ideile proaste nu sunt filtrate. Critica e "negativism".</p>
+            <div class="highlight-box blue" style="margin-top: 1rem;">
+                <p>📋 "Hai sa facem brainstorming fara judecata!"</p>
+                <p>→ 50 de idei, 48 proaste, 2 decente</p>
+                <p>→ Se implementeaza una proasta pentru ca a propus-o seful</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-green), var(--accent-primary));">4</div>
+                <div>
+                    <div class="card-title">Code Review-ul de Complezenta</div>
+                    <div class="card-subtitle">"LGTM" fara sa citesti</div>
+                </div>
+            </div>
+            <p>Difuzia responsabilitatii: "Altcineva probabil a verificat cu atentie."</p>
+            <div class="highlight-box green" style="margin-top: 1rem;">
+                <p>✅ Reviewer 1: "LGTM" (nu a citit)</p>
+                <p>✅ Reviewer 2: "Looks good" (a vazut ca Reviewer 1 a aprobat)</p>
+                <p>✅ Reviewer 3: "Merge" (sunt deja 2 approve-uri)</p>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Bug-ul ajunge in productie.</p>
+            </div>
+        </div>
+
+        <!-- SIMULATOR -->
+        <h2 style="margin: 2rem 0 1rem;">🎮 Simulator: Meeting de Decizie</h2>
+
+        <div class="simulator">
+            <div class="simulator-header">
+                <span class="simulator-title">Simuleaza dinamica unui meeting tehnic</span>
+                <div class="simulator-controls">
+                    <button class="sim-btn primary" onclick="startMeetingSim()">Porneste</button>
+                    <button class="sim-btn secondary" onclick="resetMeetingSim()">Reset</button>
+                </div>
+            </div>
+            <p class="simulator-description">
+                Urmareste cum presiunea ierarhica si conformismul influenteaza deciziile.
+                Managerul propune o solutie suboptimala. Cati vor contrazice?
+            </p>
+            <div class="simulator-canvas">
+                <div class="meeting-room" id="meeting-room"></div>
+            </div>
+            <div class="sim-stats">
+                <div class="sim-stat">
+                    <div class="value" id="meeting-changed">0</div>
+                    <div class="label">Si-au schimbat parerea</div>
+                </div>
+                <div class="sim-stat">
+                    <div class="value" id="meeting-stayed">0</div>
+                    <div class="label">Au ramas pe pozitie</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MECANISME -->
+        <h2 style="margin: 2rem 0 1rem;">⚙️ Mecanisme Active</h2>
+
+        <div class="grid-2">
+            <div class="highlight-box teal">
+                <h4>🔗 Cascade Informationale</h4>
+                <p>Primul care vorbeste seteaza directia. Ceilalti "si-ajusteaza" opinia.</p>
+            </div>
+            <div class="highlight-box orange">
+                <h4>👑 Authority Bias</h4>
+                <p>Ierarhia bate expertiza. Seful are dreptate prin pozitie, nu prin argument.</p>
+            </div>
+            <div class="highlight-box purple">
+                <h4>🤝 Conformism Social</h4>
+                <p>"Nu vreau sa fiu singurul care contrazice."</p>
+            </div>
+            <div class="highlight-box blue">
+                <h4>📢 Difuzia Responsabilitatii</h4>
+                <p>"Altcineva va ridica problema daca e importanta."</p>
+            </div>
+        </div>
+
+        <!-- SOLUTII -->
+        <h2 style="margin: 2rem 0 1rem;">💡 Solutii Practice</h2>
+
+        <div class="card">
+            <h3 style="color: var(--accent-green); margin-bottom: 1rem;">Cum Prevenim Diluarea IQ la Munca?</h3>
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number">1</div>
+                    <div class="mechanism-content">
+                        <h4>Scriere inainte de discutie</h4>
+                        <p>Cere parerile in scris INAINTE de meeting. Elimina efectul de ancora.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">2</div>
+                    <div class="mechanism-content">
+                        <h4>Avocatul Diavolului</h4>
+                        <p>Desemneaza pe cineva sa argumenteze impotriva propunerii, chiar daca e de acord cu ea.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">3</div>
+                    <div class="mechanism-content">
+                        <h4>Rotatie "Cine vorbeste primul"</h4>
+                        <p>Nu lasa mereu aceleasi persoane sa seteze directia.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">4</div>
+                    <div class="mechanism-content">
+                        <h4>Safe Space pentru Contradictie</h4>
+                        <p>Recompenseaza explicit pe cei care ridica obiectii. "Multumesc ca ai spus asta."</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">5</div>
+                    <div class="mechanism-content">
+                        <h4>Pre-mortem</h4>
+                        <p>Inainte de decizie, intreaba: "Daca peste 6 luni a esuat, de ce?"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.2rem;">
+                "In meetings, the goal often becomes agreement, not truth."
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem;">— Observatie din experienta corporatista</p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/simulators.js"></script>
+</body>
+</html>

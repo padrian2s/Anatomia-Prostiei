@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Scoala | Conformismul Educational</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>🎓 La Scoala</h1>
+            <p class="subtitle">Presiunea peer-ului si conformismul in mediul educational</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; text-align: center;">
+                <strong>Experimentul Asch in clasa:</strong><br>
+                Chiar si la intrebari cu raspuns evident, elevii se conformeaza majoritatii.<br>
+                <span style="color: var(--accent-orange);">Cat fac 2+2? "5" - daca asta spun colegii.</span>
+            </p>
+        </div>
+
+        <!-- SITUATII -->
+        <h2 style="margin: 2rem 0 1rem;">🎯 Situatii Tipice</h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-primary);">1</div>
+                <div>
+                    <div class="card-title">Presiunea Peer-ului</div>
+                    <div class="card-subtitle">"Nu fi tocilar"</div>
+                </div>
+            </div>
+            <p>Inteligenta e penalizata social. Elevii invata sa-si ascunda cunostintele.</p>
+            <div class="highlight-box orange" style="margin-top: 1rem;">
+                <p>🧑‍🎓 Elev (stie raspunsul): *tace*</p>
+                <p>👥 Colegii: "Haha, nimeni nu stie!"</p>
+                <p>🧑‍🎓 Elev (in gand): "Mai bine par prost decat diferit."</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-warm);">2</div>
+                <div>
+                    <div class="card-title">Profesorul ca Autoritate Absoluta</div>
+                    <div class="card-subtitle">"Asa e pentru ca zic eu"</div>
+                </div>
+            </div>
+            <p>Gandirea critica e descurajata. Intrebarile "de ce?" sunt vazute ca insubordonare.</p>
+            <div class="highlight-box purple" style="margin-top: 1rem;">
+                <p>🧑‍🎓 "De ce facem asa?"</p>
+                <p>👩‍🏫 "Pentru ca asa e in programa."</p>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Elevul invata sa nu mai intrebe.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-cool);">3</div>
+                <div>
+                    <div class="card-title">Grupurile de Lucru Ineficiente</div>
+                    <div class="card-subtitle">"Lasa ca face Ionut"</div>
+                </div>
+            </div>
+            <p>Difuzia responsabilitatii: proiectele de grup devin proiectele unei singure persoane.</p>
+            <div class="highlight-box blue" style="margin-top: 1rem;">
+                <p>📝 Grup de 5 persoane, proiect comun</p>
+                <p>→ 1 persoana face 90% din munca</p>
+                <p>→ 4 persoane "contribuie" cu prezenta</p>
+                <p>→ Nota comuna: Toti iau 10</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));">4</div>
+                <div>
+                    <div class="card-title">"Cool" vs. "Tocilar"</div>
+                    <div class="card-subtitle">Statusul social bate performanta</div>
+                </div>
+            </div>
+            <p>Ierarhia sociala din clasa nu e bazata pe competenta, ci pe conformism si popularitate.</p>
+            <div class="highlight-box pink" style="margin-top: 1rem;">
+                <p>😎 "Cool kid": Nu invata, nu participa, dar dicteaza normele sociale</p>
+                <p>🤓 "Tocilar": Invata, stie, dar e marginalizat</p>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Clasa adopta valorile celui popular, nu ale celui competent.</p>
+            </div>
+        </div>
+
+        <!-- SIMULATOR -->
+        <h2 style="margin: 2rem 0 1rem;">🎮 Simulator: Clasa de Conformism</h2>
+
+        <div class="simulator">
+            <div class="simulator-header">
+                <span class="simulator-title">Experimentul Asch in clasa</span>
+                <div class="simulator-controls">
+                    <button class="sim-btn primary" onclick="startClassSim()">Porneste</button>
+                    <button class="sim-btn secondary" onclick="resetClassSim()">Reset</button>
+                </div>
+            </div>
+            <p class="simulator-description">
+                Intrebare simpla: Cat fac 2+2? Primul elev (popular) raspunde gresit: "5".
+                Urmareste cati se conformeaza desi stiu raspunsul corect.
+            </p>
+            <div class="simulator-canvas">
+                <div id="classroom"></div>
+            </div>
+            <div class="sim-stats">
+                <div class="sim-stat">
+                    <div class="value" id="class-conform">0</div>
+                    <div class="label">S-au conformat</div>
+                </div>
+                <div class="sim-stat">
+                    <div class="value" id="class-independent">0</div>
+                    <div class="label">Au ramas independenti</div>
+                </div>
+                <div class="sim-stat">
+                    <div class="value" id="class-correct">0</div>
+                    <div class="label">Raspunsuri corecte</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MECANISME -->
+        <h2 style="margin: 2rem 0 1rem;">⚙️ Mecanisme Active</h2>
+
+        <div class="grid-2">
+            <div class="highlight-box teal">
+                <h4>👥 Presiunea Peer-ului</h4>
+                <p>Nevoia de acceptare sociala e mai puternica decat nevoia de a avea dreptate.</p>
+            </div>
+            <div class="highlight-box orange">
+                <h4>👩‍🏫 Authority Bias</h4>
+                <p>Profesorul are dreptate prin pozitie. Gandirea critica e "obraznicie".</p>
+            </div>
+            <div class="highlight-box purple">
+                <h4>📉 Nivelarea in Jos</h4>
+                <p>Excelenta e penalizata social. "Nu te da mare."</p>
+            </div>
+            <div class="highlight-box blue">
+                <h4>🎭 Social Masking</h4>
+                <p>Elevii invata sa-si ascunda abilitatile pentru a se integra.</p>
+            </div>
+        </div>
+
+        <!-- EFECTE PE TERMEN LUNG -->
+        <h2 style="margin: 2rem 0 1rem;">📊 Efecte pe Termen Lung</h2>
+
+        <div class="card">
+            <h3 style="color: var(--accent-orange); margin-bottom: 1rem;">Ce invata elevii de fapt?</h3>
+            <div class="comparison-table">
+                <div class="comparison-col bad">
+                    <h4 style="color: var(--accent-orange);">Lectii Implicite</h4>
+                    <ul style="padding-left: 1.2rem;">
+                        <li>Nu iesi in evidenta</li>
+                        <li>Nu contrazice autoritatea</li>
+                        <li>Conformeaza-te majoritatii</li>
+                        <li>Ascunde-ti competenta</li>
+                        <li>Popularitatea > Performanta</li>
+                    </ul>
+                </div>
+                <div class="comparison-col good">
+                    <h4 style="color: var(--accent-green);">Ce Ar Trebui sa Invete</h4>
+                    <ul style="padding-left: 1.2rem;">
+                        <li>Gandeste critic</li>
+                        <li>Pune intrebari</li>
+                        <li>Sustine-ti parerile cu argumente</li>
+                        <li>Accepta sa gresesti</li>
+                        <li>Cauta adevarul, nu consensul</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOLUTII -->
+        <h2 style="margin: 2rem 0 1rem;">💡 Solutii Practice</h2>
+
+        <div class="card">
+            <h3 style="color: var(--accent-green); margin-bottom: 1rem;">Pentru Profesori si Parinti</h3>
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number">1</div>
+                    <div class="mechanism-content">
+                        <h4>Recompenseaza Intrebarile</h4>
+                        <p>"Excelenta intrebare!" - chiar daca pare banala sau incomoda.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">2</div>
+                    <div class="mechanism-content">
+                        <h4>Raspunsuri Anonime</h4>
+                        <p>Foloseste chestionare anonime inainte de discutii pentru a elimina conformismul.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">3</div>
+                    <div class="mechanism-content">
+                        <h4>Modelul "Gresesc Intentionat"</h4>
+                        <p>Profesorul greseste intentionat si recompenseaza pe cine observa.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">4</div>
+                    <div class="mechanism-content">
+                        <h4>Debriefing pe Dinamica de Grup</h4>
+                        <p>Discuta explicit cum conformismul a afectat o decizie de grup.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.2rem;">
+                "Scoala nu invata copiii sa gandeasca.<br>
+                Ii invata sa raspunda corect la intrebari gresite."
+            </p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/simulators.js"></script>
+</body>
+</html>

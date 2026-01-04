@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intre Prieteni | Echo Chambers Naturale</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <a href="../../index.html" class="back-btn">← Inapoi la pagina principala</a>
+
+        <div class="page-header">
+            <h1>👥 Intre Prieteni</h1>
+            <p class="subtitle">Loialitate vs. Adevar in cercurile sociale</p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; text-align: center;">
+                <strong>Prietenii:</strong> Ne alegem oameni care gandesc ca noi.<br>
+                Apoi ne intarim reciproc convingerile - corecte sau gresite.<br>
+                <span style="color: var(--accent-purple);">Echo chamber natural, fara algoritm.</span>
+            </p>
+        </div>
+
+        <!-- SITUATII -->
+        <h2 style="margin: 2rem 0 1rem;">🎯 Situatii Tipice</h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));">1</div>
+                <div>
+                    <div class="card-title">Group Chat-ul</div>
+                    <div class="card-subtitle">Cascada de confirmari</div>
+                </div>
+            </div>
+            <p>O parere exprimata in grup devine "adevar" daca primii 2-3 sunt de acord.</p>
+            <div class="highlight-box purple" style="margin-top: 1rem;">
+                <p>💬 Alex: "Restaurantul X e overrated!"</p>
+                <p>💬 Maria: "Total de acord!"</p>
+                <p>💬 Andrei: "Da, e nasol."</p>
+                <p>💬 Tu (ti-a placut de fapt): "...mda, cam asa e"</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-warm);">2</div>
+                <div>
+                    <div class="card-title">Loialitatea ca Argument</div>
+                    <div class="card-subtitle">"Esti de partea noastra sau nu?"</div>
+                </div>
+            </div>
+            <p>A contrazice un prieten e vazut ca tradare. Loialitatea bate adevarul.</p>
+            <div class="highlight-box orange" style="margin-top: 1rem;">
+                <p>🗣️ "Prietenul meu George a zis ca X..."</p>
+                <p>🧑 "Dar X nu e corect, studiile arata..."</p>
+                <p>🗣️ "Deci il faci mincinos pe George?"</p>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Conversatia s-a mutat de la fapte la loialitate.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-cool);">3</div>
+                <div>
+                    <div class="card-title">FOMO si Presiunea Sociala</div>
+                    <div class="card-subtitle">"Vine toata lumea!"</div>
+                </div>
+            </div>
+            <p>Fear of Missing Out te face sa adopti opiniile si comportamentele grupului.</p>
+            <div class="highlight-box blue" style="margin-top: 1rem;">
+                <p>📱 "Hai la petrecere! Vine TOT grupul!"</p>
+                <p>🧑 (nu vrei sa mergi, dar...): "Ok, vin..."</p>
+                <p>📱 Ulterior: "A fost super, nu?"</p>
+                <p>🧑 (a fost plictisitor): "Da, super!"</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: var(--gradient-primary);">4</div>
+                <div>
+                    <div class="card-title">Sfaturi de Grup</div>
+                    <div class="card-subtitle">"Toti prietenii tai cred ca..."</div>
+                </div>
+            </div>
+            <p>Consensul prietenilor devine "validare" pentru decizii, chiar daca sunt gresite.</p>
+            <div class="highlight-box teal" style="margin-top: 1rem;">
+                <p>🧑 "Ma gandesc sa parasesc jobul fara alt plan..."</p>
+                <p>👥 "Da! Meriti mai mult! YOLO!"</p>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">Nimeni nu risca sa fie "negativistul" care spune adevarul incomod.</p>
+            </div>
+        </div>
+
+        <!-- SIMULATOR -->
+        <h2 style="margin: 2rem 0 1rem;">🎮 Simulator: Grup de Prieteni</h2>
+
+        <div class="simulator">
+            <div class="simulator-header">
+                <span class="simulator-title">Dinamica conversatiei in grup</span>
+                <div class="simulator-controls">
+                    <button class="sim-btn primary" onclick="startChatSim()">Porneste</button>
+                    <button class="sim-btn secondary" onclick="resetChatSim()">Reset</button>
+                </div>
+            </div>
+            <p class="simulator-description">
+                O stire controversata e distribuita in grup. Urmareste cum se formeaza consensul
+                si cum vocile critice sunt reduse la tacere.
+            </p>
+            <div class="simulator-canvas">
+                <div class="chat-container" id="chat-container"></div>
+            </div>
+            <div class="sim-stats">
+                <div class="sim-stat">
+                    <div class="value" id="chat-agree">0</div>
+                    <div class="label">Mesaje de conformare</div>
+                </div>
+                <div class="sim-stat">
+                    <div class="value" id="chat-challenge">0</div>
+                    <div class="label">Incercari de contestare</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TIPURI DE PRIETENI -->
+        <h2 style="margin: 2rem 0 1rem;">👤 Tipuri de Prieteni in Dinamica de Grup</h2>
+
+        <div class="grid-2">
+            <div class="card">
+                <h4 style="color: var(--accent-orange);">🎤 Initiatorul</h4>
+                <p>Primul care exprima o parere. Seteaza directia pentru restul grupului.</p>
+                <p class="text-muted" style="font-size: 0.85rem; margin-top: 0.5rem;">Putere: Foarte mare</p>
+            </div>
+            <div class="card">
+                <h4 style="color: var(--accent-green);">✅ Confirmatorul</h4>
+                <p>Al doilea/al treilea care e de acord. Transforma parerea in "consens".</p>
+                <p class="text-muted" style="font-size: 0.85rem; margin-top: 0.5rem;">Putere: Mare</p>
+            </div>
+            <div class="card">
+                <h4 style="color: var(--accent-blue);">🤫 Tacutul</h4>
+                <p>Are o parere diferita, dar alege sa taca pentru a evita conflictul.</p>
+                <p class="text-muted" style="font-size: 0.85rem; margin-top: 0.5rem;">Putere: Nula (dar ar putea schimba totul)</p>
+            </div>
+            <div class="card">
+                <h4 style="color: var(--accent-purple);">🤔 Scepticul</h4>
+                <p>Ridica obiectii, dar e adesea ignorat sau etichetat ca "negativist".</p>
+                <p class="text-muted" style="font-size: 0.85rem; margin-top: 0.5rem;">Putere: Mica (dar esentiala)</p>
+            </div>
+        </div>
+
+        <!-- MECANISME -->
+        <h2 style="margin: 2rem 0 1rem;">⚙️ Mecanisme Active</h2>
+
+        <div class="grid-2">
+            <div class="highlight-box teal">
+                <h4>🔄 Homofilia</h4>
+                <p>Ne alegem prieteni similari noua. Astfel, diversitatea de pareri e limitata de la inceput.</p>
+            </div>
+            <div class="highlight-box orange">
+                <h4>❤️ Loialitatea ca Valoare</h4>
+                <p>A contrazice = a trada. Prietenia pare conditionata de acord.</p>
+            </div>
+            <div class="highlight-box purple">
+                <h4>📢 Social Proof</h4>
+                <p>"Daca toti prietenii mei cred X, probabil X e adevarat."</p>
+            </div>
+            <div class="highlight-box blue">
+                <h4>😰 Frica de Excludere</h4>
+                <p>Mai bine gresesc impreuna decat am dreptate singur.</p>
+            </div>
+        </div>
+
+        <!-- EFECTE -->
+        <h2 style="margin: 2rem 0 1rem;">📊 Efectele Echo Chamber-ului</h2>
+
+        <div class="card">
+            <div class="mechanism-list">
+                <div class="mechanism-item">
+                    <div class="mechanism-number">1</div>
+                    <div class="mechanism-content">
+                        <h4>Polarizare Graduala</h4>
+                        <p>Parerile grupului devin mai extreme in timp, fara input extern.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">2</div>
+                    <div class="mechanism-content">
+                        <h4>Iluzia Consensului</h4>
+                        <p>"Toata lumea crede asta" - dar "toata lumea" = bula ta de prieteni.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">3</div>
+                    <div class="mechanism-content">
+                        <h4>Confirmarea Credintelor False</h4>
+                        <p>Greselile nu sunt corectate - sunt validate si amplificate.</p>
+                    </div>
+                </div>
+                <div class="mechanism-item">
+                    <div class="mechanism-number">4</div>
+                    <div class="mechanism-content">
+                        <h4>Izolarea de Realitate</h4>
+                        <p>Grupul devine tot mai deconectat de perspectivele diferite.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOLUTII -->
+        <h2 style="margin: 2rem 0 1rem;">💡 Cum Mentinem Prietenii Sanatoase?</h2>
+
+        <div class="card">
+            <h3 style="color: var(--accent-green); margin-bottom: 1rem;">Echilibru intre Loialitate si Onestitate</h3>
+            <div class="comparison-table">
+                <div class="comparison-col bad">
+                    <h4 style="color: var(--accent-orange);">De Evitat</h4>
+                    <ul style="padding-left: 1.2rem;">
+                        <li>Acordul automat pentru a evita conflictul</li>
+                        <li>Tacerea cand stii ca grupul greseste</li>
+                        <li>"Da, ai dreptate" cand nu crezi</li>
+                        <li>Validarea deciziilor proaste</li>
+                    </ul>
+                </div>
+                <div class="comparison-col good">
+                    <h4 style="color: var(--accent-green);">De Cultivat</h4>
+                    <ul style="padding-left: 1.2rem;">
+                        <li>Dezacordul respectuos: "Eu vad altfel..."</li>
+                        <li>Intrebari inainte de acord: "De ce crezi asta?"</li>
+                        <li>Prieteni care TE contrazic</li>
+                        <li>Diversitate in cercul social</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="formula-box" style="margin-top: 2rem;">
+            <p style="font-style: italic; font-size: 1.2rem;">
+                "Un prieten adevarat nu e cel care e mereu de acord cu tine.<br>
+                E cel care te contrazice cand gresesti -<br>
+                si ramane prieten dupa."
+            </p>
+        </div>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/simulators.js"></script>
+</body>
+</html>
