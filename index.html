@@ -568,6 +568,470 @@
             color: #ef5350;
         }
 
+        /* Dunning-Kruger Deep Dive Section */
+        .dk-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dk-section > h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .dk-section > .section-subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .dk-origin {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #ffa726;
+        }
+
+        .dk-origin .year {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffa726;
+            float: left;
+            margin-right: 1rem;
+        }
+
+        .core-idea {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.15) 0%, rgba(255, 107, 107, 0.08) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid rgba(233, 69, 96, 0.4);
+            text-align: center;
+        }
+
+        .core-idea p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+
+        .core-idea .key-insight {
+            font-size: 1.1rem;
+            color: #ff8a80;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .study-results {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .study-results h3 {
+            color: #64b5f6;
+            margin-bottom: 1rem;
+        }
+
+        .result-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .result-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .result-bar .label {
+            width: 150px;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .result-bar .bar-container {
+            flex: 1;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-bar .bar-actual {
+            height: 100%;
+            border-radius: 15px;
+            position: absolute;
+            left: 0;
+        }
+
+        .result-bar .bar-perceived {
+            height: 100%;
+            border-radius: 15px;
+            position: absolute;
+            left: 0;
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+            background: transparent;
+        }
+
+        .bar-legend {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .bar-legend span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-actual {
+            width: 20px;
+            height: 10px;
+            background: linear-gradient(90deg, #ef5350, #66bb6a);
+            border-radius: 3px;
+        }
+
+        .legend-perceived {
+            width: 20px;
+            height: 10px;
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+            border-radius: 3px;
+        }
+
+        .dk-graph {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .dk-graph h3 {
+            color: #ffd54f;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .graph-container {
+            position: relative;
+            height: 300px;
+            margin: 2rem 1rem;
+        }
+
+        .graph-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .graph-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .graph-y-label {
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: rotate(-90deg) translateX(50%);
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .mount-stupid-label {
+            position: absolute;
+            top: 20px;
+            left: 20%;
+            background: rgba(239, 83, 80, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            color: #ef5350;
+        }
+
+        .valley-label {
+            position: absolute;
+            top: 180px;
+            left: 40%;
+            background: rgba(66, 165, 245, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            color: #64b5f6;
+        }
+
+        .expert-label {
+            position: absolute;
+            top: 100px;
+            right: 10%;
+            background: rgba(102, 187, 106, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            color: #81c784;
+        }
+
+        .phases-section {
+            margin: 2rem 0;
+        }
+
+        .phases-section h3 {
+            color: #ce93d8;
+            margin-bottom: 1.5rem;
+        }
+
+        .phases-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .phases-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #ef5350, #ffa726, #66bb6a, #64b5f6);
+        }
+
+        .phase {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            position: relative;
+        }
+
+        .phase::before {
+            content: '';
+            position: absolute;
+            left: -1.75rem;
+            top: 1.2rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .phase-1::before { background: #ef5350; }
+        .phase-2::before { background: #ffa726; }
+        .phase-3::before { background: #66bb6a; }
+        .phase-4::before { background: #64b5f6; }
+
+        .phase h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-1 h4 { color: #ef5350; }
+        .phase-2 h4 { color: #ffa726; }
+        .phase-3 h4 { color: #66bb6a; }
+        .phase-4 h4 { color: #64b5f6; }
+
+        .phase .quote {
+            font-style: italic;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        .metacognition-section {
+            background: linear-gradient(135deg, rgba(103, 58, 183, 0.1) 0%, rgba(149, 117, 205, 0.05) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(103, 58, 183, 0.3);
+        }
+
+        .metacognition-section h3 {
+            color: #b39ddb;
+            margin-bottom: 1rem;
+        }
+
+        .chess-example {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .chess-beginner, .chess-master {
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .chess-beginner {
+            background: rgba(239, 83, 80, 0.1);
+            border: 1px solid rgba(239, 83, 80, 0.3);
+        }
+
+        .chess-master {
+            background: rgba(102, 187, 106, 0.1);
+            border: 1px solid rgba(102, 187, 106, 0.3);
+        }
+
+        .chess-beginner h5 { color: #ef5350; }
+        .chess-master h5 { color: #66bb6a; }
+
+        .expert-problem {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 235, 59, 0.05) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+
+        .expert-problem h3 {
+            color: #ffd54f;
+            margin-bottom: 1rem;
+        }
+
+        .expert-consequences {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .consequence {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .nuances-section {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .nuances-section h3 {
+            color: #90a4ae;
+            margin-bottom: 1rem;
+        }
+
+        .nuance-list {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .nuance-item {
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .nuance-item::before {
+            content: "⚡";
+            flex-shrink: 0;
+        }
+
+        .practical-apps {
+            background: linear-gradient(135deg, rgba(0, 150, 136, 0.1) 0%, rgba(77, 182, 172, 0.05) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(0, 150, 136, 0.3);
+        }
+
+        .practical-apps h3 {
+            color: #4db6ac;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .app-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .app-card .signal {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .app-card .meaning {
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        .dk-connection {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2) 0%, rgba(255, 107, 107, 0.1) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid rgba(233, 69, 96, 0.5);
+        }
+
+        .dk-connection h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .connection-formula {
+            text-align: center;
+            font-size: 1.3rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .connection-formula .plus {
+            color: #ffa726;
+            margin: 0 0.5rem;
+        }
+
+        .connection-formula .equals {
+            color: #ef5350;
+            margin: 0 0.5rem;
+        }
+
+        .connection-result {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(244, 67, 54, 0.1);
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .connection-result p {
+            margin-bottom: 0.5rem;
+        }
+
         .comparison-section {
             background: linear-gradient(135deg, rgba(233, 69, 96, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
             border-radius: 20px;
@@ -894,6 +1358,207 @@
                             <strong>experiența directă face ce argumentele nu pot</strong>.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dunning-Kruger Deep Dive -->
+        <div class="dk-section">
+            <h2>🧠 Efectul Dunning-Kruger</h2>
+            <p class="section-subtitle">Un bias cognitiv care explică de ce cei mai puțin competenți sunt adesea cei mai încrezători</p>
+
+            <div class="dk-origin">
+                <span class="year">1999</span>
+                <p>Documentat de psihologii <strong>David Dunning</strong> și <strong>Justin Kruger</strong> de la Cornell University.
+                Studiul lor a devenit unul dintre cele mai citate din psihologia cognitivă.</p>
+            </div>
+
+            <div class="core-idea">
+                <p><strong>Competența de a face ceva</strong> și <strong>competența de a evalua cât de bine faci acel ceva</strong><br>
+                sunt <span class="highlight">aceleași competențe</span>.</p>
+                <p class="key-insight">Deci dacă ești incompetent într-un domeniu, îți lipsesc exact uneltele necesare pentru a-ți da seama că ești incompetent.</p>
+            </div>
+
+            <div class="study-results">
+                <h3>📊 Studiul Original</h3>
+                <p>Au testat oameni pe logică, gramatică și umor. Apoi i-au întrebat: <em>"Cum crezi că te-ai descurcat comparativ cu ceilalți?"</em></p>
+
+                <div class="result-bars">
+                    <div class="result-bar">
+                        <span class="label">Quartila inferioară<br>(cei mai slabi 25%)</span>
+                        <div class="bar-container">
+                            <div class="bar-actual" style="width: 12%; background: #ef5350;"></div>
+                            <div class="bar-perceived" style="width: 62%;"></div>
+                        </div>
+                    </div>
+                    <div class="result-bar">
+                        <span class="label">Quartila superioară<br>(cei mai buni 25%)</span>
+                        <div class="bar-container">
+                            <div class="bar-actual" style="width: 86%; background: #66bb6a;"></div>
+                            <div class="bar-perceived" style="width: 72%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bar-legend">
+                    <span><div class="legend-actual"></div> Performanță reală</span>
+                    <span><div class="legend-perceived"></div> Performanță percepută</span>
+                </div>
+            </div>
+
+            <div class="dk-graph">
+                <h3>📈 Graficul Clasic (simplificat)</h3>
+                <div class="graph-container">
+                    <span class="graph-y-label">Încredere</span>
+                    <div class="mount-stupid-label">"Mount Stupid"</div>
+                    <div class="valley-label">"Valea Disperării"</div>
+                    <div class="expert-label">Platoul Experților</div>
+                    <svg class="graph-svg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+                        <!-- Axes -->
+                        <line x1="40" y1="180" x2="380" y2="180" stroke="#444" stroke-width="2"/>
+                        <line x1="40" y1="180" x2="40" y2="20" stroke="#444" stroke-width="2"/>
+
+                        <!-- The curve -->
+                        <path d="M 40 170
+                                 C 60 170, 70 30, 100 30
+                                 C 130 30, 140 40, 160 160
+                                 C 180 180, 200 175, 240 160
+                                 C 280 145, 320 80, 380 70"
+                              fill="none"
+                              stroke="url(#curveGradient)"
+                              stroke-width="4"
+                              stroke-linecap="round"/>
+
+                        <!-- Gradient definition -->
+                        <defs>
+                            <linearGradient id="curveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#ef5350"/>
+                                <stop offset="30%" style="stop-color:#ffa726"/>
+                                <stop offset="60%" style="stop-color:#42a5f5"/>
+                                <stop offset="100%" style="stop-color:#66bb6a"/>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Points -->
+                        <circle cx="100" cy="30" r="6" fill="#ef5350"/>
+                        <circle cx="160" cy="160" r="6" fill="#42a5f5"/>
+                        <circle cx="380" cy="70" r="6" fill="#66bb6a"/>
+                    </svg>
+                    <div class="graph-labels">
+                        <span>0% Competență</span>
+                        <span>100%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phases-section">
+                <h3>🔄 Fazele (populare, nu din studiul original)</h3>
+                <div class="phases-timeline">
+                    <div class="phase phase-1">
+                        <h4>1. Nu știi că nu știi</h4>
+                        <p>Încredere maximă, competență minimă.</p>
+                        <p class="quote">"E simplu, ce mare lucru."</p>
+                    </div>
+                    <div class="phase phase-2">
+                        <h4>2. Știi că nu știi</h4>
+                        <p>Prăbușirea încrederii. Începi să vezi cât de mult nu înțelegi.</p>
+                        <p class="quote">"Valea disperării" — realizezi complexitatea reală.</p>
+                    </div>
+                    <div class="phase phase-3">
+                        <h4>3. Știi că știi</h4>
+                        <p>Competență reală, încredere în creștere dar calibrată.</p>
+                        <p class="quote">Știi ce știi și ce nu știi.</p>
+                    </div>
+                    <div class="phase phase-4">
+                        <h4>4. Nu mai știi că știi</h4>
+                        <p>Expertul pentru care totul a devenit "normal".</p>
+                        <p class="quote">Uită cât de greu a fost să ajungă aici.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metacognition-section">
+                <h3>🔬 De ce se întâmplă: Metacogniția</h3>
+                <p><strong>Metacogniția</strong> — capacitatea de a-ți evalua propria gândire — e ea însăși o abilitate care se dezvoltă odată cu competența.</p>
+
+                <div class="chess-example">
+                    <div class="chess-beginner">
+                        <h5>♟️ Începător în șah</h5>
+                        <p>Nu poate vedea de ce mutarea lui e proastă.</p>
+                        <p>Îi lipsesc pattern-urile, viziunea de ansamblu.</p>
+                        <p>Vede doar: <em>"Am mutat. Pare ok."</em></p>
+                    </div>
+                    <div class="chess-master">
+                        <h5>♔ Maestru</h5>
+                        <p>Vede instant 5 probleme cu mutarea.</p>
+                        <p>Are pattern-urile internalizate.</p>
+                        <p>Vede: <em>"E vulnerabil pe diagonală, pierde tempo..."</em></p>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1rem; text-align: center; color: #b39ddb;">
+                    <strong>Același creier care face eroarea e responsabil și cu detectarea erorii.</strong><br>
+                    Dacă nu poate face bine, nu poate nici evalua bine.
+                </p>
+            </div>
+
+            <div class="expert-problem">
+                <h3>🪞 Partea mai puțin cunoscută (și mai importantă)</h3>
+                <p>Experții au <strong>problema inversă</strong>: subestimează diferența dintre ei și ceilalți.</p>
+                <p>Pentru că lor li se pare natural și ușor, presupun că și altora. <em>"Cum să nu înțelegi, e evident?"</em></p>
+
+                <div class="expert-consequences">
+                    <div class="consequence">
+                        <p>📢 Comunicare proastă între experți și începători</p>
+                    </div>
+                    <div class="consequence">
+                        <p>😤 Frustrare în ambele direcții</p>
+                    </div>
+                    <div class="consequence">
+                        <p>🔮 "Blestemul cunoașterii" — nu mai poți vedea lumea ca un începător</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nuances-section">
+                <h3>⚖️ Nuanțe și Critici</h3>
+                <p>Efectul e real, dar:</p>
+                <div class="nuance-list">
+                    <div class="nuance-item">Graficul "Mount Stupid" e o <strong>simplificare populară</strong>, nu din studiul original</div>
+                    <div class="nuance-item"><strong>Toată lumea</strong> își supraestimează abilitățile în medie, nu doar incompetenții</div>
+                    <div class="nuance-item">Diferența e de <strong>magnitudine</strong> — incompetenții supraestimează mult mai mult</div>
+                    <div class="nuance-item">În domenii unde <strong>feedback-ul e rapid și clar</strong> (jocuri, sport), efectul e mai slab</div>
+                    <div class="nuance-item">Efectul e mai puternic în <strong>domenii "soft"</strong> unde competența e greu de măsurat</div>
+                </div>
+            </div>
+
+            <div class="practical-apps">
+                <h3>💡 Aplicații Practice</h3>
+                <div class="app-cards">
+                    <div class="app-card">
+                        <p class="signal">Cineva e foarte încrezător și agresiv pe un subiect?</p>
+                        <p class="meaning">Asta <strong>nu e dovadă de competență</strong> — poate fi exact opusul.</p>
+                    </div>
+                    <div class="app-card">
+                        <p class="signal">Un expert ezită, pune nuanțe, zice "depinde"?</p>
+                        <p class="meaning">Asta <strong>nu e slăbiciune</strong>, ci probabil înțelegere reală a complexității.</p>
+                    </div>
+                    <div class="app-card">
+                        <p class="signal">Concluzia cheie:</p>
+                        <p class="meaning"><strong>Încrederea și competența nu sunt corelate.</strong> Uneori sunt chiar invers corelate.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dk-connection">
+                <h3>🔗 Legătura cu discuția noastră</h3>
+                <div class="connection-formula">
+                    "Am citit undeva"<span class="plus">+</span>Dunning-Kruger<span class="equals">=</span><strong>Dezastru</strong>
+                </div>
+                <div class="connection-result">
+                    <p>Ai citit un articol superficial. Ți se pare că înțelegi.</p>
+                    <p>Nu ai competența să-ți dai seama cât de superficial e articolul și cât de mult nu înțelegi.</p>
+                    <p><strong>Rezultat:</strong> încredere maximă, cunoaștere minimă.</p>
+                    <p style="margin-top: 1rem; color: #ef5350;"><strong>Și imposibilitatea de a fi corectat</strong> — pentru că nu poți evalua nici critica.</p>
                 </div>
             </div>
         </div>
