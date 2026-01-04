@@ -272,6 +272,611 @@
             </div>
         </div>
 
+        <!-- SIMULATOR INTERACTIV -->
+        <h2 style="margin: 2rem 0 1rem;">🎛️ Simulator: Profilul Tau de Inteligente</h2>
+
+        <div class="card">
+            <div class="highlight-box">
+                <p style="text-align: center;">
+                    <strong>Ajusteaza slider-ele pentru fiecare tip de inteligenta.</strong><br>
+                    Descopera ce profil rezulta si ce implica combinatia ta.
+                </p>
+            </div>
+
+            <div id="intelligence-simulator" style="margin-top: 1.5rem;">
+                <!-- Predefined Archetypes -->
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--text-secondary);">📋 Incarca un Arhetip Predefinit:</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <button class="archetype-btn" data-archetype="balanced" style="padding: 0.5rem 1rem; border: 2px solid var(--border-color); border-radius: 8px; background: var(--bg-primary); cursor: pointer; font-size: 0.85rem; transition: all 0.2s;">
+                            ⚖️ Generalistul Echilibrat
+                        </button>
+                        <button class="archetype-btn" data-archetype="cold-genius" style="padding: 0.5rem 1rem; border: 2px solid var(--accent-blue); border-radius: 8px; background: var(--bg-primary); cursor: pointer; font-size: 0.85rem; transition: all 0.2s;">
+                            🧊 Geniul Rece
+                        </button>
+                        <button class="archetype-btn" data-archetype="empath" style="padding: 0.5rem 1rem; border: 2px solid var(--accent-pink); border-radius: 8px; background: var(--bg-primary); cursor: pointer; font-size: 0.85rem; transition: all 0.2s;">
+                            💗 Empaticul Intuitiv
+                        </button>
+                        <button class="archetype-btn" data-archetype="manipulator" style="padding: 0.5rem 1rem; border: 2px solid var(--accent-purple); border-radius: 8px; background: var(--bg-primary); cursor: pointer; font-size: 0.85rem; transition: all 0.2s;">
+                            🎪 Manipulatorul Social
+                        </button>
+                        <button class="archetype-btn" data-archetype="dreamer" style="padding: 0.5rem 1rem; border: 2px solid var(--accent-orange); border-radius: 8px; background: var(--bg-primary); cursor: pointer; font-size: 0.85rem; transition: all 0.2s;">
+                            🌈 Visatorul Nepragmatic
+                        </button>
+                        <button class="archetype-btn" data-archetype="rigid-pragmatic" style="padding: 0.5rem 1rem; border: 2px solid var(--accent-green); border-radius: 8px; background: var(--bg-primary); cursor: pointer; font-size: 0.85rem; transition: all 0.2s;">
+                            🔧 Pragmaticul Rigid
+                        </button>
+                        <button class="archetype-btn" data-archetype="hermit" style="padding: 0.5rem 1rem; border: 2px solid var(--accent-secondary); border-radius: 8px; background: var(--bg-primary); cursor: pointer; font-size: 0.85rem; transition: all 0.2s;">
+                            🦉 Ermitul Intelept
+                        </button>
+                        <button class="archetype-btn" data-archetype="innovator" style="padding: 0.5rem 1rem; border: 2px solid #6366f1; border-radius: 8px; background: var(--bg-primary); cursor: pointer; font-size: 0.85rem; transition: all 0.2s;">
+                            🚀 Inovatorul Analitic
+                        </button>
+                        <button class="archetype-btn" data-archetype="connector" style="padding: 0.5rem 1rem; border: 2px solid #f472b6; border-radius: 8px; background: var(--bg-primary); cursor: pointer; font-size: 0.85rem; transition: all 0.2s;">
+                            🤝 Conectorul Empatic
+                        </button>
+                        <button class="archetype-btn" data-archetype="pragmatic-leader" style="padding: 0.5rem 1rem; border: 2px solid #fbbf24; border-radius: 8px; background: var(--bg-primary); cursor: pointer; font-size: 0.85rem; transition: all 0.2s;">
+                            👑 Liderul Pragmatic
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sliders -->
+                <div class="simulator-sliders" style="display: grid; gap: 1.5rem;">
+                    <div class="slider-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
+                                <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent-blue); color: white; border-radius: 50%; font-size: 0.8rem;">IQ</span>
+                                Inteligenta Cognitiva
+                            </label>
+                            <span id="iq-value" style="font-weight: 600; color: var(--accent-blue);">50</span>
+                        </div>
+                        <input type="range" id="iq-slider" min="0" max="100" value="50" style="width: 100%;">
+                        <p class="text-muted" style="font-size: 0.8rem; margin-top: 0.25rem;">Procesare logica, abstractizare, pattern recognition</p>
+                    </div>
+
+                    <div class="slider-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
+                                <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent-pink); color: white; border-radius: 50%; font-size: 0.8rem;">EQ</span>
+                                Inteligenta Emotionala
+                            </label>
+                            <span id="eq-value" style="font-weight: 600; color: var(--accent-pink);">50</span>
+                        </div>
+                        <input type="range" id="eq-slider" min="0" max="100" value="50" style="width: 100%;">
+                        <p class="text-muted" style="font-size: 0.8rem; margin-top: 0.25rem;">Gestionarea emotiilor proprii si ale altora</p>
+                    </div>
+
+                    <div class="slider-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
+                                <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent-purple); color: white; border-radius: 50%; font-size: 0.8rem;">SQ</span>
+                                Inteligenta Sociala
+                            </label>
+                            <span id="sq-value" style="font-weight: 600; color: var(--accent-purple);">50</span>
+                        </div>
+                        <input type="range" id="sq-slider" min="0" max="100" value="50" style="width: 100%;">
+                        <p class="text-muted" style="font-size: 0.8rem; margin-top: 0.25rem;">Dinamici sociale, influenta, citirea situatiilor</p>
+                    </div>
+
+                    <div class="slider-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
+                                <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent-green); color: white; border-radius: 50%; font-size: 0.8rem;">PQ</span>
+                                Inteligenta Practica
+                            </label>
+                            <span id="pq-value" style="font-weight: 600; color: var(--accent-green);">50</span>
+                        </div>
+                        <input type="range" id="pq-slider" min="0" max="100" value="50" style="width: 100%;">
+                        <p class="text-muted" style="font-size: 0.8rem; margin-top: 0.25rem;">Street smarts, adaptare, rezolvare in viata reala</p>
+                    </div>
+
+                    <div class="slider-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
+                                <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent-orange); color: white; border-radius: 50%; font-size: 0.8rem;">CQ</span>
+                                Inteligenta Creativa
+                            </label>
+                            <span id="cq-value" style="font-weight: 600; color: var(--accent-orange);">50</span>
+                        </div>
+                        <input type="range" id="cq-slider" min="0" max="100" value="50" style="width: 100%;">
+                        <p class="text-muted" style="font-size: 0.8rem; margin-top: 0.25rem;">Idei noi, gandire divergenta, combinatii neasteptate</p>
+                    </div>
+
+                    <div class="slider-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
+                                <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent-secondary); color: white; border-radius: 50%; font-size: 0.8rem;">WQ</span>
+                                Intelepciunea
+                            </label>
+                            <span id="wq-value" style="font-weight: 600; color: var(--accent-secondary);">50</span>
+                        </div>
+                        <input type="range" id="wq-slider" min="0" max="100" value="50" style="width: 100%;">
+                        <p class="text-muted" style="font-size: 0.8rem; margin-top: 0.25rem;">Judecata, perspectiva pe termen lung, echilibru</p>
+                    </div>
+                </div>
+
+                <!-- Radar Chart -->
+                <div style="margin-top: 2rem; display: flex; justify-content: center;">
+                    <svg id="radar-chart" viewBox="0 0 400 400" style="max-width: 350px; width: 100%;">
+                        <!-- Background hexagon layers -->
+                        <g id="radar-bg">
+                            <polygon class="radar-level" points="" style="fill: none; stroke: var(--border-color); stroke-width: 1;"></polygon>
+                            <polygon class="radar-level" points="" style="fill: none; stroke: var(--border-color); stroke-width: 1;"></polygon>
+                            <polygon class="radar-level" points="" style="fill: none; stroke: var(--border-color); stroke-width: 1;"></polygon>
+                            <polygon class="radar-level" points="" style="fill: none; stroke: var(--border-color); stroke-width: 1;"></polygon>
+                        </g>
+                        <!-- Axis lines -->
+                        <g id="radar-axes"></g>
+                        <!-- Data polygon -->
+                        <polygon id="radar-data" points="" style="fill: rgba(13, 148, 136, 0.3); stroke: var(--accent-primary); stroke-width: 2;"></polygon>
+                        <!-- Labels -->
+                        <g id="radar-labels" style="font-size: 12px; font-weight: 600;"></g>
+                    </svg>
+                </div>
+
+                <!-- Results Section -->
+                <div id="profile-results" style="margin-top: 2rem;">
+                    <div class="highlight-box purple" style="margin-bottom: 1rem;">
+                        <h4 id="archetype-title" style="font-size: 1.2rem; margin-bottom: 0.5rem;">🎭 Arhetipul Tau: Evaluatorul</h4>
+                        <p id="archetype-description">Profil echilibrat cu tendinte spre analiza obiectiva.</p>
+                    </div>
+
+                    <div class="grid-2" style="gap: 1rem;">
+                        <div class="highlight-box green">
+                            <h4>💪 Puncte Forte</h4>
+                            <ul id="strengths-list" style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                                <li>Analiza echilibrata</li>
+                                <li>Adaptabilitate</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-box orange">
+                            <h4>⚠️ Puncte Slabe</h4>
+                            <ul id="weaknesses-list" style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                                <li>Fara specializare clara</li>
+                                <li>Risc de mediocritate</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top: 1rem;">
+                        <h4>🎯 Cariere Potrivite</h4>
+                        <p id="careers-list" style="margin-top: 0.5rem;">
+                            Consultant, Project Manager, Educator, Facilitator
+                        </p>
+                    </div>
+
+                    <div class="highlight-box pink" style="margin-top: 1rem;">
+                        <h4>🚨 Puncte Oarbe Potentiale</h4>
+                        <p id="blindspots-text" style="margin-top: 0.5rem;">
+                            Atentie la supraestimarea echilibrului - uneori e nevoie de specializare profunda.
+                        </p>
+                    </div>
+
+                    <div id="special-warnings" style="margin-top: 1rem;"></div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        (function() {
+            const sliders = {
+                iq: document.getElementById('iq-slider'),
+                eq: document.getElementById('eq-slider'),
+                sq: document.getElementById('sq-slider'),
+                pq: document.getElementById('pq-slider'),
+                cq: document.getElementById('cq-slider'),
+                wq: document.getElementById('wq-slider')
+            };
+
+            const values = {
+                iq: document.getElementById('iq-value'),
+                eq: document.getElementById('eq-value'),
+                sq: document.getElementById('sq-value'),
+                pq: document.getElementById('pq-value'),
+                cq: document.getElementById('cq-value'),
+                wq: document.getElementById('wq-value')
+            };
+
+            // Predefined archetype configurations
+            const archetypePresets = {
+                'balanced': { iq: 55, eq: 55, sq: 55, pq: 55, cq: 55, wq: 55 },
+                'cold-genius': { iq: 90, eq: 25, sq: 30, pq: 45, cq: 70, wq: 50 },
+                'empath': { iq: 35, eq: 90, sq: 65, pq: 50, cq: 55, wq: 60 },
+                'manipulator': { iq: 60, eq: 30, sq: 90, pq: 70, cq: 50, wq: 25 },
+                'dreamer': { iq: 55, eq: 60, sq: 40, pq: 25, cq: 90, wq: 45 },
+                'rigid-pragmatic': { iq: 50, eq: 45, sq: 55, pq: 90, cq: 25, wq: 60 },
+                'hermit': { iq: 65, eq: 50, sq: 25, pq: 45, cq: 30, wq: 90 },
+                'innovator': { iq: 85, eq: 40, sq: 45, pq: 55, cq: 85, wq: 50 },
+                'connector': { iq: 45, eq: 85, sq: 85, pq: 55, cq: 50, wq: 60 },
+                'pragmatic-leader': { iq: 60, eq: 55, sq: 65, pq: 85, cq: 45, wq: 85 }
+            };
+
+            const colors = {
+                iq: '#3b82f6',
+                eq: '#ec4899',
+                sq: '#a855f7',
+                pq: '#22c55e',
+                cq: '#f97316',
+                wq: '#0d9488'
+            };
+
+            const labels = ['IQ', 'EQ', 'SQ', 'PQ', 'CQ', 'WQ'];
+            const centerX = 200, centerY = 200, maxRadius = 140;
+
+            // Initialize radar chart
+            function initRadar() {
+                const bgGroup = document.getElementById('radar-bg');
+                const axesGroup = document.getElementById('radar-axes');
+                const labelsGroup = document.getElementById('radar-labels');
+
+                bgGroup.innerHTML = '';
+                axesGroup.innerHTML = '';
+                labelsGroup.innerHTML = '';
+
+                // Draw background levels
+                [0.25, 0.5, 0.75, 1].forEach(level => {
+                    const points = labels.map((_, i) => {
+                        const angle = (Math.PI * 2 * i / 6) - Math.PI / 2;
+                        const x = centerX + Math.cos(angle) * maxRadius * level;
+                        const y = centerY + Math.sin(angle) * maxRadius * level;
+                        return `${x},${y}`;
+                    }).join(' ');
+
+                    const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+                    polygon.setAttribute('points', points);
+                    polygon.setAttribute('style', 'fill: none; stroke: var(--border-color); stroke-width: 1;');
+                    bgGroup.appendChild(polygon);
+                });
+
+                // Draw axes and labels
+                labels.forEach((label, i) => {
+                    const angle = (Math.PI * 2 * i / 6) - Math.PI / 2;
+                    const x = centerX + Math.cos(angle) * maxRadius;
+                    const y = centerY + Math.sin(angle) * maxRadius;
+
+                    // Axis line
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    line.setAttribute('x1', centerX);
+                    line.setAttribute('y1', centerY);
+                    line.setAttribute('x2', x);
+                    line.setAttribute('y2', y);
+                    line.setAttribute('style', 'stroke: var(--border-color); stroke-width: 1;');
+                    axesGroup.appendChild(line);
+
+                    // Label
+                    const labelX = centerX + Math.cos(angle) * (maxRadius + 25);
+                    const labelY = centerY + Math.sin(angle) * (maxRadius + 25);
+                    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    text.setAttribute('x', labelX);
+                    text.setAttribute('y', labelY);
+                    text.setAttribute('text-anchor', 'middle');
+                    text.setAttribute('dominant-baseline', 'middle');
+                    text.setAttribute('style', `fill: ${colors[label.toLowerCase()]}; font-weight: 600;`);
+                    text.textContent = label;
+                    labelsGroup.appendChild(text);
+                });
+            }
+
+            function updateRadar() {
+                const data = labels.map(label => parseInt(sliders[label.toLowerCase()].value));
+                const points = data.map((value, i) => {
+                    const angle = (Math.PI * 2 * i / 6) - Math.PI / 2;
+                    const radius = (value / 100) * maxRadius;
+                    const x = centerX + Math.cos(angle) * radius;
+                    const y = centerY + Math.sin(angle) * radius;
+                    return `${x},${y}`;
+                }).join(' ');
+
+                document.getElementById('radar-data').setAttribute('points', points);
+            }
+
+            function analyzeProfile() {
+                const iq = parseInt(sliders.iq.value);
+                const eq = parseInt(sliders.eq.value);
+                const sq = parseInt(sliders.sq.value);
+                const pq = parseInt(sliders.pq.value);
+                const cq = parseInt(sliders.cq.value);
+                const wq = parseInt(sliders.wq.value);
+
+                const all = [iq, eq, sq, pq, cq, wq];
+                const avg = all.reduce((a, b) => a + b, 0) / 6;
+                const max = Math.max(...all);
+                const min = Math.min(...all);
+                const dominant = all.indexOf(max);
+                const weakest = all.indexOf(min);
+
+                let archetype = { title: '', description: '', emoji: '🎭' };
+                let strengths = [];
+                let weaknesses = [];
+                let careers = [];
+                let blindspots = '';
+                let warnings = [];
+
+                // Determine archetype based on dominant intelligence
+                if (max - avg < 10 && max - min < 20) {
+                    archetype = {
+                        title: 'Generalistul Echilibrat',
+                        description: 'Ai un profil echilibrat, fara varfuri sau vai majore. Esti adaptabil dar risti sa nu excelezi nicaieri.',
+                        emoji: '⚖️'
+                    };
+                    strengths = ['Adaptabilitate ridicata', 'Versatilitate', 'Comunicare transversala'];
+                    weaknesses = ['Lipsa specializarii', 'Risc de "jack of all trades"', 'Dificultate in a iesi in evidenta'];
+                    careers = ['Project Manager', 'Consultant generalist', 'Entrepreneur', 'Educator'];
+                    blindspots = 'Ai tendinta sa crezi ca "putin din toate" e suficient. Uneori lumea are nevoie de experti, nu de generalisti.';
+                } else if (iq >= 70 && eq < 40) {
+                    archetype = {
+                        title: 'Geniul Rece',
+                        description: 'Excelezi la gandirea abstracta dar emotiile sunt un mister. Risc de izolare sociala.',
+                        emoji: '🧊'
+                    };
+                    strengths = ['Analiza logica impecabila', 'Rezolvare de probleme complexe', 'Obiectivitate'];
+                    weaknesses = ['Dificultati relationale', 'Comunicare deficitara', 'Lipsa empatiei percepute'];
+                    careers = ['Cercetator', 'Matematician', 'Programator (backend/algoritmi)', 'Analist cuantitativ'];
+                    blindspots = 'Crezi ca logica rezolva totul. Dar oamenii nu sunt logici, iar deciziile importante implica emotii.';
+                    warnings.push({ type: 'orange', text: '⚠️ Risc: Sindromul "de ce nu inteleg astia?" - frustrare cronica cu oameni "irationali".' });
+                } else if (eq >= 70 && iq < 40) {
+                    archetype = {
+                        title: 'Empaticul Intuitiv',
+                        description: 'Simti totul, intelegi emotiile tuturor. Dar analiza rece e un punct slab.',
+                        emoji: '💗'
+                    };
+                    strengths = ['Empatie profunda', 'Creare de conexiuni', 'Suport emotional', 'Citirea atmosferei'];
+                    weaknesses = ['Vulnerabil la manipulare', 'Decizii bazate pe emotii', 'Dificultate cu logica abstracta'];
+                    careers = ['Terapeut', 'Consilier', 'HR (relatii cu angajatii)', 'Asistent social'];
+                    blindspots = 'Confunzi "simt ca e corect" cu "e corect". Emotiile nu sunt intotdeauna ghiduri de incredere.';
+                    warnings.push({ type: 'pink', text: '⚠️ Risc: Burnout emotional - absorbi prea mult din suferinta altora.' });
+                } else if (sq >= 70 && wq < 40) {
+                    archetype = {
+                        title: 'Manipulatorul Social',
+                        description: 'Stii exact cum sa obtii ce vrei de la oameni. Dar lipsa intelepciunii poate duce la abuz.',
+                        emoji: '🎪'
+                    };
+                    strengths = ['Networking exceptional', 'Influenta si persuasiune', 'Citirea dinamicilor de putere'];
+                    weaknesses = ['Tentatie de manipulare', 'Relatii superficiale', 'Lipsa principiilor solide'];
+                    careers = ['Sales', 'Politician', 'Negociator', 'Influencer'];
+                    blindspots = 'Confunzi "pot face asta" cu "ar trebui sa fac asta". Puterea fara intelepciune corupe.';
+                    warnings.push({ type: 'purple', text: '⚠️ Risc: Devii ceea ce manipulezi. Relatiile se degradeaza cand oamenii realizeaza.' });
+                } else if (cq >= 70 && pq < 40) {
+                    archetype = {
+                        title: 'Visatorul Nepragmatic',
+                        description: 'Ai idei geniale dar nu stii cum sa le implementezi. Potential irosit.',
+                        emoji: '🌈'
+                    };
+                    strengths = ['Inovatie', 'Gandire originala', 'Viziune', 'Conectarea ideilor disparate'];
+                    weaknesses = ['Lipsa executiei', 'Proiecte neterminate', 'Detasare de realitate'];
+                    careers = ['Artist conceptual', 'Brainstormer', 'R&D (ideatie)', 'Writer'];
+                    blindspots = 'Crezi ca ideea e totul. Dar executia e 90% din succes. O idee medie executata bate o idee geniala ignorata.';
+                    warnings.push({ type: 'orange', text: '⚠️ Risc: Sindromul "lumea nu e pregatita pentru ideile mele" - alibi pentru lipsa actiunii.' });
+                } else if (pq >= 70 && cq < 40) {
+                    archetype = {
+                        title: 'Pragmaticul Rigid',
+                        description: 'Te descurci excelent in viata reala. Dar lipsa creativitatii limiteaza inovatia.',
+                        emoji: '🔧'
+                    };
+                    strengths = ['Rezolvare practica', 'Adaptare la realitate', 'Rezultate concrete', 'Street smarts'];
+                    weaknesses = ['Rezistenta la schimbare', 'Gandire limitata', 'Lipsa viziunii'];
+                    careers = ['Manager operational', 'Antreprenor (executie)', 'Consultant de implementare', 'Meserias'];
+                    blindspots = 'Crezi ca "asa s-a facut mereu" e un argument. Eficienta fara inovatie duce la irelevanta.';
+                } else if (wq >= 70 && cq < 40 && sq < 40) {
+                    archetype = {
+                        title: 'Ermitul Intelept',
+                        description: 'Ai intelepciune profunda dar preferinti singuratatea. Risti sa nu-ti impartasesti darurile.',
+                        emoji: '🦉'
+                    };
+                    strengths = ['Judecata excelenta', 'Perspectiva pe termen lung', 'Echilibru interior', 'Umilinta'];
+                    weaknesses = ['Izolare', 'Dificultate in a influenta', 'Pasivitate'];
+                    careers = ['Mentor (1-la-1)', 'Filosof', 'Writer', 'Consilier pentru lideri'];
+                    blindspots = 'Confunzi detasarea cu intelepciunea. Uneori e nevoie sa te implici, nu doar sa observi.';
+                } else if (iq >= 70 && cq >= 70) {
+                    archetype = {
+                        title: 'Inovatorul Analitic',
+                        description: 'Combini logica riguroasa cu creativitatea. Potential ridicat pentru inovatie sistematica.',
+                        emoji: '🚀'
+                    };
+                    strengths = ['Inovatie bazata pe date', 'Sinteza complexa', 'Problem-solving creativ'];
+                    weaknesses = ['Posibil arogant', 'Impatienta cu ceilalti', 'Overcomplicare'];
+                    careers = ['Scientist/Cercetator', 'Arhitect software', 'Founder (tech)', 'Inventor'];
+                    blindspots = 'Poti crea solutii geniale la probleme pe care nimeni nu le are. Valideaza nevoia inainte de solutie.';
+                } else if (eq >= 70 && sq >= 70) {
+                    archetype = {
+                        title: 'Conectorul Empatic',
+                        description: 'Excelezi la relatii si intelegerea oamenilor. Poti uni grupuri diverse.',
+                        emoji: '🤝'
+                    };
+                    strengths = ['Leadership emotional', 'Construire de comunitati', 'Rezolvare conflicte', 'Influenta pozitiva'];
+                    weaknesses = ['Decizii prea consultative', 'Dificultate cu persoane toxice', 'Evitarea conflictului'];
+                    careers = ['HR Director', 'Community Builder', 'Coach', 'Mediator'];
+                    blindspots = 'Crezi ca toata lumea poate fi "castigata". Unii oameni sunt toxici si trebuie evitati, nu convertiti.';
+                } else if (pq >= 70 && wq >= 70) {
+                    archetype = {
+                        title: 'Liderul Pragmatic',
+                        description: 'Combini intelepciunea cu simtul practic. Poti lua decizii dificile si implementa.',
+                        emoji: '👑'
+                    };
+                    strengths = ['Decizii echilibrate', 'Executie cu viziune', 'Leadership matur', 'Credibilitate'];
+                    weaknesses = ['Risc de conservatorism', 'Lent in schimbare', 'Posibil prea prudent'];
+                    careers = ['CEO', 'Director executiv', 'Consultant strategic', 'Politician experimentat'];
+                    blindspots = 'Intelepciunea poate deveni paralizie. Uneori e nevoie sa actionezi cu informatii incomplete.';
+                } else if (dominant === 0) { // IQ dominant
+                    archetype = {
+                        title: 'Analistul',
+                        description: 'Mintea ta exceleaza la procesarea logica. Totul e un puzzle de rezolvat.',
+                        emoji: '🔬'
+                    };
+                    strengths = ['Gandire analitica', 'Rezolvare de probleme', 'Invatare rapida'];
+                    weaknesses = ['Poate ignora emotii', 'Paralizie prin analiza', 'Over-thinking'];
+                    careers = ['Data Scientist', 'Inginer', 'Cercetator', 'Programator'];
+                    blindspots = 'Nu toate problemele au solutii logice. Relatiile si emotiile au propria lor logica.';
+                } else if (dominant === 1) { // EQ dominant
+                    archetype = {
+                        title: 'Empaticul',
+                        description: 'Simti ce simt altii, uneori inainte sa stie ei insisi.',
+                        emoji: '💝'
+                    };
+                    strengths = ['Conexiuni profunde', 'Intuitie emotionala', 'Suport autentic'];
+                    weaknesses = ['Absorbirea emotiilor negative', 'Dificultate cu granitele', 'Decizii emotionale'];
+                    careers = ['Psiholog', 'Coach', 'Artist', 'Educator'];
+                    blindspots = 'Empatia fara granite duce la burnout. Invata sa protejezi si propria energie.';
+                } else if (dominant === 2) { // SQ dominant
+                    archetype = {
+                        title: 'Socialul',
+                        description: 'Navighezi grupurile ca un peste in apa. Stii exact ce buton sa apesi.',
+                        emoji: '🎯'
+                    };
+                    strengths = ['Networking', 'Citirea dinamicilor', 'Adaptare sociala'];
+                    weaknesses = ['Dependenta de validare', 'Relatii utilitare', 'Lipsa de profunzime'];
+                    careers = ['PR', 'Business Development', 'Event Manager', 'Recruiter'];
+                    blindspots = 'Popularitatea nu e acelasi lucru cu respectul. Si conexiunile superficiale nu te sustin in criza.';
+                } else if (dominant === 3) { // PQ dominant
+                    archetype = {
+                        title: 'Pragmaticul',
+                        description: 'Te descurci in orice situatie. Teoria e mai putin importanta decat rezultatul.',
+                        emoji: '⚒️'
+                    };
+                    strengths = ['Adaptabilitate', 'Focus pe rezultate', 'Rezolvare practica'];
+                    weaknesses = ['Poate ignora teoria', 'Scurtaturi', 'Anti-intelectualism'];
+                    careers = ['Antreprenor', 'Manager', 'Sales', 'Consultant operational'];
+                    blindspots = 'Eficienta fara strategie e alergare in cerc. Uneori trebuie sa te opresti si sa gandesti.';
+                } else if (dominant === 4) { // CQ dominant
+                    archetype = {
+                        title: 'Creativul',
+                        description: 'Mintea ta face conexiuni pe care altii nu le vad. Ideile vin constant.',
+                        emoji: '🎨'
+                    };
+                    strengths = ['Inovatie', 'Gandire out-of-the-box', 'Viziune'];
+                    weaknesses = ['Haos', 'Proiecte abandonate', 'Dificultate cu rutina'];
+                    careers = ['Designer', 'Artist', 'Entrepreneur (vizionar)', 'Creative Director'];
+                    blindspots = 'Nu orice idee noua e o idee buna. Validarea e la fel de importanta ca generarea.';
+                } else { // WQ dominant
+                    archetype = {
+                        title: 'Filosoful',
+                        description: 'Gandesti profund, pe termen lung. Dar risti sa filosofezi in loc sa actionezi.',
+                        emoji: '📚'
+                    };
+                    strengths = ['Judecata profunda', 'Perspectiva larga', 'Echilibru'];
+                    weaknesses = ['Pasivitate', 'Detasare', 'Lent in actiune'];
+                    careers = ['Profesor', 'Writer', 'Advisor', 'Judge'];
+                    blindspots = 'Intelepciunea fara actiune e sterilă. Lumea are nevoie de oameni care fac, nu doar gandesc.';
+                }
+
+                // Check for critical imbalances
+                if (iq >= 80 && eq <= 30 && sq <= 30) {
+                    warnings.push({
+                        type: 'red',
+                        text: '🚨 Dezechilibru critic: IQ foarte ridicat + EQ/SQ foarte scazute = risc de izolare sociala si decizii "corecte" dar distructive.'
+                    });
+                }
+                if (eq >= 80 && wq <= 30) {
+                    warnings.push({
+                        type: 'pink',
+                        text: '⚠️ Atentie: Empatie ridicata fara intelepciune = vulnerabilitate la manipulare emotionala.'
+                    });
+                }
+                if (sq >= 80 && eq <= 30 && wq <= 30) {
+                    warnings.push({
+                        type: 'purple',
+                        text: '⚠️ Risc: Inteligenta sociala fara empatie si intelepciune = profil de manipulator/sociopat.'
+                    });
+                }
+                if (all.every(v => v >= 70)) {
+                    warnings.push({
+                        type: 'green',
+                        text: '✨ Profil exceptional: Toate inteligentele ridicate. Fie esti extraordinar, fie te supraevaluezi.'
+                    });
+                }
+                if (all.every(v => v <= 30)) {
+                    warnings.push({
+                        type: 'orange',
+                        text: '🤔 Profil extrem de scazut: Fie esti prea modest, fie ai nevoie de dezvoltare in toate ariile.'
+                    });
+                }
+
+                // Update UI
+                document.getElementById('archetype-title').textContent = `${archetype.emoji} Arhetipul Tau: ${archetype.title}`;
+                document.getElementById('archetype-description').textContent = archetype.description;
+
+                const strengthsList = document.getElementById('strengths-list');
+                strengthsList.innerHTML = strengths.map(s => `<li>${s}</li>`).join('');
+
+                const weaknessesList = document.getElementById('weaknesses-list');
+                weaknessesList.innerHTML = weaknesses.map(w => `<li>${w}</li>`).join('');
+
+                document.getElementById('careers-list').textContent = careers.join(', ');
+                document.getElementById('blindspots-text').textContent = blindspots;
+
+                const warningsDiv = document.getElementById('special-warnings');
+                if (warnings.length > 0) {
+                    warningsDiv.innerHTML = warnings.map(w => `
+                        <div class="highlight-box ${w.type}" style="margin-top: 0.5rem;">
+                            <p>${w.text}</p>
+                        </div>
+                    `).join('');
+                } else {
+                    warningsDiv.innerHTML = '';
+                }
+            }
+
+            function updateAll() {
+                Object.keys(sliders).forEach(key => {
+                    values[key].textContent = sliders[key].value;
+                });
+                updateRadar();
+                analyzeProfile();
+            }
+
+            // Event listeners for sliders
+            Object.keys(sliders).forEach(key => {
+                sliders[key].addEventListener('input', updateAll);
+            });
+
+            // Event listeners for archetype buttons
+            function loadArchetype(archetypeName) {
+                const preset = archetypePresets[archetypeName];
+                if (!preset) return;
+
+                // Animate sliders to new values
+                Object.keys(preset).forEach(key => {
+                    sliders[key].value = preset[key];
+                });
+
+                // Update display
+                updateAll();
+
+                // Highlight active button
+                document.querySelectorAll('.archetype-btn').forEach(btn => {
+                    btn.style.background = 'var(--bg-primary)';
+                    btn.style.fontWeight = 'normal';
+                });
+                const activeBtn = document.querySelector(`[data-archetype="${archetypeName}"]`);
+                if (activeBtn) {
+                    activeBtn.style.background = 'var(--bg-secondary)';
+                    activeBtn.style.fontWeight = '600';
+                }
+            }
+
+            document.querySelectorAll('.archetype-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    loadArchetype(btn.dataset.archetype);
+                });
+
+                // Hover effects
+                btn.addEventListener('mouseenter', () => {
+                    btn.style.transform = 'translateY(-2px)';
+                    btn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = 'translateY(0)';
+                    btn.style.boxShadow = 'none';
+                });
+            });
+
+            // Initialize
+            initRadar();
+            updateAll();
+        })();
+        </script>
+
         <!-- AUTOEVALUARE -->
         <h2 style="margin: 2rem 0 1rem;">📝 Autoevaluare: Unde Esti Tu?</h2>
 
