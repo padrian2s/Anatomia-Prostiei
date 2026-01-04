@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De ce nu pot procesa argumentul tău?</title>
+    <title>Anatomia Prostiei Colective</title>
     <style>
         * {
             margin: 0;
@@ -11,69 +11,844 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            color: #e4e4e4;
-            line-height: 1.7;
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --accent-red: #e94560;
+            --accent-orange: #ffa726;
+            --accent-blue: #42a5f5;
+            --accent-purple: #ab47bc;
+            --accent-green: #66bb6a;
+            --accent-cyan: #4dd0e1;
+            --text-primary: #e4e4e4;
+            --text-secondary: #a4a4a4;
+            --text-muted: #666;
         }
 
-        .container {
-            max-width: 1200px;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1400px;
             margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: radial-gradient(ellipse at center, rgba(233, 69, 96, 0.1) 0%, transparent 70%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-red) 50%, var(--accent-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        .hero-equation {
+            background: var(--bg-tertiary);
+            border-radius: 20px;
+            padding: 2rem 4rem;
+            font-size: 1.8rem;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            margin-bottom: 3rem;
+        }
+
+        .hero-equation .number {
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        .hero-equation .operator {
+            color: var(--accent-orange);
+            margin: 0 1rem;
+        }
+
+        .hero-equation .result {
+            color: var(--accent-red);
+            font-weight: bold;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Section Styles */
+        .section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Group IQ Simulator */
+        .simulator-container {
+            background: var(--bg-secondary);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .simulator-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+        }
+
+        .simulator-visual {
+            background: var(--bg-tertiary);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .crowd-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
             padding: 2rem;
         }
 
-        header {
-            text-align: center;
-            padding: 3rem 0;
-            margin-bottom: 2rem;
+        .person {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            position: relative;
         }
 
-        h1 {
+        .person::after {
+            content: attr(data-iq);
+            position: absolute;
+            bottom: -18px;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .person:hover::after {
+            opacity: 1;
+        }
+
+        .person.thinking {
+            animation: thinking 0.5s ease;
+        }
+
+        @keyframes thinking {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .person.conforming {
+            filter: grayscale(0.5);
+        }
+
+        .simulator-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .control-group {
+            background: var(--bg-tertiary);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .control-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .control-group h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .slider {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            cursor: pointer;
+        }
+
+        .slider-value {
+            min-width: 50px;
+            text-align: right;
+            font-weight: bold;
+            color: var(--accent-cyan);
+        }
+
+        .result-display {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2), rgba(255, 167, 38, 0.1));
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+
+        .result-display h3 {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-iq {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .result-comparison {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-orange));
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+        }
+
+        /* Mechanisms Section */
+        .mechanisms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .mechanism-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .mechanism-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .mechanism-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .mechanism-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+        }
+
+        .mechanism-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .mechanism-example {
+            background: var(--bg-tertiary);
+            border-radius: 10px;
+            padding: 1rem;
+            border-left: 3px solid var(--accent-orange);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Social Media Factory Section */
+        .factory-section {
+            background: linear-gradient(135deg, rgba(171, 71, 188, 0.1) 0%, rgba(233, 69, 96, 0.05) 100%);
+            border-top: 1px solid rgba(171, 71, 188, 0.3);
+            border-bottom: 1px solid rgba(171, 71, 188, 0.3);
+            padding: 6rem 0;
+        }
+
+        .factory-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .factory-header h2 {
             font-size: 2.8rem;
-            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-red));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 1rem;
         }
 
-        .subtitle {
-            font-size: 1.3rem;
-            color: #a4a4a4;
-            font-style: italic;
-        }
-
-        .intro {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
+        /* Echo Chamber Simulator */
+        .echo-simulator {
+            background: var(--bg-secondary);
+            border-radius: 30px;
             padding: 2rem;
-            margin-bottom: 3rem;
-            border-left: 4px solid #e94560;
+            margin: 3rem auto;
+            max-width: 1200px;
         }
 
-        .intro p {
-            font-size: 1.2rem;
-        }
-
-        .scenarios {
+        .echo-grid {
             display: grid;
+            grid-template-columns: 1fr 350px;
             gap: 2rem;
         }
 
-        .scenario {
-            background: rgba(255, 255, 255, 0.03);
+        .feed-container {
+            background: var(--bg-tertiary);
             border-radius: 20px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
+            padding: 1.5rem;
+            max-height: 500px;
+            overflow-y: auto;
         }
 
-        .scenario:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        .feed-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .feed-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .feed-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        .post {
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+            animation: fadeInPost 0.5s ease;
+        }
+
+        @keyframes fadeInPost {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .post.viral {
+            border-color: var(--accent-red);
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.2);
+        }
+
+        .post.nuanced {
+            opacity: 0.5;
+            transform: scale(0.95);
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+        }
+
+        .post-author {
+            font-weight: 600;
+        }
+
+        .post-time {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .post-content {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .post-emotion {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .post-emotion.outrage {
+            background: rgba(233, 69, 96, 0.2);
+            color: var(--accent-red);
+        }
+
+        .post-emotion.fear {
+            background: rgba(255, 167, 38, 0.2);
+            color: var(--accent-orange);
+        }
+
+        .post-emotion.superiority {
+            background: rgba(171, 71, 188, 0.2);
+            color: var(--accent-purple);
+        }
+
+        .post-emotion.nuanced {
+            background: rgba(102, 187, 106, 0.2);
+            color: var(--accent-green);
+        }
+
+        .post-stats {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .post-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .echo-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .echo-stat-box {
+            background: var(--bg-tertiary);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .echo-stat-box h4 {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .echo-stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .echo-stat-value.danger {
+            color: var(--accent-red);
+        }
+
+        .echo-stat-value.warning {
+            color: var(--accent-orange);
+        }
+
+        .algorithm-viz {
+            background: var(--bg-tertiary);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .algorithm-viz h4 {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .algo-factors {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .algo-factor {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .algo-factor .bar {
+            width: 100px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .algo-factor .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        /* Poison Pills */
+        .poison-pills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 2rem;
+        }
+
+        .poison-pill {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 2rem;
+            border-left: 4px solid;
+            transition: transform 0.3s;
+        }
+
+        .poison-pill:hover {
+            transform: translateX(10px);
+        }
+
+        .poison-pill:nth-child(1) { border-color: var(--accent-red); }
+        .poison-pill:nth-child(2) { border-color: var(--accent-orange); }
+        .poison-pill:nth-child(3) { border-color: var(--accent-purple); }
+        .poison-pill:nth-child(4) { border-color: var(--accent-blue); }
+        .poison-pill:nth-child(5) { border-color: var(--accent-cyan); }
+
+        .poison-pill h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .poison-pill p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Bonhoeffer 2.0 */
+        .bonhoeffer-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .bonhoeffer-comparison {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin: 3rem 0;
+        }
+
+        .bonhoeffer-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .bonhoeffer-card.old {
+            border: 2px solid var(--accent-orange);
+        }
+
+        .bonhoeffer-card.new {
+            border: 2px solid var(--accent-purple);
+        }
+
+        .bonhoeffer-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .bonhoeffer-card.old h3 { color: var(--accent-orange); }
+        .bonhoeffer-card.new h3 { color: var(--accent-purple); }
+
+        .bonhoeffer-vs {
+            font-size: 2rem;
+            color: var(--text-muted);
+        }
+
+        .insidious-box {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2), rgba(171, 71, 188, 0.1));
+            border: 2px dashed var(--accent-red);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .insidious-box h3 {
+            color: var(--accent-red);
+            margin-bottom: 1rem;
+        }
+
+        .insidious-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Net Effect Animation */
+        .net-effect {
+            background: var(--bg-tertiary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .net-effect h3 {
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .effect-chain {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .effect-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        .effect-item:nth-child(1) { animation-delay: 0.1s; }
+        .effect-item:nth-child(2) { animation-delay: 0.2s; }
+        .effect-item:nth-child(3) { animation-delay: 0.3s; }
+        .effect-item:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .effect-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Conclusion */
+        .conclusion-section {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.1) 0%, var(--bg-primary) 100%);
+            padding: 6rem 2rem;
+        }
+
+        .conclusion-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .conclusion-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-red);
+        }
+
+        .conclusion-text {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: var(--text-secondary);
+        }
+
+        .conclusion-text strong {
+            color: var(--text-primary);
+        }
+
+        .final-insight {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+
+        .final-insight p {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* Individual Stupidity Section (original content) */
+        .individual-section {
+            background: var(--bg-secondary);
+            padding: 6rem 2rem;
+        }
+
+        .scenarios-grid {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .scenario-card {
+            background: var(--bg-tertiary);
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-3px);
         }
 
         .scenario-header {
@@ -81,59 +856,56 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            position: relative;
         }
 
+        .scenario-1 .scenario-header { background: linear-gradient(135deg, var(--accent-red) 0%, #ee5a5a 100%); }
+        .scenario-2 .scenario-header { background: linear-gradient(135deg, var(--accent-orange) 0%, #ff9800 100%); }
+        .scenario-3 .scenario-header { background: linear-gradient(135deg, var(--accent-blue) 0%, #2196f3 100%); }
+        .scenario-4 .scenario-header { background: linear-gradient(135deg, var(--accent-purple) 0%, #9c27b0 100%); }
+
         .scenario-number {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             font-weight: bold;
-            flex-shrink: 0;
+            font-size: 1.2rem;
         }
 
         .scenario-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
         }
 
         .scenario-icon {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-left: auto;
         }
 
         .expand-indicator {
-            position: absolute;
-            right: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-            opacity: 0.5;
+            margin-left: 1rem;
+            transition: transform 0.3s;
         }
 
-        .scenario.active .expand-indicator {
-            transform: translateY(-50%) rotate(180deg);
+        .scenario-card.active .expand-indicator {
+            transform: rotate(180deg);
         }
 
         .scenario-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease, padding 0.3s ease;
-            padding: 0 2rem;
+            transition: max-height 0.5s ease;
         }
 
-        .scenario.active .scenario-content {
-            max-height: 1000px;
-            padding: 0 2rem 2rem 2rem;
+        .scenario-card.active .scenario-content {
+            max-height: 500px;
         }
 
         .scenario-body {
-            padding-top: 1rem;
+            padding: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -145,7 +917,7 @@
             background: rgba(233, 69, 96, 0.2);
             padding: 0.2rem 0.5rem;
             border-radius: 4px;
-            color: #ff6b6b;
+            color: var(--accent-red);
         }
 
         .example-box {
@@ -153,92 +925,250 @@
             border-radius: 10px;
             padding: 1.5rem;
             margin: 1rem 0;
-            border-left: 3px solid;
-            font-family: 'Courier New', monospace;
+            border-left: 3px solid var(--accent-orange);
         }
 
         .solution-box {
-            background: rgba(76, 175, 80, 0.1);
+            background: rgba(102, 187, 106, 0.1);
             border-radius: 10px;
             padding: 1.5rem;
             margin-top: 1rem;
-            border: 1px solid rgba(76, 175, 80, 0.3);
+            border: 1px solid rgba(102, 187, 106, 0.3);
         }
 
         .solution-box h4 {
-            color: #81c784;
+            color: var(--accent-green);
             margin-bottom: 0.5rem;
+        }
+
+        /* Virality Simulator */
+        .virality-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .virality-container {
+            background: var(--bg-secondary);
+            border-radius: 30px;
+            padding: 2rem;
+        }
+
+        .virality-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .message-box {
+            background: var(--bg-tertiary);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .message-box h4 {
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        /* Scenario Colors */
-        .scenario-1 .scenario-header { background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%); }
-        .scenario-1 .scenario-number { background: rgba(255, 255, 255, 0.2); }
-        .scenario-1 .example-box { border-color: #ff6b6b; }
+        .message-box.emotional h4 {
+            color: var(--accent-red);
+        }
 
-        .scenario-2 .scenario-header { background: linear-gradient(135deg, #ffa726 0%, #ff9800 100%); }
-        .scenario-2 .scenario-number { background: rgba(255, 255, 255, 0.2); }
-        .scenario-2 .example-box { border-color: #ffa726; }
+        .message-box.nuanced h4 {
+            color: var(--accent-green);
+        }
 
-        .scenario-3 .scenario-header { background: linear-gradient(135deg, #42a5f5 0%, #2196f3 100%); }
-        .scenario-3 .scenario-number { background: rgba(255, 255, 255, 0.2); }
-        .scenario-3 .example-box { border-color: #42a5f5; }
+        .message-content {
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
 
-        .scenario-4 .scenario-header { background: linear-gradient(135deg, #ab47bc 0%, #9c27b0 100%); }
-        .scenario-4 .scenario-number { background: rgba(255, 255, 255, 0.2); }
-        .scenario-4 .example-box { border-color: #ab47bc; }
+        .spread-viz {
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+        }
 
-        /* Knowledge Levels Section */
-        .knowledge-section {
-            margin-top: 4rem;
-            padding-top: 3rem;
+        .spread-node {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            transition: all 0.5s ease;
+        }
+
+        .spread-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+            padding-top: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .knowledge-section > h2 {
+        .spread-stat {
             text-align: center;
-            font-size: 2.2rem;
-            background: linear-gradient(90deg, #00bcd4, #4dd0e1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
         }
 
-        .knowledge-section > .section-subtitle {
-            text-align: center;
-            color: #888;
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
+        .spread-stat .value {
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
-        .levels-pyramid {
+        .spread-stat .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .message-box.emotional .spread-stat .value {
+            color: var(--accent-red);
+        }
+
+        .message-box.nuanced .spread-stat .value {
+            color: var(--accent-green);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: var(--bg-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .simulator-grid,
+            .echo-grid,
+            .virality-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bonhoeffer-comparison {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .bonhoeffer-vs {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .hero-equation {
+                font-size: 1.2rem;
+                padding: 1.5rem 2rem;
+            }
+        }
+
+        /* Dunning-Kruger Section */
+        .dk-section {
+            background: var(--bg-tertiary);
+            padding: 6rem 2rem;
+        }
+
+        .dk-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .dk-graph-container {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .dk-phases {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .dk-phase {
+            background: var(--bg-tertiary);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 4px solid;
+            transition: transform 0.3s;
+        }
+
+        .dk-phase:hover {
+            transform: translateY(-5px);
+        }
+
+        .dk-phase:nth-child(1) { border-color: var(--accent-red); }
+        .dk-phase:nth-child(2) { border-color: var(--accent-orange); }
+        .dk-phase:nth-child(3) { border-color: var(--accent-green); }
+        .dk-phase:nth-child(4) { border-color: var(--accent-blue); }
+
+        .dk-phase h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .dk-phase:nth-child(1) h4 { color: var(--accent-red); }
+        .dk-phase:nth-child(2) h4 { color: var(--accent-orange); }
+        .dk-phase:nth-child(3) h4 { color: var(--accent-green); }
+        .dk-phase:nth-child(4) h4 { color: var(--accent-blue); }
+
+        .dk-phase p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .dk-phases {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Knowledge Levels */
+        .knowledge-pyramid {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0.5rem;
-            margin-bottom: 3rem;
+            margin: 3rem 0;
         }
 
-        .level-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .knowledge-level {
             padding: 1rem 2rem;
             border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
             text-align: center;
-            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .level-bar:hover {
+        .knowledge-level:hover {
             transform: scale(1.02);
         }
 
-        .level-bar.active {
+        .knowledge-level.active {
             box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
         }
 
@@ -248,1095 +1178,479 @@
         .level-4 { background: linear-gradient(135deg, #4db6ac, #26a69a); width: 50%; }
         .level-5 { background: linear-gradient(135deg, #81c784, #66bb6a); width: 35%; }
 
-        .level-bar .level-name {
+        .level-name {
             font-weight: bold;
-            font-size: 1.1rem;
         }
 
-        .level-bar .level-desc {
+        .level-desc {
             font-size: 0.9rem;
             opacity: 0.9;
-            margin-left: 1rem;
         }
 
         .level-detail {
             display: none;
-            background: rgba(0, 0, 0, 0.3);
+            background: var(--bg-secondary);
             border-radius: 15px;
             padding: 1.5rem;
             margin-top: 1rem;
             width: 100%;
-            max-width: 800px;
+            max-width: 700px;
+            animation: fadeIn 0.3s ease;
         }
 
         .level-detail.visible {
             display: block;
-            animation: fadeIn 0.3s ease;
         }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        .confusion-section {
-            background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 193, 7, 0.05) 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 3rem;
-            border: 1px solid rgba(255, 152, 0, 0.3);
-        }
-
-        .confusion-section h3 {
-            color: #ffb74d;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .confusion-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .confusion-card {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            padding: 1.5rem;
-            border-left: 4px solid #ffb74d;
-        }
-
-        .confusion-card h4 {
-            color: #ffd54f;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .confusion-card p {
-            margin-bottom: 0.8rem;
-            line-height: 1.6;
-        }
-
-        .passive-active-section {
-            background: linear-gradient(135deg, rgba(156, 39, 176, 0.1) 0%, rgba(186, 104, 200, 0.05) 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2rem;
-            border: 1px solid rgba(156, 39, 176, 0.3);
-        }
-
-        .passive-active-section h3 {
-            color: #ce93d8;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .pa-comparison {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 1rem;
-            align-items: center;
-            margin: 1.5rem 0;
-        }
-
-        .pa-box {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .pa-box.passive { border: 2px solid #ef5350; }
-        .pa-box.active { border: 2px solid #66bb6a; }
-
-        .pa-box h4 {
-            margin-bottom: 1rem;
-        }
-
-        .pa-box.passive h4 { color: #ef5350; }
-        .pa-box.active h4 { color: #66bb6a; }
-
-        .pa-vs {
-            font-size: 2rem;
-            color: #666;
-        }
-
-        .google-effect {
-            background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(100, 181, 246, 0.05) 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2rem;
-            border: 1px solid rgba(66, 165, 245, 0.3);
-        }
-
-        .google-effect h3 {
-            color: #64b5f6;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .google-effect .warning-text {
-            background: rgba(244, 67, 54, 0.1);
-            border: 1px solid rgba(244, 67, 54, 0.3);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-top: 1rem;
-            color: #ef9a9a;
-        }
-
-        .read-somewhere {
-            background: linear-gradient(135deg, rgba(233, 69, 96, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2rem;
-            border: 1px solid rgba(233, 69, 96, 0.3);
-        }
-
-        .read-somewhere h3 {
-            color: #e94560;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .telephone-list {
-            display: grid;
-            gap: 0.5rem;
-        }
-
-        .telephone-item {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 0.8rem 1.2rem;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .telephone-item::before {
-            content: "📖";
-        }
-
-        .telephone-item:nth-child(8)::before {
-            content: "🗣️";
-        }
-
-        .practice-examples {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .practice-examples h4 {
-            color: #ff8a80;
-            margin-bottom: 1rem;
-        }
-
-        .practice-example {
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .practice-example:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .practice-example .claim {
-            color: #fff;
-            font-weight: 500;
-        }
-
-        .practice-example .reality {
-            color: #888;
-            font-size: 0.9rem;
-            margin-top: 0.3rem;
-            font-style: italic;
-        }
-
-        .honest-test {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.15) 0%, rgba(129, 199, 132, 0.08) 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2rem;
-            border: 2px solid rgba(76, 175, 80, 0.4);
-        }
-
-        .honest-test h3 {
-            color: #81c784;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .test-questions {
-            display: grid;
-            gap: 0.8rem;
-        }
-
-        .test-question {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 1rem 1.5rem;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 2px solid transparent;
-        }
-
-        .test-question:hover {
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .test-question.checked {
-            border-color: #81c784;
-            background: rgba(76, 175, 80, 0.1);
-        }
-
-        .test-question .checkbox {
-            width: 24px;
-            height: 24px;
-            border: 2px solid #666;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: all 0.2s ease;
-        }
-
-        .test-question.checked .checkbox {
-            background: #81c784;
-            border-color: #81c784;
-        }
-
-        .test-question.checked .checkbox::after {
-            content: "✓";
-            color: #1a1a2e;
-            font-weight: bold;
-        }
-
-        .test-result {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-            display: none;
-        }
-
-        .test-result.show {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .test-result.positive {
-            background: rgba(76, 175, 80, 0.2);
-            border: 1px solid #81c784;
-        }
-
-        .test-result.negative {
-            background: rgba(244, 67, 54, 0.2);
-            border: 1px solid #ef5350;
-        }
-
-        .test-result.partial {
-            background: rgba(255, 152, 0, 0.2);
-            border: 1px solid #ffb74d;
-        }
-
-        .danger-note {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            background: rgba(244, 67, 54, 0.1);
-            border: 1px dashed rgba(244, 67, 54, 0.5);
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .danger-note p {
-            color: #ef9a9a;
-        }
-
-        .danger-note strong {
-            color: #ef5350;
-        }
-
-        /* Dunning-Kruger Deep Dive Section */
-        .dk-section {
-            margin-top: 4rem;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .dk-section > h2 {
-            text-align: center;
-            font-size: 2.2rem;
-            background: linear-gradient(90deg, #ff6b6b, #ffa726);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        .dk-section > .section-subtitle {
-            text-align: center;
-            color: #888;
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .dk-origin {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border-left: 4px solid #ffa726;
-        }
-
-        .dk-origin .year {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ffa726;
-            float: left;
-            margin-right: 1rem;
-        }
-
-        .core-idea {
-            background: linear-gradient(135deg, rgba(233, 69, 96, 0.15) 0%, rgba(255, 107, 107, 0.08) 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 2px solid rgba(233, 69, 96, 0.4);
-            text-align: center;
-        }
-
-        .core-idea p {
-            font-size: 1.3rem;
-            line-height: 1.8;
-        }
-
-        .core-idea .key-insight {
-            font-size: 1.1rem;
-            color: #ff8a80;
-            margin-top: 1rem;
-            font-style: italic;
-        }
-
-        .study-results {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .study-results h3 {
-            color: #64b5f6;
-            margin-bottom: 1rem;
-        }
-
-        .result-bars {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .result-bar {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .result-bar .label {
-            width: 150px;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .result-bar .bar-container {
-            flex: 1;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .result-bar .bar-actual {
-            height: 100%;
-            border-radius: 15px;
-            position: absolute;
-            left: 0;
-        }
-
-        .result-bar .bar-perceived {
-            height: 100%;
-            border-radius: 15px;
-            position: absolute;
-            left: 0;
-            border: 2px dashed rgba(255, 255, 255, 0.5);
-            background: transparent;
-        }
-
-        .bar-legend {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 1rem;
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        .bar-legend span {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .legend-actual {
-            width: 20px;
-            height: 10px;
-            background: linear-gradient(90deg, #ef5350, #66bb6a);
-            border-radius: 3px;
-        }
-
-        .legend-perceived {
-            width: 20px;
-            height: 10px;
-            border: 2px dashed rgba(255, 255, 255, 0.5);
-            border-radius: 3px;
-        }
-
-        .dk-graph {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .dk-graph h3 {
-            color: #ffd54f;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .graph-container {
-            position: relative;
-            height: 300px;
-            margin: 2rem 1rem;
-        }
-
-        .graph-svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .graph-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 0.5rem;
-            color: #888;
-            font-size: 0.85rem;
-        }
-
-        .graph-y-label {
-            position: absolute;
-            left: -10px;
-            top: 50%;
-            transform: rotate(-90deg) translateX(50%);
-            color: #888;
-            font-size: 0.85rem;
-        }
-
-        .mount-stupid-label {
-            position: absolute;
-            top: 20px;
-            left: 20%;
-            background: rgba(239, 83, 80, 0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 5px;
-            font-size: 0.85rem;
-            color: #ef5350;
-        }
-
-        .valley-label {
-            position: absolute;
-            top: 180px;
-            left: 40%;
-            background: rgba(66, 165, 245, 0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 5px;
-            font-size: 0.85rem;
-            color: #64b5f6;
-        }
-
-        .expert-label {
-            position: absolute;
-            top: 100px;
-            right: 10%;
-            background: rgba(102, 187, 106, 0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 5px;
-            font-size: 0.85rem;
-            color: #81c784;
-        }
-
-        .phases-section {
-            margin: 2rem 0;
-        }
-
-        .phases-section h3 {
-            color: #ce93d8;
-            margin-bottom: 1.5rem;
-        }
-
-        .phases-timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .phases-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0.5rem;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #ef5350, #ffa726, #66bb6a, #64b5f6);
-        }
-
-        .phase {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 1rem 1.5rem;
-            position: relative;
-        }
-
-        .phase::before {
-            content: '';
-            position: absolute;
-            left: -1.75rem;
-            top: 1.2rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .phase-1::before { background: #ef5350; }
-        .phase-2::before { background: #ffa726; }
-        .phase-3::before { background: #66bb6a; }
-        .phase-4::before { background: #64b5f6; }
-
-        .phase h4 {
-            margin-bottom: 0.5rem;
-        }
-
-        .phase-1 h4 { color: #ef5350; }
-        .phase-2 h4 { color: #ffa726; }
-        .phase-3 h4 { color: #66bb6a; }
-        .phase-4 h4 { color: #64b5f6; }
-
-        .phase .quote {
-            font-style: italic;
-            color: #888;
-            margin-top: 0.5rem;
-        }
-
-        .metacognition-section {
-            background: linear-gradient(135deg, rgba(103, 58, 183, 0.1) 0%, rgba(149, 117, 205, 0.05) 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 1px solid rgba(103, 58, 183, 0.3);
-        }
-
-        .metacognition-section h3 {
-            color: #b39ddb;
-            margin-bottom: 1rem;
-        }
-
-        .chess-example {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .chess-beginner, .chess-master {
-            padding: 1rem;
-            border-radius: 8px;
-        }
-
-        .chess-beginner {
-            background: rgba(239, 83, 80, 0.1);
-            border: 1px solid rgba(239, 83, 80, 0.3);
-        }
-
-        .chess-master {
-            background: rgba(102, 187, 106, 0.1);
-            border: 1px solid rgba(102, 187, 106, 0.3);
-        }
-
-        .chess-beginner h5 { color: #ef5350; }
-        .chess-master h5 { color: #66bb6a; }
-
-        .expert-problem {
-            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 235, 59, 0.05) 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 1px solid rgba(255, 193, 7, 0.3);
-        }
-
-        .expert-problem h3 {
-            color: #ffd54f;
-            margin-bottom: 1rem;
-        }
-
-        .expert-consequences {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .consequence {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .nuances-section {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .nuances-section h3 {
-            color: #90a4ae;
-            margin-bottom: 1rem;
-        }
-
-        .nuance-list {
-            display: grid;
-            gap: 0.5rem;
-        }
-
-        .nuance-item {
-            padding: 0.8rem 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-        }
-
-        .nuance-item::before {
-            content: "⚡";
-            flex-shrink: 0;
-        }
-
-        .practical-apps {
-            background: linear-gradient(135deg, rgba(0, 150, 136, 0.1) 0%, rgba(77, 182, 172, 0.05) 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 1px solid rgba(0, 150, 136, 0.3);
-        }
-
-        .practical-apps h3 {
-            color: #4db6ac;
-            margin-bottom: 1.5rem;
-        }
-
-        .app-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .app-card {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            padding: 1.5rem;
-        }
-
-        .app-card .signal {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            font-weight: 500;
-        }
-
-        .app-card .meaning {
-            color: #888;
-            font-size: 0.95rem;
-        }
-
-        .dk-connection {
-            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2) 0%, rgba(255, 107, 107, 0.1) 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 2px solid rgba(233, 69, 96, 0.5);
-        }
-
-        .dk-connection h3 {
-            color: #ff6b6b;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .connection-formula {
-            text-align: center;
-            font-size: 1.3rem;
-            margin: 1.5rem 0;
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-        }
-
-        .connection-formula .plus {
-            color: #ffa726;
-            margin: 0 0.5rem;
-        }
-
-        .connection-formula .equals {
-            color: #ef5350;
-            margin: 0 0.5rem;
-        }
-
-        .connection-result {
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(244, 67, 54, 0.1);
-            border-radius: 10px;
-            margin-top: 1rem;
-        }
-
-        .connection-result p {
-            margin-bottom: 0.5rem;
-        }
-
-        .comparison-section {
-            background: linear-gradient(135deg, rgba(233, 69, 96, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 3rem;
-            border: 1px solid rgba(233, 69, 96, 0.3);
-        }
-
-        .comparison-section h2 {
-            color: #e94560;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .comparison-card {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            padding: 1.5rem;
-        }
-
-        .comparison-card h3 {
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid;
-        }
-
-        .comparison-card.moral h3 { border-color: #e94560; color: #ff6b6b; }
-        .comparison-card.epistemic h3 { border-color: #42a5f5; color: #64b5f6; }
-
-        .conclusion-section {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(129, 199, 132, 0.05) 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 3rem;
-            border: 1px solid rgba(76, 175, 80, 0.3);
-        }
-
-        .conclusion-section h2 {
-            color: #81c784;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-
-        .strategy-list {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
-        .strategy-list li {
-            padding: 1rem;
-            margin-bottom: 0.5rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .strategy-list li::before {
-            content: "→";
-            color: #81c784;
-            font-weight: bold;
-        }
-
-        .final-note {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            font-style: italic;
-            text-align: center;
-            border: 1px dashed rgba(255, 255, 255, 0.2);
-        }
-
-        .flowchart {
-            margin-top: 3rem;
-            text-align: center;
-        }
-
-        .flowchart h2 {
-            color: #64b5f6;
-            margin-bottom: 2rem;
-        }
-
-        .flowchart-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .flow-node {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            min-width: 300px;
-        }
-
-        .flow-node.question {
-            background: linear-gradient(135deg, #42a5f5 0%, #2196f3 100%);
-            font-weight: bold;
-        }
-
-        .flow-arrow {
-            font-size: 2rem;
-            opacity: 0.5;
-        }
-
-        .flow-branches {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .flow-branch {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .flow-branch .label {
-            color: #a4a4a4;
-            font-size: 0.9rem;
-        }
-
-        .flow-branch .action {
-            background: rgba(76, 175, 80, 0.2);
-            border: 1px solid #81c784;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 0;
-            margin-top: 3rem;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .comparison-grid { grid-template-columns: 1fr; }
-            .scenario-header { flex-wrap: wrap; }
-            .scenario-icon { display: none; }
-        }
-
-        /* Animation for interactive elements */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .click-hint {
-            animation: pulse 2s infinite;
-            font-size: 0.9rem;
-            color: #888;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>De ce nu pot procesa argumentul tău?</h1>
-            <p class="subtitle">O analiză a blocajelor cognitive în discuțiile tehnice</p>
-        </header>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-logo">Anatomia Prostiei</div>
+            <div class="nav-links">
+                <span class="nav-link" onclick="scrollToSection('group')">Prostia de Grup</span>
+                <span class="nav-link" onclick="scrollToSection('social')">Fabrici de Prostie</span>
+                <span class="nav-link" onclick="scrollToSection('individual')">Prostia Individuală</span>
+                <span class="nav-link" onclick="scrollToSection('dk')">Dunning-Kruger</span>
+            </div>
+        </div>
+    </nav>
 
-        <div class="intro">
-            <p>Când cineva nu poate procesa un argument tehnic, cauza nu e întotdeauna aceeași.
-            <span class="highlight">Depinde de ce anume blochează procesarea.</span>
-            Înțelegerea sursei blocajului e primul pas spre o comunicare eficientă.</p>
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Prostia e Emergentă</h1>
+        <p class="hero-subtitle">De ce 100 de oameni inteligenți pot lua decizii incredibil de proaste împreună</p>
+
+        <div class="hero-equation">
+            <span class="number">100 oameni × IQ 100</span>
+            <span class="operator">≠</span>
+            <span class="number">Grup IQ 100</span>
+            <br><br>
+            <span class="result">→ Adesea obții un grup care se comportă cu IQ 70</span>
         </div>
 
-        <p class="click-hint">▼ Click pe fiecare scenariu pentru detalii</p>
+        <p style="color: var(--text-secondary); max-width: 600px;">
+            Inteligența individuală nu se însumează — <strong>se diluează</strong>.
+        </p>
 
-        <div class="scenarios">
-            <!-- Scenario 1 -->
-            <div class="scenario scenario-1" onclick="toggleScenario(this)">
+        <div class="scroll-indicator">
+            <span style="font-size: 2rem; color: var(--text-muted);">↓</span>
+        </div>
+    </section>
+
+    <!-- Group IQ Simulator -->
+    <section class="section" id="group">
+        <div class="section-header">
+            <h2>🧪 Simulatorul de IQ Colectiv</h2>
+            <p>Experimentează cum se diluează inteligența în grup</p>
+        </div>
+
+        <div class="simulator-container">
+            <div class="simulator-grid">
+                <div class="simulator-visual">
+                    <div class="crowd-container" id="crowd"></div>
+                </div>
+
+                <div class="simulator-controls">
+                    <div class="control-group">
+                        <h4>⚙️ Parametri</h4>
+
+                        <label>Număr de persoane</label>
+                        <div class="slider-container">
+                            <input type="range" class="slider" id="peopleCount" min="10" max="100" value="50">
+                            <span class="slider-value" id="peopleCountValue">50</span>
+                        </div>
+
+                        <label style="margin-top: 1rem;">IQ mediu individual</label>
+                        <div class="slider-container">
+                            <input type="range" class="slider" id="avgIQ" min="80" max="130" value="100">
+                            <span class="slider-value" id="avgIQValue">100</span>
+                        </div>
+
+                        <label style="margin-top: 1rem;">Presiune de conformitate</label>
+                        <div class="slider-container">
+                            <input type="range" class="slider" id="conformity" min="0" max="100" value="60">
+                            <span class="slider-value" id="conformityValue">60%</span>
+                        </div>
+
+                        <label style="margin-top: 1rem;">Polarizare tribală</label>
+                        <div class="slider-container">
+                            <input type="range" class="slider" id="tribalism" min="0" max="100" value="40">
+                            <span class="slider-value" id="tribalismValue">40%</span>
+                        </div>
+                    </div>
+
+                    <div class="result-display">
+                        <h3>IQ EFECTIV AL GRUPULUI</h3>
+                        <div class="result-iq" id="groupIQ">85</div>
+                        <div class="result-comparison" id="resultText">
+                            Pierdere de 15 puncte față de media individuală
+                        </div>
+                    </div>
+
+                    <button class="btn" onclick="runSimulation()">▶ Rulează Simularea</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mechanisms of Dilution -->
+    <section class="section">
+        <div class="section-header">
+            <h2>🔬 De ce se diluează inteligența?</h2>
+            <p>Mecanismele care transformă grupurile în mașini de prostie</p>
+        </div>
+
+        <div class="mechanisms-grid">
+            <div class="mechanism-card">
+                <div class="mechanism-icon">🐑</div>
+                <h3>Conformitatea Socială</h3>
+                <p>Experimentul Asch: 75% dintre oameni dau răspunsuri evident greșite pentru a se conforma grupului.</p>
+                <div class="mechanism-example">
+                    "Toți colegii mei zic că e o idee bună... probabil au dreptate, chiar dacă mie mi se pare dubios."
+                </div>
+            </div>
+
+            <div class="mechanism-card">
+                <div class="mechanism-icon">📢</div>
+                <h3>Cascada Informațională</h3>
+                <p>Primii care vorbesc setează direcția. Restul urmează, presupunând că primii știu mai bine.</p>
+                <div class="mechanism-example">
+                    "Dacă Maria a zis asta prima și nimeni n-a contrazis-o, probabil e corect."
+                </div>
+            </div>
+
+            <div class="mechanism-card">
+                <div class="mechanism-icon">🎭</div>
+                <h3>Difuziunea Responsabilității</h3>
+                <p>Cu cât e grupul mai mare, cu atât fiecare individ se simte mai puțin responsabil pentru rezultat.</p>
+                <div class="mechanism-example">
+                    "Nu-i treaba mea să spun că nu merge. Sigur altcineva va observa."
+                </div>
+            </div>
+
+            <div class="mechanism-card">
+                <div class="mechanism-icon">🔊</div>
+                <h3>Dominanța celui mai vocal</h3>
+                <p>Cel mai încrezut sau cel mai vocal câștigă, nu cel mai competent. Încrederea e confundată cu competența.</p>
+                <div class="mechanism-example">
+                    "Ion pare foarte sigur pe el. Probabil știe ce vorbește."
+                </div>
+            </div>
+
+            <div class="mechanism-card">
+                <div class="mechanism-icon">🏝️</div>
+                <h3>Gândirea de grup (Groupthink)</h3>
+                <p>Dorința de armonie suprimă gândirea critică. Disidența e văzută ca trădare.</p>
+                <div class="mechanism-example">
+                    "Nu vreau să fiu eu ăla care strică atmosfera ridicând probleme."
+                </div>
+            </div>
+
+            <div class="mechanism-card">
+                <div class="mechanism-icon">⚡</div>
+                <h3>Polarizarea de grup</h3>
+                <p>Grupurile tind să se miște spre poziții mai extreme decât media membrilor.</p>
+                <div class="mechanism-example">
+                    "Inițial eram sceptic, dar după discuție sunt convins că e singura soluție posibilă."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Factory -->
+    <section class="factory-section" id="social">
+        <div class="factory-header">
+            <h2>📱 Rețelele Sociale: Fabrici de Prostie</h2>
+            <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                Platformele nu te fac prost. Dar fac prostia vizibilă, virală și recompensată.
+            </p>
+        </div>
+
+        <!-- Echo Chamber Simulator -->
+        <div class="echo-simulator">
+            <h3 style="text-align: center; margin-bottom: 2rem; color: var(--accent-purple);">
+                🔄 Simulatorul Camerei de Ecou
+            </h3>
+
+            <div class="echo-grid">
+                <div class="feed-container" id="feedContainer">
+                    <!-- Posts will be generated here -->
+                </div>
+
+                <div class="echo-controls">
+                    <div class="echo-stat-box">
+                        <h4>Diversitate de opinie</h4>
+                        <div class="echo-stat-value danger" id="diversityValue">23%</div>
+                    </div>
+
+                    <div class="echo-stat-box">
+                        <h4>Conținut emoțional</h4>
+                        <div class="echo-stat-value warning" id="emotionalValue">78%</div>
+                    </div>
+
+                    <div class="algorithm-viz">
+                        <h4>Ce optimizează algoritmul:</h4>
+                        <div class="algo-factors">
+                            <div class="algo-factor">
+                                <span>Timp pe platformă</span>
+                                <div class="bar"><div class="bar-fill" style="width: 95%; background: var(--accent-red);"></div></div>
+                            </div>
+                            <div class="algo-factor">
+                                <span>Engagement</span>
+                                <div class="bar"><div class="bar-fill" style="width: 90%; background: var(--accent-orange);"></div></div>
+                            </div>
+                            <div class="algo-factor">
+                                <span>Adevăr</span>
+                                <div class="bar"><div class="bar-fill" style="width: 5%; background: var(--accent-green);"></div></div>
+                            </div>
+                            <div class="algo-factor">
+                                <span>Nuanță</span>
+                                <div class="bar"><div class="bar-fill" style="width: 3%; background: var(--accent-blue);"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn" onclick="generateFeed()">🔄 Regenerează Feed</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Poison Pills -->
+        <div class="poison-pills">
+            <div class="poison-pill">
+                <h3>⏱️ Recompensează reacția, nu reflecția</h3>
+                <p>2 secunde să scrollezi, să dai like, să share-uiești. Gândirea profundă e penalizată — e lentă, nu generează engagement.</p>
+            </div>
+
+            <div class="poison-pill">
+                <h3>🎯 Algoritm optimizat pentru emoție</h3>
+                <p>Ce se răspândește? Indignare, furie, teamă, superioritate morală. Algoritmul e indiferent la adevăr — vrea doar să rămâi pe platformă.</p>
+            </div>
+
+            <div class="poison-pill">
+                <h3>🔁 Camera de ecou</h3>
+                <p>Vezi doar ce confirmă ce crezi. Ceilalți dispar din feed. Iluzia că "toată lumea" crede ce crezi tu. Dacă toți cred, de ce să verifici?</p>
+            </div>
+
+            <div class="poison-pill">
+                <h3>👥 Autoritate difuză</h3>
+                <p>"Toată lumea zice că..." devine autoritatea. Dar "toată lumea" e de fapt un algoritm care îți arată ce vrei să vezi.</p>
+            </div>
+
+            <div class="poison-pill">
+                <h3>🏴 Identitate tribală</h3>
+                <p>Nu mai contează ce e adevărat. Contează ce spune tribul. A accepta că tribul greșește = a-ți trăda identitatea.</p>
+            </div>
+        </div>
+
+        <!-- Virality Comparison -->
+        <div class="virality-section">
+            <h3 style="text-align: center; margin-bottom: 2rem;">📊 Anatomia Viralității</h3>
+
+            <div class="virality-container">
+                <div class="virality-grid">
+                    <div class="message-box emotional">
+                        <h4>🔥 Mesaj Emoțional</h4>
+                        <div class="message-content">
+                            "ȘOCANT! Nu o să crezi ce face compania X! Share dacă te revoltă!"
+                        </div>
+                        <div class="spread-viz" id="emotionalSpread"></div>
+                        <div class="spread-stats">
+                            <div class="spread-stat">
+                                <div class="value" id="emotionalShares">2.4M</div>
+                                <div class="label">Shares</div>
+                            </div>
+                            <div class="spread-stat">
+                                <div class="value" id="emotionalTime">2h</div>
+                                <div class="label">Timp</div>
+                            </div>
+                            <div class="spread-stat">
+                                <div class="value" id="emotionalAccuracy">23%</div>
+                                <div class="label">Acuratețe</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-box nuanced">
+                        <h4>📚 Mesaj Nuanțat</h4>
+                        <div class="message-content">
+                            "Situația e complexă. Pe de o parte... pe de altă parte... Datele arată că..."
+                        </div>
+                        <div class="spread-viz" id="nuancedSpread"></div>
+                        <div class="spread-stats">
+                            <div class="spread-stat">
+                                <div class="value" id="nuancedShares">847</div>
+                                <div class="label">Shares</div>
+                            </div>
+                            <div class="spread-stat">
+                                <div class="value" id="nuancedTime">3 zile</div>
+                                <div class="label">Timp</div>
+                            </div>
+                            <div class="spread-stat">
+                                <div class="value" id="nuancedAccuracy">89%</div>
+                                <div class="label">Acuratețe</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bonhoeffer 2.0 -->
+        <div class="bonhoeffer-section">
+            <h3 style="text-align: center; font-size: 1.8rem; margin-bottom: 1rem;">Bonhoeffer 2.0</h3>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                El vorbea despre prostia în fața puterii politice. Acum avem prostie în fața puterii algoritmice.
+            </p>
+
+            <div class="bonhoeffer-comparison">
+                <div class="bonhoeffer-card old">
+                    <h3>1940s</h3>
+                    <p>Un dictator care te forțează</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
+                        Putere explicită. Știi că ți se cere să te conformezi.
+                    </p>
+                </div>
+                <div class="bonhoeffer-vs">→</div>
+                <div class="bonhoeffer-card new">
+                    <h3>2020s</h3>
+                    <p>Un feed care te seduce</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
+                        Putere invizibilă. Crezi că alegi liber.
+                    </p>
+                </div>
+            </div>
+
+            <div class="net-effect">
+                <h3>Efectul net:</h3>
+                <div class="effect-chain">
+                    <div class="effect-item">
+                        <span class="effect-icon">🔁</span>
+                        <span>Toți din jurul lor (algoritmizat) zic la fel</span>
+                    </div>
+                    <div class="effect-item">
+                        <span class="effect-icon">🚫</span>
+                        <span>A te opune = a fi exclus din trib</span>
+                    </div>
+                    <div class="effect-item">
+                        <span class="effect-icon">⚡</span>
+                        <span>Gândirea critică e lentă, sharing-ul e instant</span>
+                    </div>
+                    <div class="effect-item">
+                        <span class="effect-icon">💊</span>
+                        <span>Dopamina vine din validare socială, nu din adevăr</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insidious-box">
+                <h3>Partea cea mai insidioasă:</h3>
+                <p>
+                    <strong>Toată lumea crede că ea e imună.</strong> Că ea gândește independent. Că prostii sunt ceilalți.
+                </p>
+                <p style="margin-top: 1rem; color: var(--accent-red);">
+                    Ceea ce e, în sine, simptomul perfect al prostiei — <em>incapacitatea de a-ți vedea propria prostie.</em>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Individual Stupidity Section -->
+    <section class="individual-section" id="individual">
+        <div class="section-header">
+            <h2>🧠 Prostia Individuală</h2>
+            <p>Când cineva "nu poate procesa" argumentul tău, cauza nu e întotdeauna aceeași</p>
+        </div>
+
+        <div class="scenarios-grid">
+            <div class="scenario-card scenario-1" onclick="toggleScenario(this)">
                 <div class="scenario-header">
                     <div class="scenario-number">01</div>
-                    <h2 class="scenario-title">Dunning-Kruger Clasic</h2>
+                    <span class="scenario-title">Dunning-Kruger Clasic</span>
                     <span class="scenario-icon">🏔️</span>
                     <span class="expand-indicator">▼</span>
                 </div>
                 <div class="scenario-content">
                     <div class="scenario-body">
                         <p><strong>Nu e prostie bonhoefferiană, ci ignoranță dublă.</strong></p>
-                        <p>Omul <em>chiar crede</em> că înțelege. A citit un articol pe Medium, a văzut un tutorial,
-                        a auzit un buzzword - și în capul lui, asta e suficient.</p>
-
-                        <p>Nu procesează argumentul tău nu pentru că și-a delegat judecata, ci pentru că
-                        <span class="highlight">crede sincer că judecata lui e corectă</span>.</p>
-
+                        <p>Omul <em>chiar crede</em> că înțelege. A citit un articol pe Medium, a văzut un tutorial — și în capul lui, asta e suficient.</p>
+                        <p>Nu procesează argumentul tău pentru că <span class="highlight">crede sincer că judecata lui e corectă</span>.</p>
                         <div class="example-box">
                             <p>💭 "Am citit despre microservicii, deci știu cum să le implementez"</p>
                             <p>💭 "Am făcut un TODO app în React, pot scala orice aplicație"</p>
-                            <p>💭 "Văzui un video de 10 minute despre Docker, sunt expert"</p>
                         </div>
-
                         <div class="solution-box">
                             <h4>💡 Soluția</h4>
-                            <p>Pune-l să implementeze, să vadă cu ochii lui că nu merge.
-                            <strong>Realitatea poate penetra, eventual.</strong> Experiența directă e mai
-                            convingătoare decât orice argument.</p>
+                            <p>Pune-l să implementeze, să vadă cu ochii lui că nu merge. Realitatea poate penetra, eventual.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Scenario 2 -->
-            <div class="scenario scenario-2" onclick="toggleScenario(this)">
+            <div class="scenario-card scenario-2" onclick="toggleScenario(this)">
                 <div class="scenario-header">
                     <div class="scenario-number">02</div>
-                    <h2 class="scenario-title">Ego și Defensivitate</h2>
+                    <span class="scenario-title">Ego și Defensivitate</span>
                     <span class="scenario-icon">🛡️</span>
                     <span class="expand-indicator">▼</span>
                 </div>
                 <div class="scenario-content">
                     <div class="scenario-body">
                         <p><strong>A luat deja o poziție publică.</strong></p>
-                        <p>Dacă acceptă că greșește, pierde față. Cu cât insisți mai mult, cu atât
-                        se înrădăcinează mai tare - nu pentru că e convins, ci pentru că
-                        <span class="highlight">a devenit o chestiune de identitate</span>.</p>
-
-                        <p>"Eu sunt cel care a propus soluția X" - să recunoască eroarea înseamnă
-                        să-și atace imaginea de sine.</p>
-
+                        <p>Dacă acceptă că greșește, pierde față. Cu cât insisți mai mult, cu atât se înrădăcinează — <span class="highlight">a devenit o chestiune de identitate</span>.</p>
                         <div class="example-box">
                             <p>🎭 "Am spus în meeting că React e mai bun, nu pot să..."</p>
-                            <p>🎭 "Șeful a văzut propunerea mea, cum arăt dacă..."</p>
                             <p>🎭 "Dacă recunosc, o să creadă că nu știu ce fac"</p>
                         </div>
-
                         <div class="solution-box">
                             <h4>💡 Soluția</h4>
-                            <p><strong>Nu e prostie, e psihologie umană normală.</strong> Dă-i o cale
-                            de ieșire elegantă:</p>
-                            <p><em>"Da, ideea ta de bază e bună, dar dacă am ajusta implementarea..."</em></p>
+                            <p>Dă-i o cale de ieșire elegantă: "Da, ideea ta de bază e bună, dar dacă am ajusta implementarea..."</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Scenario 3 -->
-            <div class="scenario scenario-3" onclick="toggleScenario(this)">
+            <div class="scenario-card scenario-3" onclick="toggleScenario(this)">
                 <div class="scenario-header">
                     <div class="scenario-number">03</div>
-                    <h2 class="scenario-title">Lipsa Fundamentelor Cognitive</h2>
+                    <span class="scenario-title">Lipsa Fundamentelor</span>
                     <span class="scenario-icon">🧩</span>
                     <span class="expand-indicator">▼</span>
                 </div>
                 <div class="scenario-content">
                     <div class="scenario-body">
                         <p><strong>Nu poate procesa pentru că îi lipsesc conceptele necesare.</strong></p>
-                        <p>E ca și cum ai explica recursivitate cuiva care nu înțelege funcțiile.
-                        <span class="highlight">Nu e încăpățânare - e imposibilitate.</span></p>
-
-                        <p>Răspunde cu altceva pentru că mintea lui caută disperat ceva familiar
-                        la care să ancoreze ce spui tu, și găsește ceva adiacent dar irelevant.</p>
-
+                        <p>E ca și cum ai explica recursivitate cuiva care nu înțelege funcțiile. <span class="highlight">Nu e încăpățânare — e imposibilitate.</span></p>
                         <div class="example-box">
                             <p>❓ Tu: "Avem nevoie de idempotență în API"</p>
                             <p>💬 El: "Da, da, să punem un retry"</p>
-                            <p style="margin-top: 1rem; color: #888;">
-                                (A auzit cuvântul, l-a legat de ce știe, dar n-a înțeles conceptul)
-                            </p>
+                            <p style="margin-top: 0.5rem; color: var(--text-muted);">(A auzit cuvântul, l-a legat de ce știe, dar n-a înțeles conceptul)</p>
                         </div>
-
                         <div class="solution-box">
                             <h4>💡 Soluția</h4>
-                            <p><strong>Prostie? Nu neapărat.</strong> Poate fi pur și simplu că
-                            discuția e la un nivel pentru care nu e pregătit. Coboară la fundamente,
-                            construiește de acolo.</p>
+                            <p>Coboară la fundamente, construiește de acolo. Nu e prostie — e pregătire insuficientă.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Scenario 4 -->
-            <div class="scenario scenario-4" onclick="toggleScenario(this)">
+            <div class="scenario-card scenario-4" onclick="toggleScenario(this)">
                 <div class="scenario-header">
                     <div class="scenario-number">04</div>
-                    <h2 class="scenario-title">Aproape Bonhoefferian</h2>
+                    <span class="scenario-title">Aproape Bonhoefferian</span>
                     <span class="scenario-icon">📜</span>
                     <span class="expand-indicator">▼</span>
                 </div>
                 <div class="scenario-content">
                     <div class="scenario-body">
-                        <p><strong>Aici devine interesant.</strong></p>
-                        <p>Dacă omul repetă ce a citit pe Stack Overflow sau ce a zis un "guru"
-                        din comunitate, fără să proceseze, fără să evalueze dacă se aplică la
-                        contextul vostru - atunci da, <span class="highlight">e o formă de abdicare a judecății</span>.</p>
-
+                        <p><strong>Dacă omul repetă ce a zis un "guru" fără să proceseze</strong> — atunci da, e o formă de abdicare a judecății.</p>
                         <div class="example-box">
                             <p>👤 "Kubernetes e soluția"</p>
                             <p>❓ "De ce?"</p>
@@ -1344,549 +1658,361 @@
                             <p>❓ "Dar avem 3 useri și un server"</p>
                             <p>👤 "Nu contează, e best practice"</p>
                         </div>
-
-                        <p style="margin-top: 1rem;">Autoritatea externă e "industria", "comunitatea",
-                        "ce fac companiile mari". <strong>Omul nu evaluează - repetă.</strong>
-                        Argumentele tale ricoșează pentru că el nu operează pe logică proprie,
-                        ci pe ce a absorbit ca dogmă.</p>
-
+                        <p>Autoritatea externă e "industria", "comunitatea". <strong>Omul nu evaluează — repetă.</strong></p>
                         <div class="solution-box">
                             <h4>💡 Soluția</h4>
-                            <p>Nu poți argumenta cu cineva care nu-și folosește propria judecată.
-                            Tot ce poți face e să-l forțezi să se confrunte cu realitatea
-                            (proiectul eșuează, performanța e dezastruoasă) și să speri că
-                            <strong>experiența directă face ce argumentele nu pot</strong>.</p>
+                            <p>Forțează confruntarea cu realitatea. Lasă proiectul să demonstreze.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Dunning-Kruger Deep Dive -->
-        <div class="dk-section">
-            <h2>🧠 Efectul Dunning-Kruger</h2>
-            <p class="section-subtitle">Un bias cognitiv care explică de ce cei mai puțin competenți sunt adesea cei mai încrezători</p>
-
-            <div class="dk-origin">
-                <span class="year">1999</span>
-                <p>Documentat de psihologii <strong>David Dunning</strong> și <strong>Justin Kruger</strong> de la Cornell University.
-                Studiul lor a devenit unul dintre cele mai citate din psihologia cognitivă.</p>
+    <!-- Dunning-Kruger Section -->
+    <section class="dk-section" id="dk">
+        <div class="dk-content">
+            <div class="section-header">
+                <h2>📈 Efectul Dunning-Kruger</h2>
+                <p>Competența de a face ceva și competența de a evalua cât de bine faci — sunt aceleași competențe.</p>
             </div>
 
-            <div class="core-idea">
-                <p><strong>Competența de a face ceva</strong> și <strong>competența de a evalua cât de bine faci acel ceva</strong><br>
-                sunt <span class="highlight">aceleași competențe</span>.</p>
-                <p class="key-insight">Deci dacă ești incompetent într-un domeniu, îți lipsesc exact uneltele necesare pentru a-ți da seama că ești incompetent.</p>
+            <div class="dk-graph-container">
+                <svg viewBox="0 0 500 250" style="width: 100%; height: auto;">
+                    <!-- Axes -->
+                    <line x1="50" y1="200" x2="450" y2="200" stroke="#444" stroke-width="2"/>
+                    <line x1="50" y1="200" x2="50" y2="30" stroke="#444" stroke-width="2"/>
+
+                    <!-- Labels -->
+                    <text x="250" y="240" fill="#888" text-anchor="middle" font-size="14">Competență reală →</text>
+                    <text x="20" y="115" fill="#888" text-anchor="middle" font-size="14" transform="rotate(-90, 20, 115)">Încredere →</text>
+
+                    <!-- The curve -->
+                    <path d="M 50 190
+                             C 80 190, 100 40, 130 40
+                             C 160 40, 180 50, 200 180
+                             C 220 200, 250 195, 300 170
+                             C 350 145, 400 80, 450 70"
+                          fill="none"
+                          stroke="url(#dkGradient)"
+                          stroke-width="4"
+                          stroke-linecap="round"/>
+
+                    <defs>
+                        <linearGradient id="dkGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#ef5350"/>
+                            <stop offset="30%" style="stop-color:#ffa726"/>
+                            <stop offset="60%" style="stop-color:#42a5f5"/>
+                            <stop offset="100%" style="stop-color:#66bb6a"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Points -->
+                    <circle cx="130" cy="40" r="8" fill="#ef5350"/>
+                    <circle cx="200" cy="180" r="8" fill="#42a5f5"/>
+                    <circle cx="450" cy="70" r="8" fill="#66bb6a"/>
+
+                    <!-- Labels for points -->
+                    <text x="130" y="25" fill="#ef5350" text-anchor="middle" font-size="11">"Mount Stupid"</text>
+                    <text x="200" y="200" fill="#42a5f5" text-anchor="middle" font-size="11">"Valea Disperării"</text>
+                    <text x="420" y="55" fill="#66bb6a" text-anchor="middle" font-size="11">Expert</text>
+                </svg>
             </div>
 
-            <div class="study-results">
-                <h3>📊 Studiul Original</h3>
-                <p>Au testat oameni pe logică, gramatică și umor. Apoi i-au întrebat: <em>"Cum crezi că te-ai descurcat comparativ cu ceilalți?"</em></p>
-
-                <div class="result-bars">
-                    <div class="result-bar">
-                        <span class="label">Quartila inferioară<br>(cei mai slabi 25%)</span>
-                        <div class="bar-container">
-                            <div class="bar-actual" style="width: 12%; background: #ef5350;"></div>
-                            <div class="bar-perceived" style="width: 62%;"></div>
-                        </div>
-                    </div>
-                    <div class="result-bar">
-                        <span class="label">Quartila superioară<br>(cei mai buni 25%)</span>
-                        <div class="bar-container">
-                            <div class="bar-actual" style="width: 86%; background: #66bb6a;"></div>
-                            <div class="bar-perceived" style="width: 72%;"></div>
-                        </div>
-                    </div>
+            <div class="dk-phases">
+                <div class="dk-phase">
+                    <h4>Nu știi că nu știi</h4>
+                    <p>"E simplu, ce mare lucru."</p>
                 </div>
-                <div class="bar-legend">
-                    <span><div class="legend-actual"></div> Performanță reală</span>
-                    <span><div class="legend-perceived"></div> Performanță percepută</span>
+                <div class="dk-phase">
+                    <h4>Știi că nu știi</h4>
+                    <p>Prăbușirea încrederii. Realizezi complexitatea.</p>
                 </div>
-            </div>
-
-            <div class="dk-graph">
-                <h3>📈 Graficul Clasic (simplificat)</h3>
-                <div class="graph-container">
-                    <span class="graph-y-label">Încredere</span>
-                    <div class="mount-stupid-label">"Mount Stupid"</div>
-                    <div class="valley-label">"Valea Disperării"</div>
-                    <div class="expert-label">Platoul Experților</div>
-                    <svg class="graph-svg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
-                        <!-- Axes -->
-                        <line x1="40" y1="180" x2="380" y2="180" stroke="#444" stroke-width="2"/>
-                        <line x1="40" y1="180" x2="40" y2="20" stroke="#444" stroke-width="2"/>
-
-                        <!-- The curve -->
-                        <path d="M 40 170
-                                 C 60 170, 70 30, 100 30
-                                 C 130 30, 140 40, 160 160
-                                 C 180 180, 200 175, 240 160
-                                 C 280 145, 320 80, 380 70"
-                              fill="none"
-                              stroke="url(#curveGradient)"
-                              stroke-width="4"
-                              stroke-linecap="round"/>
-
-                        <!-- Gradient definition -->
-                        <defs>
-                            <linearGradient id="curveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#ef5350"/>
-                                <stop offset="30%" style="stop-color:#ffa726"/>
-                                <stop offset="60%" style="stop-color:#42a5f5"/>
-                                <stop offset="100%" style="stop-color:#66bb6a"/>
-                            </linearGradient>
-                        </defs>
-
-                        <!-- Points -->
-                        <circle cx="100" cy="30" r="6" fill="#ef5350"/>
-                        <circle cx="160" cy="160" r="6" fill="#42a5f5"/>
-                        <circle cx="380" cy="70" r="6" fill="#66bb6a"/>
-                    </svg>
-                    <div class="graph-labels">
-                        <span>0% Competență</span>
-                        <span>100%</span>
-                    </div>
+                <div class="dk-phase">
+                    <h4>Știi că știi</h4>
+                    <p>Competență reală, încredere calibrată.</p>
+                </div>
+                <div class="dk-phase">
+                    <h4>Nu mai știi că știi</h4>
+                    <p>Expertul pentru care totul e "normal".</p>
                 </div>
             </div>
 
-            <div class="phases-section">
-                <h3>🔄 Fazele (populare, nu din studiul original)</h3>
-                <div class="phases-timeline">
-                    <div class="phase phase-1">
-                        <h4>1. Nu știi că nu știi</h4>
-                        <p>Încredere maximă, competență minimă.</p>
-                        <p class="quote">"E simplu, ce mare lucru."</p>
-                    </div>
-                    <div class="phase phase-2">
-                        <h4>2. Știi că nu știi</h4>
-                        <p>Prăbușirea încrederii. Începi să vezi cât de mult nu înțelegi.</p>
-                        <p class="quote">"Valea disperării" — realizezi complexitatea reală.</p>
-                    </div>
-                    <div class="phase phase-3">
-                        <h4>3. Știi că știi</h4>
-                        <p>Competență reală, încredere în creștere dar calibrată.</p>
-                        <p class="quote">Știi ce știi și ce nu știi.</p>
-                    </div>
-                    <div class="phase phase-4">
-                        <h4>4. Nu mai știi că știi</h4>
-                        <p>Expertul pentru care totul a devenit "normal".</p>
-                        <p class="quote">Uită cât de greu a fost să ajungă aici.</p>
-                    </div>
-                </div>
-            </div>
+            <!-- Knowledge Levels -->
+            <h3 style="text-align: center; margin-top: 4rem; margin-bottom: 2rem; color: var(--accent-cyan);">
+                📊 Niveluri de Cunoaștere (pe care le confundăm constant)
+            </h3>
 
-            <div class="metacognition-section">
-                <h3>🔬 De ce se întâmplă: Metacogniția</h3>
-                <p><strong>Metacogniția</strong> — capacitatea de a-ți evalua propria gândire — e ea însăși o abilitate care se dezvoltă odată cu competența.</p>
-
-                <div class="chess-example">
-                    <div class="chess-beginner">
-                        <h5>♟️ Începător în șah</h5>
-                        <p>Nu poate vedea de ce mutarea lui e proastă.</p>
-                        <p>Îi lipsesc pattern-urile, viziunea de ansamblu.</p>
-                        <p>Vede doar: <em>"Am mutat. Pare ok."</em></p>
-                    </div>
-                    <div class="chess-master">
-                        <h5>♔ Maestru</h5>
-                        <p>Vede instant 5 probleme cu mutarea.</p>
-                        <p>Are pattern-urile internalizate.</p>
-                        <p>Vede: <em>"E vulnerabil pe diagonală, pierde tempo..."</em></p>
-                    </div>
-                </div>
-
-                <p style="margin-top: 1rem; text-align: center; color: #b39ddb;">
-                    <strong>Același creier care face eroarea e responsabil și cu detectarea erorii.</strong><br>
-                    Dacă nu poate face bine, nu poate nici evalua bine.
-                </p>
-            </div>
-
-            <div class="expert-problem">
-                <h3>🪞 Partea mai puțin cunoscută (și mai importantă)</h3>
-                <p>Experții au <strong>problema inversă</strong>: subestimează diferența dintre ei și ceilalți.</p>
-                <p>Pentru că lor li se pare natural și ușor, presupun că și altora. <em>"Cum să nu înțelegi, e evident?"</em></p>
-
-                <div class="expert-consequences">
-                    <div class="consequence">
-                        <p>📢 Comunicare proastă între experți și începători</p>
-                    </div>
-                    <div class="consequence">
-                        <p>😤 Frustrare în ambele direcții</p>
-                    </div>
-                    <div class="consequence">
-                        <p>🔮 "Blestemul cunoașterii" — nu mai poți vedea lumea ca un începător</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="nuances-section">
-                <h3>⚖️ Nuanțe și Critici</h3>
-                <p>Efectul e real, dar:</p>
-                <div class="nuance-list">
-                    <div class="nuance-item">Graficul "Mount Stupid" e o <strong>simplificare populară</strong>, nu din studiul original</div>
-                    <div class="nuance-item"><strong>Toată lumea</strong> își supraestimează abilitățile în medie, nu doar incompetenții</div>
-                    <div class="nuance-item">Diferența e de <strong>magnitudine</strong> — incompetenții supraestimează mult mai mult</div>
-                    <div class="nuance-item">În domenii unde <strong>feedback-ul e rapid și clar</strong> (jocuri, sport), efectul e mai slab</div>
-                    <div class="nuance-item">Efectul e mai puternic în <strong>domenii "soft"</strong> unde competența e greu de măsurat</div>
-                </div>
-            </div>
-
-            <div class="practical-apps">
-                <h3>💡 Aplicații Practice</h3>
-                <div class="app-cards">
-                    <div class="app-card">
-                        <p class="signal">Cineva e foarte încrezător și agresiv pe un subiect?</p>
-                        <p class="meaning">Asta <strong>nu e dovadă de competență</strong> — poate fi exact opusul.</p>
-                    </div>
-                    <div class="app-card">
-                        <p class="signal">Un expert ezită, pune nuanțe, zice "depinde"?</p>
-                        <p class="meaning">Asta <strong>nu e slăbiciune</strong>, ci probabil înțelegere reală a complexității.</p>
-                    </div>
-                    <div class="app-card">
-                        <p class="signal">Concluzia cheie:</p>
-                        <p class="meaning"><strong>Încrederea și competența nu sunt corelate.</strong> Uneori sunt chiar invers corelate.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dk-connection">
-                <h3>🔗 Legătura cu discuția noastră</h3>
-                <div class="connection-formula">
-                    "Am citit undeva"<span class="plus">+</span>Dunning-Kruger<span class="equals">=</span><strong>Dezastru</strong>
-                </div>
-                <div class="connection-result">
-                    <p>Ai citit un articol superficial. Ți se pare că înțelegi.</p>
-                    <p>Nu ai competența să-ți dai seama cât de superficial e articolul și cât de mult nu înțelegi.</p>
-                    <p><strong>Rezultat:</strong> încredere maximă, cunoaștere minimă.</p>
-                    <p style="margin-top: 1rem; color: #ef5350;"><strong>Și imposibilitatea de a fi corectat</strong> — pentru că nu poți evalua nici critica.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Knowledge Levels Section -->
-        <div class="knowledge-section">
-            <h2>📊 Niveluri de Cunoaștere</h2>
-            <p class="section-subtitle">Pe care le confundăm constant</p>
-
-            <div class="levels-pyramid">
-                <div class="level-bar level-1" onclick="toggleLevel(this, 1)">
+            <div class="knowledge-pyramid">
+                <div class="knowledge-level level-1" onclick="toggleLevel(this, 1)">
                     <span class="level-name">Am auzit/citit</span>
                     <span class="level-desc">— informația a trecut prin fața ochilor mei</span>
                 </div>
-                <div class="level-detail" id="level-detail-1">
-                    <p>Cel mai superficial nivel. Ai scanat un titlu, ai auzit un termen într-o conversație, ai văzut un meme despre o tehnologie. Informația a <em>existat</em> în proximitatea ta, dar nu a intrat cu adevărat.</p>
+                <div class="level-detail" id="level-1">
+                    <p>Cel mai superficial nivel. Ai scanat un titlu, ai auzit un termen. Informația a <em>existat</em> în proximitatea ta, dar nu a intrat cu adevărat.</p>
                 </div>
 
-                <div class="level-bar level-2" onclick="toggleLevel(this, 2)">
+                <div class="knowledge-level level-2" onclick="toggleLevel(this, 2)">
                     <span class="level-name">Îmi amintesc</span>
                     <span class="level-desc">— pot reproduce informația (poate corect, poate nu)</span>
                 </div>
-                <div class="level-detail" id="level-detail-2">
-                    <p>Poți repeta ce ai citit, dar fără garanție de acuratețe. Memoria e reconstructivă, nu reproductivă. Ce "îți amintești" e adesea o versiune distorsionată de propriile tale filtre și asocieri.</p>
+                <div class="level-detail" id="level-2">
+                    <p>Poți repeta ce ai citit, dar fără garanție de acuratețe. Memoria e reconstructivă, nu reproductivă.</p>
                 </div>
 
-                <div class="level-bar level-3" onclick="toggleLevel(this, 3)">
+                <div class="knowledge-level level-3" onclick="toggleLevel(this, 3)">
                     <span class="level-name">Înțeleg</span>
                     <span class="level-desc">— pot explica de ce, pot conecta cu alte concepte</span>
                 </div>
-                <div class="level-detail" id="level-detail-3">
-                    <p>Aici începe cunoașterea reală. Poți răspunde la "de ce?", poți prezice consecințe, poți vedea conexiuni cu alte concepte. <strong>Examenul clasic:</strong> poți explica cuiva care nu știe nimic? Dacă nu poți, nu înțelegi de fapt.</p>
+                <div class="level-detail" id="level-3">
+                    <p>Aici începe cunoașterea reală. Poți răspunde la "de ce?", poți prezice consecințe. <strong>Test:</strong> poți explica cuiva care nu știe nimic?</p>
                 </div>
 
-                <div class="level-bar level-4" onclick="toggleLevel(this, 4)">
+                <div class="knowledge-level level-4" onclick="toggleLevel(this, 4)">
                     <span class="level-name">Știu</span>
                     <span class="level-desc">— am integrat în modelul meu, pot aplica în contexte noi</span>
                 </div>
-                <div class="level-detail" id="level-detail-4">
-                    <p>Cunoașterea a devenit parte din modul în care vezi lumea. Poți aplica în situații pe care nu le-ai întâlnit explicit. Poți recunoaște când <em>nu</em> se aplică. Știi limitele și excepțiile.</p>
+                <div class="level-detail" id="level-4">
+                    <p>Cunoașterea a devenit parte din modul în care vezi lumea. Poți aplica în situații pe care nu le-ai întâlnit explicit.</p>
                 </div>
 
-                <div class="level-bar level-5" onclick="toggleLevel(this, 5)">
+                <div class="knowledge-level level-5" onclick="toggleLevel(this, 5)">
                     <span class="level-name">Am competență</span>
                     <span class="level-desc">— pot face ceva practic cu cunoașterea</span>
                 </div>
-                <div class="level-detail" id="level-detail-5">
-                    <p>Nivelul suprem: poți produce, nu doar consuma. Poți construi, implementa, crea. Diferența între a ști despre pictură și a putea picta. Între a înțelege recursivitatea și a scrie cod recursiv eficient.</p>
-                </div>
-            </div>
-
-            <!-- Why Confusion Section -->
-            <div class="confusion-section">
-                <h3>🧠 De ce confuzia e atât de răspândită?</h3>
-                <div class="confusion-cards">
-                    <div class="confusion-card">
-                        <h4>💫 Fluența Cognitivă</h4>
-                        <p>Dacă ceva <strong>sună familiar</strong>, creierul interpretează asta ca "știu".</p>
-                        <p>Ai citit un articol despre blockchain acum 2 ani. Acum cineva menționează blockchain și simți un "ah, da, știu despre asta".</p>
-                        <p><em>Dar ce știi de fapt? Aproape nimic. Știi că există și cam despre ce e vorba. Atât.</em></p>
-                    </div>
-                    <div class="confusion-card">
-                        <h4>🪞 Iluzia Înțelegerii</h4>
-                        <p>Poți citi o explicație și să ți se pară clară. Dar când încerci să o reproduci sau să o aplici, realizezi că nu ai înțeles de fapt.</p>
-                        <p><strong>Claritatea a fost a autorului, nu a ta.</strong></p>
-                        <p>Tu ai urmărit pasiv, nu ai construit activ.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Passive vs Active -->
-            <div class="passive-active-section">
-                <h3>⚖️ Cunoaștere Pasivă vs. Activă</h3>
-                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 1rem;">
-                    <strong>Recunoașterea e ușoară, producția e grea.</strong>
-                </p>
-
-                <div class="pa-comparison">
-                    <div class="pa-box passive">
-                        <h4>Pasivă (Recunoaștere)</h4>
-                        <p>"Da, știu piesa asta"</p>
-                        <p>"Am auzit de dependency injection"</p>
-                        <p>"Îmi sună familiar conceptul"</p>
-                    </div>
-                    <div class="pa-vs">≠</div>
-                    <div class="pa-box active">
-                        <h4>Activă (Producție)</h4>
-                        <p>Poți cânta melodia?</p>
-                        <p>Poți implementa DI?</p>
-                        <p>Poți explica când NU e potrivit?</p>
-                    </div>
-                </div>
-
-                <div class="example-box" style="border-color: #ce93d8;">
-                    <p><strong>În IT:</strong> recunoști termenul "dependency injection", poate poți da o definiție vagă.</p>
-                    <p>Dar poți implementa? Poți explica de ce ai folosi-o? Poți recunoaște situațiile unde <em>nu</em> e potrivită?</p>
-                </div>
-            </div>
-
-            <!-- Google Effect -->
-            <div class="google-effect">
-                <h3>🔍 Efectul Google/Wikipedia</h3>
-                <p>Avem acces instant la orice informație. Asta creează <strong>iluzia că avem informația</strong>.</p>
-                <p>Dar informația care stă pe server nu e în capul tău. Nu o poți folosi, conecta, aplica.</p>
-
-                <div class="warning-text">
-                    <p><strong>Și mai rău:</strong> știind că poți căuta oricând, creierul nu se mai obosește să rețină sau să proceseze profund.</p>
-                    <p>"De ce să înveți când poți googli?"</p>
-                    <p style="margin-top: 1rem;"><strong>Rezultatul:</strong> oameni care "știu" enorm de multe la nivel superficial și aproape nimic la nivel profund.</p>
-                </div>
-            </div>
-
-            <!-- "Am citit undeva" -->
-            <div class="read-somewhere">
-                <h3>📖 "Am citit undeva" e de fapt...</h3>
-                <div class="telephone-list">
-                    <div class="telephone-item">Am citit un titlu</div>
-                    <div class="telephone-item">Am citit un rezumat</div>
-                    <div class="telephone-item">Am citit dar nu am verificat sursa</div>
-                    <div class="telephone-item">Am citit dar nu am înțeles</div>
-                    <div class="telephone-item">Am citit dar am reținut greșit</div>
-                    <div class="telephone-item">Am citit ceva ce cita altceva și lanțul de telefon fără fir a distorsionat complet</div>
-                    <div class="telephone-item">Am citit și am interpretat prin filtrele mele preexistente</div>
-                    <div class="telephone-item">Cineva mi-a zis că a citit</div>
-                </div>
-
-                <div class="practice-examples">
-                    <h4>Cum arată în practică:</h4>
-                    <div class="practice-example">
-                        <p class="claim">"Am citit că X e cancerigen"</p>
-                        <p class="reality">Unde? Studiu pe șoareci cu doze de 1000x normale? Un blog random? O interpretare greșită a unui studiu?</p>
-                    </div>
-                    <div class="practice-example">
-                        <p class="claim">"Am citit că compania Y face Z"</p>
-                        <p class="reality">Un articol de opinie? Un comunicat de presă? O investigație serioasă?</p>
-                    </div>
-                    <div class="practice-example">
-                        <p class="claim">"Am citit că tehnologia X e viitorul"</p>
-                        <p class="reality">Marketingul vânzătorului? Un analist independent? Un hype cycle Gartner?</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Honest Test -->
-            <div class="honest-test">
-                <h3>✅ Testul Onest</h3>
-                <p style="text-align: center; margin-bottom: 1.5rem;">Când zici "știu X", întreabă-te:</p>
-
-                <div class="test-questions">
-                    <div class="test-question" onclick="toggleTest(this)">
-                        <div class="checkbox"></div>
-                        <span>Pot explica fără să caut?</span>
-                    </div>
-                    <div class="test-question" onclick="toggleTest(this)">
-                        <div class="checkbox"></div>
-                        <span>Pot răspunde la întrebări follow-up?</span>
-                    </div>
-                    <div class="test-question" onclick="toggleTest(this)">
-                        <div class="checkbox"></div>
-                        <span>Știu limitele și excepțiile?</span>
-                    </div>
-                    <div class="test-question" onclick="toggleTest(this)">
-                        <div class="checkbox"></div>
-                        <span>Știu de unde știu și cât de fiabilă e sursa?</span>
-                    </div>
-                    <div class="test-question" onclick="toggleTest(this)">
-                        <div class="checkbox"></div>
-                        <span>Pot aplica în contexte diferite de cel în care am învățat?</span>
-                    </div>
-                </div>
-
-                <div class="test-result" id="test-result"></div>
-
-                <div class="danger-note">
-                    <p>Dacă nu poți bifa toate, <strong>nu știi</strong>.</p>
-                    <p style="margin-top: 0.5rem;">Ai o impresie, o familiaritate, un sentiment de cunoaștere.</p>
-                    <p style="margin-top: 0.5rem;"><strong>Ceea ce poate fi mai periculos decât ignoranța totală,</strong><br>pentru că nu cauți ce crezi că ai deja.</p>
+                <div class="level-detail" id="level-5">
+                    <p>Nivelul suprem: poți produce, nu doar consuma. Diferența între a ști despre pictură și a putea picta.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Comparison Section -->
-        <div class="comparison-section">
-            <h2>🔍 Diferența cheie față de Bonhoeffer</h2>
-            <p>La Bonhoeffer, prostia era legată de abdicarea în fața puterii. În IT, mecanismul
-            e similar dar contextul diferit:</p>
-
-            <div class="comparison-grid">
-                <div class="comparison-card moral">
-                    <h3>Prostia Morală (Bonhoeffer)</h3>
-                    <p>O abdicare în fața <strong>puterii</strong>, cu consecințe etice grave.
-                    Omul cedează judecata unei autorități politice/sociale.</p>
-                    <p style="margin-top: 1rem; color: #ff6b6b;">
-                        → Consecințe: Atrocități justificate prin "ordine de sus"
-                    </p>
-                </div>
-                <div class="comparison-card epistemic">
-                    <h3>Prostia Epistemică (IT)</h3>
-                    <p>O abdicare în fața <strong>autorității tehnice percepute</strong>.
-                    Omul cedează judecata unor "best practices" sau guru-ilor din industrie.</p>
-                    <p style="margin-top: 1rem; color: #64b5f6;">
-                        → Consecințe: Proiecte over-engineered, tech debt, soluții nepotrivite
-                    </p>
-                </div>
-            </div>
-
-            <p style="margin-top: 1.5rem; text-align: center; font-weight: bold;">
-                Mecanismul e similar: nu poți argumenta cu cineva care nu-și folosește propria judecată.
+    <!-- Conclusion -->
+    <section class="conclusion-section">
+        <div class="conclusion-content">
+            <h2>Concluzia Dureroasă</h2>
+            <p class="conclusion-text">
+                Rețelele sociale nu fac oamenii proști.<br>
+                <strong>Fac prostia vizibilă, virală și recompensată.</strong>
             </p>
-        </div>
-
-        <!-- Flowchart -->
-        <div class="flowchart">
-            <h2>🔄 Algoritmul de Diagnostic</h2>
-            <div class="flowchart-container">
-                <div class="flow-node question">Cineva "nu poate procesa" argumentul tău?</div>
-                <div class="flow-arrow">↓</div>
-                <div class="flow-node question">Întreabă-te: DE CE?</div>
-                <div class="flow-arrow">↓</div>
-                <div class="flow-branches">
-                    <div class="flow-branch">
-                        <span class="label">Crede că știe</span>
-                        <div class="action">→ Lasă realitatea să predea</div>
-                    </div>
-                    <div class="flow-branch">
-                        <span class="label">Ego investit</span>
-                        <div class="action">→ Oferă o cale elegantă</div>
-                    </div>
-                    <div class="flow-branch">
-                        <span class="label">Lipsesc fundamente</span>
-                        <div class="action">→ Coboară nivelul</div>
-                    </div>
-                    <div class="flow-branch">
-                        <span class="label">Repetă dogme</span>
-                        <div class="action">→ Forțează confruntarea</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Conclusion -->
-        <div class="conclusion-section">
-            <h2>🎯 Concluzia Practică</h2>
-            <p>Când cineva "nu poate procesa", întreabă-te: <strong>de ce?</strong></p>
-            <p>Încearcă să descoperi ce blochează. Fiecare cauză cere o strategie diferită:</p>
-
-            <ul class="strategy-list">
-                <li><strong>Dunning-Kruger:</strong> Lasă-l să implementeze și să vadă cu ochii lui</li>
-                <li><strong>Ego:</strong> Oferă o cale de ieșire care îi salvează fața</li>
-                <li><strong>Fundamente:</strong> Coboară la nivel de bază și construiește de acolo</li>
-                <li><strong>Dogmă:</strong> Forțează confruntarea cu realitatea proiectului</li>
-            </ul>
-
-            <div class="final-note">
-                <p>Și uneori, sincer, <strong>nu merită efortul</strong> — treci mai departe
-                și lasă realitatea să predea lecția.</p>
-            </div>
-        </div>
-
-        <footer>
-            <p>O explorare a blocajelor cognitive în discuțiile tehnice</p>
-            <p style="margin-top: 0.5rem; opacity: 0.6;">
-                Inspirat de teoria lui Dietrich Bonhoeffer și efectul Dunning-Kruger
+            <p class="conclusion-text" style="margin-top: 2rem;">
+                Înainte, prostia ta rămânea la masa din bucătărie.<br>
+                Acum are reach de milioane și like-uri care o validează.
             </p>
-        </footer>
-    </div>
+            <p class="conclusion-text" style="margin-top: 2rem;">
+                Nimeni nu ți-a cerut explicit să-ți predai judecata.<br>
+                Dar ai făcut-o oricum, <strong>bucată cu bucată, scroll cu scroll, like cu like.</strong>
+            </p>
+
+            <div class="final-insight">
+                <p>Nu e un dictator care te forțează.<br><strong>E un feed care te seduce.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>O explorare interactivă a mecanismelor prostiei colective</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">
+            Inspirat de Bonhoeffer, Dunning-Kruger și realitatea rețelelor sociale
+        </p>
+    </footer>
 
     <script>
-        function toggleScenario(element) {
-            // Close all other scenarios
-            document.querySelectorAll('.scenario').forEach(s => {
-                if (s !== element) {
-                    s.classList.remove('active');
-                }
+        // Group IQ Simulator
+        let people = [];
+
+        function initSimulator() {
+            updateSliderValues();
+            generateCrowd();
+            calculateGroupIQ();
+        }
+
+        function updateSliderValues() {
+            document.getElementById('peopleCountValue').textContent = document.getElementById('peopleCount').value;
+            document.getElementById('avgIQValue').textContent = document.getElementById('avgIQ').value;
+            document.getElementById('conformityValue').textContent = document.getElementById('conformity').value + '%';
+            document.getElementById('tribalismValue').textContent = document.getElementById('tribalism').value + '%';
+        }
+
+        function generateCrowd() {
+            const count = parseInt(document.getElementById('peopleCount').value);
+            const avgIQ = parseInt(document.getElementById('avgIQ').value);
+            const container = document.getElementById('crowd');
+            container.innerHTML = '';
+            people = [];
+
+            for (let i = 0; i < count; i++) {
+                const iq = Math.round(avgIQ + (Math.random() - 0.5) * 30);
+                people.push({ iq, conforming: false });
+
+                const person = document.createElement('div');
+                person.className = 'person';
+                person.setAttribute('data-iq', iq);
+                person.style.background = getIQColor(iq);
+                person.textContent = getIQEmoji(iq);
+                container.appendChild(person);
+            }
+        }
+
+        function getIQColor(iq) {
+            if (iq < 85) return 'linear-gradient(135deg, #ef5350, #c62828)';
+            if (iq < 100) return 'linear-gradient(135deg, #ffa726, #f57c00)';
+            if (iq < 115) return 'linear-gradient(135deg, #42a5f5, #1976d2)';
+            return 'linear-gradient(135deg, #66bb6a, #388e3c)';
+        }
+
+        function getIQEmoji(iq) {
+            if (iq < 85) return '😐';
+            if (iq < 100) return '🙂';
+            if (iq < 115) return '😊';
+            return '🧠';
+        }
+
+        function calculateGroupIQ() {
+            const avgIQ = parseInt(document.getElementById('avgIQ').value);
+            const conformity = parseInt(document.getElementById('conformity').value) / 100;
+            const tribalism = parseInt(document.getElementById('tribalism').value) / 100;
+            const count = parseInt(document.getElementById('peopleCount').value);
+
+            // Formula: Group IQ drops with conformity, tribalism, and group size
+            const sizePenalty = Math.log10(count) * 5;
+            const conformityPenalty = conformity * 20;
+            const tribalismPenalty = tribalism * 15;
+
+            const groupIQ = Math.round(avgIQ - sizePenalty - conformityPenalty - tribalismPenalty);
+
+            document.getElementById('groupIQ').textContent = groupIQ;
+            document.getElementById('resultText').textContent =
+                `Pierdere de ${avgIQ - groupIQ} puncte față de media individuală`;
+        }
+
+        function runSimulation() {
+            const conformity = parseInt(document.getElementById('conformity').value) / 100;
+            const persons = document.querySelectorAll('.person');
+
+            persons.forEach((person, i) => {
+                setTimeout(() => {
+                    person.classList.add('thinking');
+                    setTimeout(() => {
+                        person.classList.remove('thinking');
+                        if (Math.random() < conformity) {
+                            person.classList.add('conforming');
+                        }
+                    }, 500);
+                }, i * 50);
             });
-            // Toggle current
+
+            setTimeout(calculateGroupIQ, persons.length * 50 + 600);
+        }
+
+        // Event listeners for sliders
+        document.querySelectorAll('.slider').forEach(slider => {
+            slider.addEventListener('input', () => {
+                updateSliderValues();
+                generateCrowd();
+                calculateGroupIQ();
+            });
+        });
+
+        // Echo Chamber Simulator
+        const posts = [
+            { type: 'outrage', content: 'Nu pot să cred ce a făcut X! E INADMISIBIL! Share dacă ești de acord!', likes: 24500, shares: 8900 },
+            { type: 'fear', content: 'AVERTISMENT: Dacă nu faci asta, riști să pierzi totul! Verifică ACUM!', likes: 18200, shares: 12400 },
+            { type: 'superiority', content: 'Doar 1% din oameni înțeleg asta. Tu ești unul dintre ei?', likes: 31000, shares: 15600 },
+            { type: 'nuanced', content: 'Situația e mai complexă. Pe de o parte avem... pe de alta... Datele sugerează că ar trebui să...', likes: 234, shares: 45 },
+            { type: 'outrage', content: 'Au fost prinși! Iată DOVADA că ne-au mințit tot timpul!', likes: 45600, shares: 22100 },
+            { type: 'fear', content: 'Experții avertizează: în 5 ani totul se va schimba! Pregătește-te ACUM!', likes: 28900, shares: 9800 },
+            { type: 'nuanced', content: 'Am analizat datele din ultimii 10 ani. Concluzia e surprinzătoare dar nuanțată...', likes: 156, shares: 23 },
+            { type: 'superiority', content: 'Dacă nu înțelegi de ce asta e o problemă, ești parte din problemă.', likes: 38400, shares: 18900 }
+        ];
+
+        function generateFeed() {
+            const container = document.getElementById('feedContainer');
+            container.innerHTML = '';
+
+            // Shuffle and show posts (weighted towards emotional)
+            const shuffled = [...posts].sort(() => Math.random() - 0.5);
+            const sorted = shuffled.sort((a, b) => {
+                if (a.type === 'nuanced') return 1;
+                if (b.type === 'nuanced') return -1;
+                return 0;
+            });
+
+            sorted.forEach((post, i) => {
+                setTimeout(() => {
+                    const postEl = createPostElement(post);
+                    container.appendChild(postEl);
+                    container.scrollTop = container.scrollHeight;
+                }, i * 300);
+            });
+        }
+
+        function createPostElement(post) {
+            const postEl = document.createElement('div');
+            postEl.className = `post ${post.type === 'nuanced' ? 'nuanced' : 'viral'}`;
+
+            const emotionLabels = {
+                outrage: 'Indignare',
+                fear: 'Teamă',
+                superiority: 'Superioritate',
+                nuanced: 'Nuanțat'
+            };
+
+            postEl.innerHTML = `
+                <div class="post-header">
+                    <div class="post-avatar"></div>
+                    <div>
+                        <div class="post-author">Utilizator${Math.floor(Math.random() * 9999)}</div>
+                        <div class="post-time">${Math.floor(Math.random() * 59) + 1}m</div>
+                    </div>
+                </div>
+                <span class="post-emotion ${post.type}">${emotionLabels[post.type]}</span>
+                <div class="post-content">${post.content}</div>
+                <div class="post-stats">
+                    <span class="post-stat">❤️ ${formatNumber(post.likes)}</span>
+                    <span class="post-stat">🔄 ${formatNumber(post.shares)}</span>
+                    <span class="post-stat">💬 ${formatNumber(Math.floor(post.likes * 0.1))}</span>
+                </div>
+            `;
+            return postEl;
+        }
+
+        function formatNumber(num) {
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num;
+        }
+
+        // Scenario toggles
+        function toggleScenario(element) {
+            document.querySelectorAll('.scenario-card').forEach(s => {
+                if (s !== element) s.classList.remove('active');
+            });
             element.classList.toggle('active');
         }
 
-        function toggleLevel(element, levelNum) {
-            // Remove active from all level bars
-            document.querySelectorAll('.level-bar').forEach(bar => {
-                bar.classList.remove('active');
-            });
-            // Hide all details
-            document.querySelectorAll('.level-detail').forEach(detail => {
-                detail.classList.remove('visible');
-            });
+        // Knowledge level toggles
+        function toggleLevel(element, num) {
+            document.querySelectorAll('.knowledge-level').forEach(l => l.classList.remove('active'));
+            document.querySelectorAll('.level-detail').forEach(d => d.classList.remove('visible'));
 
-            // Activate clicked level
             element.classList.add('active');
-            document.getElementById('level-detail-' + levelNum).classList.add('visible');
+            document.getElementById('level-' + num).classList.add('visible');
         }
 
-        function toggleTest(element) {
-            element.classList.toggle('checked');
-            updateTestResult();
+        // Smooth scroll
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
 
-        function updateTestResult() {
-            const questions = document.querySelectorAll('.test-question');
-            const checked = document.querySelectorAll('.test-question.checked');
-            const result = document.getElementById('test-result');
+        // Initialize
+        initSimulator();
+        generateFeed();
 
-            if (checked.length === 0) {
-                result.classList.remove('show');
-                return;
-            }
-
-            result.classList.add('show');
-            result.classList.remove('positive', 'negative', 'partial');
-
-            if (checked.length === questions.length) {
-                result.classList.add('positive');
-                result.innerHTML = '<strong>Felicitări!</strong> Probabil chiar știi. Sau ești foarte bun la auto-evaluare. Sau amândouă.';
-            } else if (checked.length >= 3) {
-                result.classList.add('partial');
-                result.innerHTML = '<strong>Aproape.</strong> Ai cunoștințe solide, dar sunt goluri. Înțelegerea parțială e mai periculoasă decât pare.';
-            } else {
-                result.classList.add('negative');
-                result.innerHTML = '<strong>Sincer:</strong> ai o familiaritate cu subiectul, nu cunoaștere. E OK să recunoști asta - e primul pas spre a învăța cu adevărat.';
-            }
-        }
-
-        // Auto-open first scenario after a short delay
+        // Auto-open first scenario
         setTimeout(() => {
             document.querySelector('.scenario-1').classList.add('active');
-        }, 500);
+        }, 1000);
     </script>
 </body>
 </html>
